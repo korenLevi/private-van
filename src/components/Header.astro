@@ -44,12 +44,12 @@ const waHref = whatsappHref(t.form.genericWhatsappMessage);
     <a
       href={home}
       class="shrink-0 font-display text-[1.375rem] leading-none tracking-tight text-ink lg:text-2xl"
-      aria-label={`${SITE.name}, ${t.common.home}`}
     >
-      {/* The wordmark sits at 22px, which WCAG counts as normal text, so the
-          accent uses the darker gold. The footer wordmark keeps #B08A4E
-          because it sits on black. */}
-      {SITE.nameParts.lead}<span class="text-gold-ink">{SITE.nameParts.accent}</span>
+      {/* No aria-label: the accessible name is the visible wordmark, which is
+          what a voice-control user will say. The wordmark sits at 22px, which
+          WCAG counts as normal text, so the accent uses the darker gold; the
+          footer keeps #B08A4E because it sits on black. */}
+      {SITE.nameParts.lead}{' '}<span class="text-gold-ink">{SITE.nameParts.accent}</span>
     </a>
 
     <!-- Desktop nav -->

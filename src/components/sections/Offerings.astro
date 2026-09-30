@@ -69,6 +69,7 @@ const o = t.offerings;
                   sizes="(min-width: 1024px) 23vw, (min-width: 640px) 47vw, 78vw"
                   loading="lazy"
                   decoding="async"
+                  fetchpriority="low"
                   layout="full-width"
                   class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -115,17 +116,24 @@ const o = t.offerings;
     </div>
 
     <!-- Dots -->
-    <ul data-dots class="mt-7 flex items-center justify-center gap-2" hidden>
+    <ul data-dots class="mt-7 flex items-center justify-center gap-0.5" hidden>
       {
         o.items.map((item, index) => (
           <li>
+            {/* The visible dot is 8px; the button around it is 24px so it
+                clears the minimum tap target. */}
             <button
               type="button"
               data-dot
               data-index={index}
               aria-label={`${o.goTo}: ${item.label}`}
-              class="block h-2 w-2 rounded-full bg-line transition-all duration-200 aria-[current=true]:w-6 aria-[current=true]:bg-gold"
-            />
+              class="group/dot flex h-6 w-6 items-center justify-center"
+            >
+              <span
+                class="block h-2 w-2 rounded-full bg-line transition-all duration-200 group-aria-[current=true]/dot:w-6 group-aria-[current=true]/dot:bg-gold"
+                aria-hidden="true"
+              />
+            </button>
           </li>
         ))
       }
