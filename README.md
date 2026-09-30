@@ -6,8 +6,10 @@ page speed first.
 
 - **Astro 7**, static output, TypeScript
 - **Tailwind CSS 4** (CSS-first config, no `tailwind.config.js`)
-- **React** for exactly one island: the quote form
+- **React** for the two booking forms, nothing else
 - **Cloudflare Pages**, with one Pages Function for the email copy
+- **Three languages**: English at `/`, Hebrew at `/he/` (RTL), Russian at `/ru/`
+- 20 pages per language, 63 HTML files including the localized 404s
 
 ---
 
@@ -27,6 +29,7 @@ npm run check        # TypeScript + Astro diagnostics
 | `npm run build`            | Production build, then lists remaining placeholders        |
 | `npm run check`            | `astro check` — types across `.astro`, `.ts` and `.tsx`    |
 | `npm run check:placeholders` | Lists every unfilled `[PLACEHOLDER]` and `[PRICE]`       |
+| `npm run check:seo`        | Audits the built HTML against the SEO rules                |
 | `npm run placeholders`     | Regenerates the labelled placeholder photos                |
 
 ---
@@ -97,8 +100,56 @@ without touching TypeScript. Replace the placeholder entries and set
 
 ### Pages
 
-| URL                             | Targets                       |
-| ------------------------------- | ----------------------------- |
+20 pages, each one in all three languages. Slugs stay Latin in every
+language, so the Hebrew airport page is `/he/airport-transfers/`.
+
+| URL | Targets |
+| --- | --- |
+| `/` | private van with driver israel |
+| `/airport-transfers/` | ben gurion airport transfer |
+| `/ben-gurion-to-jerusalem/` | ben gurion to jerusalem |
+| `/ben-gurion-to-tel-aviv/` | ben gurion to tel aviv |
+| `/ben-gurion-to-haifa/` | ben gurion to haifa |
+| `/ben-gurion-to-dead-sea/` | ben gurion to dead sea |
+| `/ben-gurion-to-eilat/` | ben gurion to eilat |
+| `/van-with-driver-full-day/` | private van with driver israel |
+| `/private-tours/` | private tours israel |
+| `/jerusalem-day-tour/` | jerusalem day tour private |
+| `/dead-sea-masada-tour/` | dead sea masada private tour |
+| `/galilee-day-tour/` | galilee private tour |
+| `/wedding-transportation/` | wedding transportation israel |
+| `/artist-band-transportation/` | artist transportation israel |
+| `/business-transportation/` | business transportation israel |
+| `/private-transfers/` | private transfers israel |
+| `/fleet/` | mercedes sprinter hire israel |
+| `/about/` | brand |
+| `/faq/` | long tail questions |
+| `/contact/` | contact |
+
+`src/i18n/routes.ts` is the single registry of URLs. `src/pages/[...slug].astro`
+generates every page in every language from it, so adding a page means one
+entry there plus its content, never a new route file.
+
+---
+
+## Working on the content
+
+| File | Holds |
+| --- | --- |
+| `src/config/site.ts` | every business fact: phone, email, fleet, prices, track record |
+| `src/i18n/routes.ts` | every URL |
+| `src/i18n/ui/en.ts` | English site chrome |
+| `src/i18n/ui/en-pages.ts` | English page content |
+| `src/i18n/ui/he.ts`, `he-pages.ts` | Hebrew |
+| `src/i18n/ui/ru.ts`, `ru-pages.ts` | Russian |
+| `src/data/reviews.json` | reviews |
+
+Translated dictionaries are partial. Anything they leave out falls back to
+English per key, so a missing string shows in English rather than blanking a
+page. Arrays are replaced whole, never merged item by item, so a partly
+translated list cannot come out in two languages.
+
+------------------------------- | ----------------------------- |
 | `/`                             | private van and driver Israel |
 | `/ben-gurion-airport-transfer`  | Ben Gurion airport transfer   |
 | `/private-driver-israel`        | private driver Israel         |
