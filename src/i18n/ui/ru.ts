@@ -1,3 +1,4 @@
+import pages from './ru-pages';
 import type { Translation } from './index';
 
 /**
@@ -120,6 +121,8 @@ const ru: Translation = {
     body: 'Возможно, ссылка устарела. Откройте главную или напишите нам, и мы подскажем.',
     cta: 'На главную',
   },
+
+  pages,
 };
 
 export default ru;

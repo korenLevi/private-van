@@ -1,3 +1,4 @@
+import pages from './he-pages';
 import type { Translation } from './index';
 
 /**
@@ -120,6 +121,8 @@ const he: Translation = {
     body: 'ייתכן שהקישור אינו מעודכן. נסו את דף הבית, או שלחו לנו הודעה ונכוון אתכם.',
     cta: 'מעבר לדף הבית',
   },
+
+  pages,
 };
 
 export default he;
