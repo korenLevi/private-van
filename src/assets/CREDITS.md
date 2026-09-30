@@ -1,6 +1,6 @@
 # Photo credits
 
-Photographs on this site come from Wikimedia Commons. Every one is either in
+Photographs on this site come from Wikimedia Commons and Openverse. Every one is either in
 the public domain or under a Creative Commons Attribution (CC BY) licence —
 no share-alike, no non-commercial, no no-derivatives terms.
 
@@ -18,6 +18,12 @@ its slot, which counts as a change and is noted here as the licence asks.
 | `src/assets/page-ben-gurion-airport-transfer.jpg` | Daylit arrivals walkway at Ben Gurion Airport | Sarah Stierch | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ben_Gurion_International_Airport_Walkway_-_Sarah_Stierch.jpg) |
 | `src/assets/page-contact.jpg` | Tel Aviv shoreline seen from Jaffa | רוני קניגסברג (Roni Kenigsberg), PikiWiki Israel | [CC BY 2.5](https://creativecommons.org/licenses/by/2.5/) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:143476_jaffa_PikiWiki_Israel.jpg) |
 | `public/og-default.jpg` | Panorama of the Old City of Jerusalem | 365grad | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Panorama_Jerusalem_Tempelberg.jpg) |
+
+| `src/assets/card-airport-transfer.jpg` | Travellers wheeling suitcases through an airport departures hall | digital cat  | CC BY 2.0 | [source](https://www.flickr.com/photos/14646075@N03/4581765179) |
+| `src/assets/card-business-travel.jpg` | A business traveller walking through an airport terminal with bags | Nicola since 1972 | CC BY 2.0 | [source](https://www.flickr.com/photos/15216811@N06/6751768291) |
+| `src/assets/card-private-tours.jpg` | Walkers on a desert trail in Israel | כאמל ברג'ותי | CC BY 2.5 | [source](https://commons.wikimedia.org/wiki/File%3APikiWiki_Israel_30640_Agriculture_in_Israel.jpg) |
+| `src/assets/card-wedding.jpg` | A white tulle bow tied to a wedding car | zeevveez | CC BY 2.0 | [source](https://www.flickr.com/photos/29001414@N00/10341112593) |
+| `src/assets/card-artists.jpg` | A crowd in front of a lit concert stage | Incase. | CC BY 2.0 | [source](https://www.flickr.com/photos/62021300@N00/2720494170) |
 
 Changes made: cropped and resized to the dimensions the layout needs, and
 re-encoded as progressive JPEG. Astro then derives the AVIF and WebP versions

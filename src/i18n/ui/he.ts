@@ -260,8 +260,8 @@ const he: Translation = {
       {
         pageKey: 'airportTransfers',
         label: 'הסעות לנתב"ג וממנו',
-        image: 'pageAirport',
-        imageAlt: 'אולם הנוסעים הנכנסים בנתב"ג, מואר באור יום דרך גג הזכוכית.',
+        image: 'cardAirportTransfer',
+        imageAlt: 'נוסעים דוחפים מזוודות באולם היוצאים של שדה תעופה.',
       },
       {
         pageKey: 'vanWithDriver',
@@ -272,8 +272,8 @@ const he: Translation = {
       {
         pageKey: 'privateTours',
         label: 'סיורים פרטיים בכל הארץ',
-        image: 'pageJerusalem',
-        imageAlt: 'רחבת הכותל המערבי בירושלים, עם כיפת הסלע הזהובה מאחור.',
+        image: 'cardPrivateTours',
+        imageAlt: 'מטיילים בשביל מדברי בישראל.',
       },
       {
         pageKey: 'deadSeaMasadaTour',
@@ -284,20 +284,20 @@ const he: Translation = {
       {
         pageKey: 'businessTransportation',
         label: 'הסעות לאנשי עסקים ולמשלחות',
-        image: 'pageContact',
-        imageAlt: 'קו החוף והקו הרקיע של תל אביב, במבט מיפו.',
+        image: 'cardBusinessTravel',
+        imageAlt: 'איש עסקים חוצה טרמינל בשדה תעופה עם מזוודות.',
       },
       {
         pageKey: 'weddingTransportation',
         label: 'הסעות לחתונות ולאירועים',
-        image: 'serviceFullDay',
-        imageAlt: 'נהג עומד ליד דלת הצד הפתוחה של ואן נוסעים.',
+        image: 'cardWedding',
+        imageAlt: 'פפיון טול לבן קשור לרכב חתונה.',
       },
       {
         pageKey: 'artistBandTransportation',
         label: 'הסעות אומנים, להקות וצוותי הפקה',
-        image: 'serviceCityToCity',
-        imageAlt: 'ואן נוסעים לבן בכביש מהיר באזור פתוח בישראל.',
+        image: 'cardArtists',
+        imageAlt: 'קהל מול במת הופעות מוארת.',
       },
     ],
   },

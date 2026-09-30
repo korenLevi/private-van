@@ -33,6 +33,19 @@
   --radius-card: 1rem;
 }
 
+/*
+ * Hebrew swaps the two typefaces at the token, so every consumer follows:
+ * the `font-display` / `font-body` utilities, the base h1-h4 and body rules,
+ * and the form controls that inherit. Nothing else in the sheet changes.
+ *
+ * Selector beats the :root that @theme emits, and the faces themselves are
+ * only linked on /he/ pages (see BaseLayout).
+ */
+html[lang='he'] {
+  --font-display: var(--font-frank-ruhl), 'Narkisim', 'Times New Roman', serif;
+  --font-body: var(--font-assistant), 'Arial Hebrew', system-ui, sans-serif;
+}
+
 /* ------------------------------------------------------------------ */
 /* Base                                                                */
 /* ------------------------------------------------------------------ */
@@ -76,6 +89,14 @@
     line-height: 1.12;
     letter-spacing: -0.015em;
     text-wrap: balance;
+  }
+
+  /* Hebrew has no capitals and almost no ascender/descender play, so the
+     leading and negative tracking tuned for Fraunces squeeze it. Loosen
+     both. In @layer base, so a heading's own `leading-*` utility still wins. */
+  html[lang='he'] :is(h1, h2, h3, h4) {
+    line-height: 1.25;
+    letter-spacing: 0;
   }
 
   p {
@@ -195,6 +216,15 @@
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--color-gold-ink);
+  }
+
+  /*
+   * Uppercase is a no-op in Hebrew, and the 0.16em tracking meant to open up
+   * capitals just pulls the letters of a Hebrew word apart. Keep a hint.
+   */
+  html[lang='he'] :is(.eyebrow, .field-label) {
+    text-transform: none;
+    letter-spacing: 0.04em;
   }
 
   /* --- The 64px gold rule under a heading --- */

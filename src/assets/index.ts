@@ -21,6 +21,12 @@ import fleetSideDoor from './fleet-side-door.jpg';
 import fleetSeatsDetail from './fleet-seats-detail.jpg';
 import fleetOnRoad from './fleet-on-road.jpg';
 
+import cardAirportTransfer from './card-airport-transfer.jpg';
+import cardBusinessTravel from './card-business-travel.jpg';
+import cardPrivateTours from './card-private-tours.jpg';
+import cardWedding from './card-wedding.jpg';
+import cardArtists from './card-artists.jpg';
+
 import pageAirport from './page-ben-gurion-airport-transfer.jpg';
 import pagePrivateDriver from './page-private-driver-israel.jpg';
 import pageJerusalem from './page-jerusalem-day-tour.jpg';
@@ -30,6 +36,13 @@ import pageContact from './page-contact.jpg';
 
 export const IMAGES = {
   heroPoster,
+
+  // Service carousel cards, cropped 4:5
+  cardAirportTransfer,
+  cardBusinessTravel,
+  cardPrivateTours,
+  cardWedding,
+  cardArtists,
 
   serviceAirport,
   serviceFullDay,

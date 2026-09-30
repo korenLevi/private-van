@@ -168,8 +168,8 @@ const en = {
       {
         pageKey: 'airportTransfers',
         label: 'Ben Gurion airport transfers',
-        image: 'pageAirport',
-        imageAlt: 'The arrivals walkway at Ben Gurion Airport, lit through its glass roof.',
+        image: 'cardAirportTransfer',
+        imageAlt: 'Travellers wheeling suitcases through an airport departures hall.',
       },
       {
         pageKey: 'vanWithDriver',
@@ -180,8 +180,8 @@ const en = {
       {
         pageKey: 'privateTours',
         label: 'Private tours across the country',
-        image: 'pageJerusalem',
-        imageAlt: 'The Western Wall plaza in Jerusalem, with the gold Dome of the Rock behind it.',
+        image: 'cardPrivateTours',
+        imageAlt: 'Walkers on a desert trail in Israel.',
       },
       {
         pageKey: 'deadSeaMasadaTour',
@@ -192,20 +192,20 @@ const en = {
       {
         pageKey: 'businessTransportation',
         label: 'Business and delegation transport',
-        image: 'pageContact',
-        imageAlt: 'The Tel Aviv shoreline and skyline seen from Jaffa.',
+        image: 'cardBusinessTravel',
+        imageAlt: 'A business traveller walking through an airport terminal with bags.',
       },
       {
         pageKey: 'weddingTransportation',
         label: 'Weddings and events',
-        image: 'serviceFullDay',
-        imageAlt: 'A driver standing beside the open side door of a passenger van.',
+        image: 'cardWedding',
+        imageAlt: 'A white tulle bow tied to a wedding car.',
       },
       {
         pageKey: 'artistBandTransportation',
         label: 'Artists, bands and crews',
-        image: 'serviceCityToCity',
-        imageAlt: 'A white passenger van on a highway through open countryside in Israel.',
+        image: 'cardArtists',
+        imageAlt: 'A crowd in front of a lit concert stage.',
       },
     ],
   },

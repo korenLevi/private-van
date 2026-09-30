@@ -260,8 +260,8 @@ const ru: Translation = {
       {
         pageKey: 'airportTransfers',
         label: 'Трансферы в аэропорт Бен Гурион и обратно',
-        image: 'pageAirport',
-        imageAlt: 'Зал прилёта аэропорта Бен Гурион, освещённый дневным светом через стеклянную крышу.',
+        image: 'cardAirportTransfer',
+        imageAlt: 'Пассажиры с чемоданами в зале вылета аэропорта.',
       },
       {
         pageKey: 'vanWithDriver',
@@ -272,8 +272,8 @@ const ru: Translation = {
       {
         pageKey: 'privateTours',
         label: 'Индивидуальные экскурсии по стране',
-        image: 'pageJerusalem',
-        imageAlt: 'Площадь у Стены Плача в Иерусалиме, за ней золотой Купол Скалы.',
+        image: 'cardPrivateTours',
+        imageAlt: 'Путешественники на пустынной тропе в Израиле.',
       },
       {
         pageKey: 'deadSeaMasadaTour',
@@ -284,20 +284,20 @@ const ru: Translation = {
       {
         pageKey: 'businessTransportation',
         label: 'Транспорт для бизнеса и делегаций',
-        image: 'pageContact',
-        imageAlt: 'Береговая линия и панорама Тель-Авива, вид со стороны Яффо.',
+        image: 'cardBusinessTravel',
+        imageAlt: 'Деловой пассажир идёт по терминалу аэропорта с багажом.',
       },
       {
         pageKey: 'weddingTransportation',
         label: 'Свадьбы и мероприятия',
-        image: 'serviceFullDay',
-        imageAlt: 'Водитель у открытой боковой двери пассажирского микроавтобуса.',
+        image: 'cardWedding',
+        imageAlt: 'Белый бант из фатина на свадебном автомобиле.',
       },
       {
         pageKey: 'artistBandTransportation',
         label: 'Артисты, группы и съёмочные команды',
-        image: 'serviceCityToCity',
-        imageAlt: 'Белый пассажирский микроавтобус на шоссе среди открытой местности в Израиле.',
+        image: 'cardArtists',
+        imageAlt: 'Публика перед освещённой концертной сценой.',
       },
     ],
   },

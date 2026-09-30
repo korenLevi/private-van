@@ -56,6 +56,37 @@ export default defineConfig({
       fallbacks: ['system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
       optimizedFallbacks: true,
     },
+
+    // Hebrew. Fraunces and Manrope carry no Hebrew glyphs, so /he/ used to
+    // fall through to whatever David / Frank Ruehl the OS ships — a dated,
+    // high-contrast serif that reads nothing like the Latin pages. These two
+    // are the Hebrew counterparts: Frank Ruhl Libre keeps the editorial
+    // serif voice of Fraunces in the headings, Assistant is the clean
+    // contemporary sans that stands in for Manrope in running text. Both
+    // carry latin as well, so brand names and digits inside Hebrew
+    // sentences stay in the same family instead of switching face mid-line.
+    {
+      provider: fontProviders.google(),
+      name: 'Frank Ruhl Libre',
+      cssVariable: '--font-frank-ruhl',
+      weights: [500],
+      styles: ['normal'],
+      subsets: ['hebrew', 'latin'],
+      display: 'swap',
+      fallbacks: ['Narkisim', 'Times New Roman', 'serif'],
+      optimizedFallbacks: true,
+    },
+    {
+      provider: fontProviders.google(),
+      name: 'Assistant',
+      cssVariable: '--font-assistant',
+      weights: [400, 500, 600, 700],
+      styles: ['normal'],
+      subsets: ['hebrew', 'latin'],
+      display: 'swap',
+      fallbacks: ['Arial Hebrew', 'system-ui', 'sans-serif'],
+      optimizedFallbacks: true,
+    },
   ],
 
   image: {

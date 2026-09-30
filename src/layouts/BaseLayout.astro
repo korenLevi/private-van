@@ -67,9 +67,24 @@ const { hreflang, dir } = localeDefinition(locale);
       Fonts are downloaded at build time and served from this origin, so there
       is no third-party connection on the critical path. Preloading only the
       faces used above the fold keeps the header light.
+
+      Hebrew runs on its own pair (see the --font-display / --font-body swap in
+      global.css), and the two sets share no glyphs worth loading twice, so
+      each page links only the faces its own language will paint.
     */}
-    <Font cssVariable="--font-fraunces" preload />
-    <Font cssVariable="--font-manrope" preload={[{ weight: 400 }, { weight: 600 }]} />
+    {
+      locale === 'he' ? (
+        <>
+          <Font cssVariable="--font-frank-ruhl" preload />
+          <Font cssVariable="--font-assistant" preload={[{ weight: 400 }, { weight: 600 }]} />
+        </>
+      ) : (
+        <>
+          <Font cssVariable="--font-fraunces" preload />
+          <Font cssVariable="--font-manrope" preload={[{ weight: 400 }, { weight: 600 }]} />
+        </>
+      )
+    }
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
