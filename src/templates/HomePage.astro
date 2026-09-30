@@ -3,6 +3,7 @@ import CtaBand from '../components/sections/CtaBand.astro';
 import Faq from '../components/sections/Faq.astro';
 import Fleet from '../components/sections/Fleet.astro';
 import Hero from '../components/sections/Hero.astro';
+import Offerings from '../components/sections/Offerings.astro';
 import HowItWorks from '../components/sections/HowItWorks.astro';
 import PopularRoutes from '../components/sections/PopularRoutes.astro';
 import RequestQuote from '../components/sections/RequestQuote.astro';
@@ -65,7 +66,7 @@ const jsonLd = graph(
 >
   <Hero locale={locale} />
   <TrustStrip locale={locale} />
-  <Services locale={locale} />
+  <Offerings locale={locale} tone="sand" />
  
   
   <HowItWorks locale={locale} />

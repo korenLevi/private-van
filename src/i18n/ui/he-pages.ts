@@ -47,7 +47,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     description:
       'הסעות לנתב"ג, ואן עם נהג צמוד ליום שלם והסעות פרטיות בכל הארץ, ברכבי מרצדס ספרינטר וסוואנה.',
     breadcrumb: 'דף הבית',
-    h1: 'ואן פרטי עם נהג בכל הארץ',
+    h1: 'ואן פרטי עם נהג לכל חלקי הארץ',
     intro: 'הסעות לנתב"ג, ואן עם נהג צמוד ליום שלם והסעות פרטיות לכל מקום בארץ.',
     heroImageAlt: ALT.heroPoster,
   },

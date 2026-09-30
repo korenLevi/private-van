@@ -37,7 +37,7 @@ const he: Translation = {
 
   hero: {
     eyebrow: 'ואן פרטי עם נהג',
-    h1: 'ואן פרטי עם נהג בכל הארץ',
+    h1: 'ואן פרטי עם נהג לכל חלקי הארץ',
     subtitle:
       'הסעות לנתב"ג, ואן עם נהג צמוד ליום שלם והסעות פרטיות בכל רחבי ישראל, ברכבי מרצדס ספרינטר וסוואנה.',
     primaryCta: 'הזמנה בוואטסאפ',
@@ -247,6 +247,59 @@ const he: Translation = {
     eyebrow: 'שאלות',
     heading: 'שאלות נפוצות',
     intro: 'אם השאלה שלכם לא כאן, שלחו לנו אותה בוואטסאפ.',
+  },
+
+  offerings: {
+    eyebrow: 'מה אנחנו עושים',
+    heading: 'מה אנחנו מציעים',
+    headingAccent: 'ללקוחות שלנו',
+    previous: 'שירותים קודמים',
+    next: 'שירותים נוספים',
+    goTo: 'מעבר לשירות',
+    items: [
+      {
+        pageKey: 'airportTransfers',
+        label: 'הסעות לנתב"ג וממנו',
+        image: 'pageAirport',
+        imageAlt: 'אולם הנוסעים הנכנסים בנתב"ג, מואר באור יום דרך גג הזכוכית.',
+      },
+      {
+        pageKey: 'vanWithDriver',
+        label: 'ואן עם נהג צמוד ליום שלם',
+        image: 'pagePrivateDriver',
+        imageAlt: 'מכונית בכביש פתוח המתפתל בין גבעות יבשות בצפון הארץ.',
+      },
+      {
+        pageKey: 'privateTours',
+        label: 'סיורים פרטיים בכל הארץ',
+        image: 'pageJerusalem',
+        imageAlt: 'רחבת הכותל המערבי בירושלים, עם כיפת הסלע הזהובה מאחור.',
+      },
+      {
+        pageKey: 'deadSeaMasadaTour',
+        label: 'טיולי יום לים המלח ומצדה',
+        image: 'pageDeadSea',
+        imageAlt: 'צוקי מצדה מעל מישור המדבר, עם ים המלח ברקע.',
+      },
+      {
+        pageKey: 'businessTransportation',
+        label: 'הסעות לאנשי עסקים ולמשלחות',
+        image: 'pageContact',
+        imageAlt: 'קו החוף והקו הרקיע של תל אביב, במבט מיפו.',
+      },
+      {
+        pageKey: 'weddingTransportation',
+        label: 'הסעות לחתונות ולאירועים',
+        image: 'serviceFullDay',
+        imageAlt: 'נהג עומד ליד דלת הצד הפתוחה של ואן נוסעים.',
+      },
+      {
+        pageKey: 'artistBandTransportation',
+        label: 'הסעות אומנים, להקות וצוותי הפקה',
+        image: 'serviceCityToCity',
+        imageAlt: 'ואן נוסעים לבן בכביש מהיר באזור פתוח בישראל.',
+      },
+    ],
   },
 
   pages,

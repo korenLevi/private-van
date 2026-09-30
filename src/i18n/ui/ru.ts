@@ -249,6 +249,59 @@ const ru: Translation = {
     intro: 'Если вашего вопроса здесь нет, напишите нам в WhatsApp.',
   },
 
+  offerings: {
+    eyebrow: 'Что мы делаем',
+    heading: 'Что мы предлагаем',
+    headingAccent: 'нашим клиентам',
+    previous: 'Предыдущие услуги',
+    next: 'Ещё услуги',
+    goTo: 'Перейти к услуге',
+    items: [
+      {
+        pageKey: 'airportTransfers',
+        label: 'Трансферы в аэропорт Бен Гурион и обратно',
+        image: 'pageAirport',
+        imageAlt: 'Зал прилёта аэропорта Бен Гурион, освещённый дневным светом через стеклянную крышу.',
+      },
+      {
+        pageKey: 'vanWithDriver',
+        label: 'Микроавтобус с водителем на день',
+        image: 'pagePrivateDriver',
+        imageAlt: 'Автомобиль на открытой дороге среди сухих холмов на севере Израиля.',
+      },
+      {
+        pageKey: 'privateTours',
+        label: 'Индивидуальные экскурсии по стране',
+        image: 'pageJerusalem',
+        imageAlt: 'Площадь у Стены Плача в Иерусалиме, за ней золотой Купол Скалы.',
+      },
+      {
+        pageKey: 'deadSeaMasadaTour',
+        label: 'Поездки на Мёртвое море и Масаду',
+        image: 'pageDeadSea',
+        imageAlt: 'Скалы Масады над пустынной равниной, вдали Мёртвое море.',
+      },
+      {
+        pageKey: 'businessTransportation',
+        label: 'Транспорт для бизнеса и делегаций',
+        image: 'pageContact',
+        imageAlt: 'Береговая линия и панорама Тель-Авива, вид со стороны Яффо.',
+      },
+      {
+        pageKey: 'weddingTransportation',
+        label: 'Свадьбы и мероприятия',
+        image: 'serviceFullDay',
+        imageAlt: 'Водитель у открытой боковой двери пассажирского микроавтобуса.',
+      },
+      {
+        pageKey: 'artistBandTransportation',
+        label: 'Артисты, группы и съёмочные команды',
+        image: 'serviceCityToCity',
+        imageAlt: 'Белый пассажирский микроавтобус на шоссе среди открытой местности в Израиле.',
+      },
+    ],
+  },
+
   pages,
 };
 

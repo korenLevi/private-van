@@ -1,0 +1,234 @@
+---
+/**
+ * "What we provide" carousel.
+ *
+ * A scroll-snap track rather than a slider library: the browser does the
+ * scrolling, so it works before the JavaScript arrives, keeps momentum
+ * scrolling on touch, and costs nothing in bundle size. The arrows and dots
+ * are progressive enhancement over a list that already scrolls.
+ *
+ * Every card is a real link to the service page, which is what makes the
+ * section worth having for search as well as for people.
+ */
+import { Picture } from 'astro:assets';
+
+import { getImage } from '../../assets';
+import type { Locale } from '../../i18n/config';
+import { pathFor, type PageKey } from '../../i18n/routes';
+import { useTranslations } from '../../i18n/utils';
+import Icon from '../Icon.astro';
+
+interface Props {
+  locale: Locale;
+  tone?: 'paper' | 'sand';
+  id?: string;
+}
+
+const { locale, tone = 'paper', id = 'services' } = Astro.props;
+const t = useTranslations(locale);
+const o = t.offerings;
+---
+
+<section id={id} class:list={['section-y', tone === 'sand' && 'bg-sand']}>
+  <div class="container-page">
+    <header class="flex flex-col items-center text-center">
+      <p class="eyebrow">{o.eyebrow}</p>
+      <h2 class="mt-3 text-[2rem] leading-[1.1] text-balance sm:text-[2.5rem] lg:text-[3rem]">
+        {o.heading} <span class="text-gold-ink">{o.headingAccent}</span>
+      </h2>
+      <span class="gold-rule mt-5" aria-hidden="true"></span>
+    </header>
+
+    <div class="relative mt-12 lg:mt-14" data-carousel>
+      <!--
+        The track scrolls natively. `tabindex` is deliberately absent: every
+        card holds a link, so the region is already reachable by keyboard and
+        a focusable wrapper would only add an empty tab stop.
+      -->
+      <ul
+        data-track
+        class="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2 lg:gap-5"
+      >
+        {
+          o.items.map((item, index) => (
+            <li
+              data-slide
+              data-index={index}
+              class="w-[78%] shrink-0 snap-start sm:w-[47%] lg:w-[calc((100%-3.75rem)/4)]"
+            >
+              <a
+                href={pathFor(item.pageKey as PageKey, locale)}
+                class="group relative block aspect-[4/5] overflow-hidden rounded-[var(--radius-card)] bg-ink"
+              >
+                <Picture
+                  src={getImage(item.image)}
+                  alt={item.imageAlt}
+                  formats={['avif', 'webp']}
+                  fallbackFormat="jpg"
+                  widths={[320, 480, 640, 900]}
+                  sizes="(min-width: 1024px) 23vw, (min-width: 640px) 47vw, 78vw"
+                  loading="lazy"
+                  decoding="async"
+                  layout="full-width"
+                  class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+
+                {/* Dark at the foot so the label reads over any photograph */}
+                <span
+                  class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10"
+                  aria-hidden="true"
+                />
+
+                <span class="absolute inset-x-0 bottom-0 p-5 lg:p-6">
+                  <span class="block text-[1.0625rem] leading-snug font-semibold text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
+                    {item.label}
+                  </span>
+                  <span class="mt-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/15 text-white transition-colors group-hover:bg-white group-hover:text-ink">
+                    <Icon name="arrow-right" size={16} class="rtl-flip" />
+                  </span>
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Arrows. Hidden until the script confirms the track overflows. -->
+      <button
+        type="button"
+        data-prev
+        hidden
+        aria-label={o.previous}
+        class="absolute top-1/2 start-0 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-paper text-ink shadow-[0_4px_16px_rgba(20,20,20,0.12)] transition-colors hover:border-gold disabled:pointer-events-none disabled:opacity-0 lg:-start-5 lg:flex"
+      >
+        <Icon name="arrow-right" size={18} class="rotate-180 rtl-flip" />
+      </button>
+      <button
+        type="button"
+        data-next
+        hidden
+        aria-label={o.next}
+        class="absolute top-1/2 end-0 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-paper text-ink shadow-[0_4px_16px_rgba(20,20,20,0.12)] transition-colors hover:border-gold disabled:pointer-events-none disabled:opacity-0 lg:-end-5 lg:flex"
+      >
+        <Icon name="arrow-right" size={18} class="rtl-flip" />
+      </button>
+    </div>
+
+    <!-- Dots -->
+    <ul data-dots class="mt-7 flex items-center justify-center gap-2" hidden>
+      {
+        o.items.map((item, index) => (
+          <li>
+            <button
+              type="button"
+              data-dot
+              data-index={index}
+              aria-label={`${o.goTo}: ${item.label}`}
+              class="block h-2 w-2 rounded-full bg-line transition-all duration-200 aria-[current=true]:w-6 aria-[current=true]:bg-gold"
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  for (const carousel of document.querySelectorAll<HTMLElement>('[data-carousel]')) {
+    const track = carousel.querySelector<HTMLElement>('[data-track]');
+    const prev = carousel.querySelector<HTMLButtonElement>('[data-prev]');
+    const next = carousel.querySelector<HTMLButtonElement>('[data-next]');
+    const dotList = carousel.parentElement?.querySelector<HTMLElement>('[data-dots]');
+    const dots = Array.from(dotList?.querySelectorAll<HTMLButtonElement>('[data-dot]') ?? []);
+    const slides = Array.from(track?.querySelectorAll<HTMLElement>('[data-slide]') ?? []);
+    if (!track || slides.length === 0) continue;
+
+    const overflows = () => track.scrollWidth - track.clientWidth > 4;
+
+    // Nothing to control when every card already fits.
+    const showControls = () => {
+      const show = overflows();
+      for (const control of [prev, next]) if (control) control.hidden = !show;
+      if (dotList) dotList.hidden = !show;
+    };
+
+    /**
+     * In a right-to-left document the start of the track is on the right and
+     * scrollLeft runs negative, so "next" has to move the opposite way.
+     */
+    const forward = () => (getComputedStyle(track).direction === 'rtl' ? -1 : 1);
+    const step = () => slides[0].getBoundingClientRect().width + 20;
+
+    prev?.addEventListener('click', () =>
+      track.scrollBy({ left: -forward() * step(), behavior: 'smooth' }),
+    );
+    next?.addEventListener('click', () =>
+      track.scrollBy({ left: forward() * step(), behavior: 'smooth' }),
+    );
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        slides[index]?.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      });
+    });
+
+    const setActive = (index: number) => {
+      dots.forEach((dot, i) => dot.setAttribute('aria-current', String(i === index)));
+      if (prev) prev.disabled = index === 0;
+      if (next) next.disabled = index >= lastReachable() || !overflows();
+    };
+
+    /**
+     * How many cards fit at once, and therefore the furthest card that can
+     * ever reach the start of the track. Dots past that point can never
+     * become active, so they are hidden rather than left inert.
+     */
+    const visibleCount = () =>
+      Math.max(1, Math.round(track.clientWidth / step()));
+    const lastReachable = () => Math.max(0, slides.length - visibleCount());
+
+    const trimDots = () => {
+      const last = lastReachable();
+      dots.forEach((dot, i) => {
+        const li = dot.parentElement;
+        if (li) li.hidden = i > last;
+      });
+    };
+
+    /**
+     * The observer only reports slides whose visibility changed, so the
+     * currently visible set has to be kept rather than read from one batch.
+     * Taking the minimum of a single batch made a dot jump to the wrong card.
+     */
+    const visible = new Set<number>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const index = Number((entry.target as HTMLElement).dataset.index ?? 0);
+          if (entry.isIntersecting) visible.add(index);
+          else visible.delete(index);
+        }
+        if (visible.size > 0) setActive(Math.min(...visible));
+      },
+      { root: track, threshold: 0.6 },
+    );
+    for (const slide of slides) observer.observe(slide);
+
+    setActive(0);
+    showControls();
+    trimDots();
+    window.addEventListener('resize', () => {
+      showControls();
+      trimDots();
+    });
+  }
+</script>

@@ -153,6 +153,63 @@ const en = {
     ],
   },
 
+
+  /* ---------------------------------------------------------------- */
+  /* Home — what we offer carousel                                     */
+  /* ---------------------------------------------------------------- */
+  offerings: {
+    eyebrow: 'What we do',
+    heading: 'What we provide',
+    headingAccent: 'for our customers',
+    previous: 'Previous services',
+    next: 'More services',
+    goTo: 'Go to service',
+    items: [
+      {
+        pageKey: 'airportTransfers',
+        label: 'Ben Gurion airport transfers',
+        image: 'pageAirport',
+        imageAlt: 'The arrivals walkway at Ben Gurion Airport, lit through its glass roof.',
+      },
+      {
+        pageKey: 'vanWithDriver',
+        label: 'Van with a driver for the day',
+        image: 'pagePrivateDriver',
+        imageAlt: 'A car on an open road curving through dry hills in northern Israel.',
+      },
+      {
+        pageKey: 'privateTours',
+        label: 'Private tours across the country',
+        image: 'pageJerusalem',
+        imageAlt: 'The Western Wall plaza in Jerusalem, with the gold Dome of the Rock behind it.',
+      },
+      {
+        pageKey: 'deadSeaMasadaTour',
+        label: 'Dead Sea and Masada day trips',
+        image: 'pageDeadSea',
+        imageAlt: 'The cliffs of Masada rising above the desert plain, with the Dead Sea beyond.',
+      },
+      {
+        pageKey: 'businessTransportation',
+        label: 'Business and delegation transport',
+        image: 'pageContact',
+        imageAlt: 'The Tel Aviv shoreline and skyline seen from Jaffa.',
+      },
+      {
+        pageKey: 'weddingTransportation',
+        label: 'Weddings and events',
+        image: 'serviceFullDay',
+        imageAlt: 'A driver standing beside the open side door of a passenger van.',
+      },
+      {
+        pageKey: 'artistBandTransportation',
+        label: 'Artists, bands and crews',
+        image: 'serviceCityToCity',
+        imageAlt: 'A white passenger van on a highway through open countryside in Israel.',
+      },
+    ],
+  },
+
   /* ---------------------------------------------------------------- */
   /* Home — routes                                                     */
   /* ---------------------------------------------------------------- */
