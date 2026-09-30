@@ -13,10 +13,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 import { SITE } from '../config/site';
 import type { Locale } from '../i18n/config';
+import { pathFor } from '../i18n/routes';
 import { getPage } from '../i18n/ui';
-import { absoluteUrl, useTranslations } from '../i18n/utils';
+import { absoluteUrl, localeDefinition, useTranslations } from '../i18n/utils';
 import {
-  faqSchema,
   graph,
   localBusinessSchema,
   taxiServiceSchema,
@@ -40,11 +40,19 @@ const ogImageUrl = absoluteUrl(SITE.ogImage, Astro.site);
  *
  *
  */
+const canonical = absoluteUrl(pathFor('home', locale), Astro.site);
+
+/**
+ * LocalBusiness and TaxiService describe the business once, under a stable
+ * @id shared by all three languages. WebSite is per language version.
+ *
+ * No FAQPage here: the questions live on /faq/, and structured data must
+ * describe content that is actually on the page it sits on.
+ */
 const jsonLd = graph(
   localBusinessSchema(t.schema.businessDescription, ogImageUrl),
   taxiServiceSchema(t.schema.businessDescription, t.schema.serviceType),
-  websiteSchema(),
-  faqSchema(t.faq.items),
+  websiteSchema(localeDefinition(locale).hreflang, canonical),
 );
 ---
 

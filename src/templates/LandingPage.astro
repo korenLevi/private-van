@@ -28,8 +28,13 @@ const { locale, pageKey } = Astro.props;
 const t = useTranslations(locale);
 const page = getPage(locale, pageKey);
 
+// Home > hub > page, so the breadcrumb matches the real structure of the
+// site rather than flattening every page onto the home page.
 const trail = [
   { name: t.common.home, path: pathFor('home', locale) },
+  ...(page.hub
+    ? [{ name: getPage(locale, page.hub).breadcrumb, path: pathFor(page.hub, locale) }]
+    : []),
   { name: page.breadcrumb, path: pathFor(pageKey, locale) },
 ];
 

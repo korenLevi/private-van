@@ -124,14 +124,15 @@ export function taxiServiceSchema(description: string, serviceType: string) {
   });
 }
 
-export function websiteSchema() {
+export function websiteSchema(language: string, url: string) {
   return prune({
     '@type': 'WebSite',
-    '@id': `${SITE.url}/#website`,
-    url: SITE.url,
+    // One @id per language version, all published by the same business.
+    '@id': `${url}#website`,
+    url,
     name: SITE.name,
     publisher: { '@id': businessId },
-    inLanguage: 'en',
+    inLanguage: language,
   });
 }
 
