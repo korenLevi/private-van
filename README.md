@@ -1,8 +1,10 @@
 # IsraelPrivateVan.com
 
-Static marketing site for a family-run private van and driver service in
-Israel, aimed at English-speaking travellers. Built for search visibility and
-page speed first.
+Static marketing site for Israel Private Van, the transport service of Amir
+Levi Transportation Services Ltd. of Holon. Airport transfers, a van with a
+driver by the day, private tours and event transport across Israel, in
+English, Hebrew and Russian. Built for search visibility and page speed
+first.
 
 - **Astro 7**, static output, TypeScript
 - **Tailwind CSS 4** (CSS-first config, no `tailwind.config.js`)
