@@ -1,5 +1,5 @@
 ---
-import { telHref, whatsappHref } from '../../config/site';
+import { CONTACT, telHref, whatsappHref } from '../../config/site';
 import type { Locale } from '../../i18n/config';
 import { useTranslations } from '../../i18n/utils';
 import Icon from '../Icon.astro';
@@ -38,6 +38,7 @@ const t = useTranslations(locale);
         <a href={telHref} class="btn btn-ghost-on-dark" data-analytics="cta-call">
           <Icon name="phone" size={17} />
           {t.cta.secondary}
+          <span class="ltr-embed">{CONTACT.phoneDisplay}</span>
         </a>
       </div>
     </div>

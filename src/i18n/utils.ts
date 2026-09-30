@@ -6,32 +6,32 @@ import {
   type Locale,
 } from './config';
 import { getDictionary, type Dictionary } from './ui';
+import { fill } from '../lib/text';
 
-/**
- * Read the locale out of a URL. "/es/contacto" -> "es", "/contact" -> "en".
- */
+/** Read the locale out of a URL. "/he/contact/" -> "he", "/contact/" -> "en". */
 export function getLocaleFromUrl(url: URL): Locale {
   const [, first] = url.pathname.split('/');
   return first && isLocale(first) ? first : DEFAULT_LOCALE;
 }
 
 /**
- * Translation accessor for a locale.
- *
- *   const t = useTranslations(locale);
- *   t.nav.services
- *
- * Typed against the English dictionary, so a missing key in a translated file
- * is a TypeScript error rather than a blank space on the page.
+ * Translation accessor. Typed against the English dictionary, so a missing
+ * key in a translated file is a TypeScript error rather than a blank space.
  */
 export function useTranslations(locale: Locale): Dictionary {
   return getDictionary(locale);
 }
 
-/** Absolute URL for a path, using the configured site origin. */
+/**
+ * Absolute URL for a site path. Every URL carries a trailing slash, matching
+ * `trailingSlash: 'always'` in the Astro config, so the canonical, the
+ * sitemap and the internal links can never disagree about which form is
+ * authoritative.
+ */
 export function absoluteUrl(path: string, site: URL | undefined): string {
   const origin = site ? site.origin : '';
-  return `${origin}${path === '/' ? '/' : path.replace(/\/$/, '')}`;
+  const withSlash = path.endsWith('/') ? path : `${path}/`;
+  return `${origin}${withSlash}`;
 }
 
 /** hreflang entries for the <head>, including x-default. */
@@ -51,15 +51,5 @@ export function hreflangLinks(
   return links;
 }
 
-/** Interpolate {name} tokens in a translated string. */
-export function fill(
-  template: string,
-  values: Record<string, string | number>,
-): string {
-  return template.replace(/\{(\w+)\}/g, (match, key: string) =>
-    key in values ? String(values[key]) : match,
-  );
-}
-
-export { LOCALES, DEFAULT_LOCALE, localeDefinition };
+export { LOCALES, DEFAULT_LOCALE, localeDefinition, fill };
 export type { Locale, Dictionary };

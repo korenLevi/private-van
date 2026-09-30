@@ -3,7 +3,7 @@
  * Every tag search engines and social networks read, in one place.
  */
 import { SITE } from '../config/site';
-import { localeDefinition, type Locale } from '../i18n/config';
+import { LOCALES, localeDefinition, type Locale } from '../i18n/config';
 import { absoluteUrl, hreflangLinks } from '../i18n/utils';
 
 interface Props {
@@ -36,7 +36,7 @@ const imageUrl = ogImage.startsWith('http')
   ? ogImage
   : absoluteUrl(ogImage, Astro.site);
 const alternateLinks = hreflangLinks(alternates, Astro.site);
-const ogLocale = localeDefinition(locale).hreflang.replace('-', '_');
+const ogLocale = localeDefinition(locale).ogLocale;
 ---
 
 <title>{title}</title>
@@ -72,6 +72,11 @@ const ogLocale = localeDefinition(locale).hreflang.replace('-', '_');
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content={SITE.ogImageAlt} />
 <meta property="og:locale" content={ogLocale} />
+{
+  LOCALES.filter((l) => l.code !== locale).map((l) => (
+    <meta property="og:locale:alternate" content={l.ogLocale} />
+  ))
+}
 
 {/* Twitter */}
 <meta name="twitter:card" content="summary_large_image" />

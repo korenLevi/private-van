@@ -242,6 +242,7 @@ export default function RequestQuoteForm({
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
+            className="rtl-flip"
             aria-hidden="true"
           >
             <path d="M4 12h15.5" />

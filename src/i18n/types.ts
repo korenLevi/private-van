@@ -23,10 +23,11 @@ export type BodySection = {
   bullets: readonly string[];
 };
 
-/** Everything a page needs: its URL, its metadata and its body. */
+/**
+ * Everything a page needs apart from its URL, which lives in routes.ts
+ * because slugs are shared across languages.
+ */
 export type PageContent = {
-  /** URL segment in this locale. Empty string for the home page. */
-  slug: string;
   title: string;
   description: string;
   /** Short label for breadcrumbs and nav. */

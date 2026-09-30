@@ -1,0 +1,64 @@
+---
+/**
+ * Language switcher.
+ *
+ * Links to the *equivalent* page in each language, never to the home page,
+ * because slugs are shared across locales and the page registry can always
+ * resolve the matching path.
+ *
+ * Plain links, no JavaScript: each one is a real URL a crawler can follow,
+ * which is what makes the hreflang cluster consistent.
+ */
+import { IS_MULTILINGUAL, LOCALES, type Locale } from '../i18n/config';
+import { alternatesFor, type PageKey } from '../i18n/routes';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  pageKey: PageKey;
+  class?: string;
+  tone?: 'light' | 'dark';
+}
+
+const { locale, pageKey, class: className = '', tone = 'light' } = Astro.props;
+const t = useTranslations(locale);
+const alternates = alternatesFor(pageKey);
+const onDark = tone === 'dark';
+---
+
+{
+  IS_MULTILINGUAL && (
+    <nav aria-label={t.common.languageSwitcher} class:list={['flex items-center', className]}>
+      <ul class="flex items-center gap-1">
+        {LOCALES.map((definition) => {
+          const target = alternates.find((a) => a.locale === definition.code);
+          const isCurrent = definition.code === locale;
+          return (
+            <li>
+              <a
+                href={target?.path ?? '/'}
+                hreflang={definition.hreflang}
+                lang={definition.hreflang}
+                aria-current={isCurrent ? 'true' : undefined}
+                title={definition.label}
+                class:list={[
+                  'block rounded-full px-2.5 py-1.5 text-[0.8125rem] font-semibold transition-colors',
+                  isCurrent
+                    ? onDark
+                      ? 'bg-white/15 text-white'
+                      : 'bg-sand text-ink'
+                    : onDark
+                      ? 'text-white/60 hover:text-white'
+                      : 'text-muted hover:text-ink',
+                ]}
+              >
+                <span aria-hidden="true">{definition.short}</span>
+                <span class="sr-only">{definition.label}</span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+  )
+}

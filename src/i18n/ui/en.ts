@@ -341,7 +341,7 @@ const en = {
     heading: 'Ready when you are',
     body: 'Send us your dates and we will come back with a price for the van. No deposit to ask a question.',
     primary: 'Book on WhatsApp',
-    secondary: `Call ${CONTACT.phoneDisplay}`,
+    secondary: 'Call',
   },
 
   /* ---------------------------------------------------------------- */
@@ -366,7 +366,6 @@ const en = {
   /* ---------------------------------------------------------------- */
   pages: {
     home: {
-      slug: '',
       title: 'Private Van and Driver in Israel | IsraelPrivateVan',
       description:
         'Private van with an English-speaking driver in Israel. Ben Gurion Airport transfers, full-day private tours and one-way rides anywhere in the country, in a new Mercedes Sprinter.',
@@ -382,7 +381,6 @@ const en = {
     },
 
     airportTransfer: {
-      slug: 'ben-gurion-airport-transfer',
       title: 'Ben Gurion Airport Transfer | Private Van and Driver',
       description:
         'Book a private Ben Gurion Airport transfer in a Mercedes Sprinter van. Pickup at arrivals, one price for the whole van, and an English-speaking driver to your hotel anywhere in Israel.',
@@ -440,7 +438,6 @@ const en = {
     },
 
     privateDriver: {
-      slug: 'private-driver-israel',
       title: 'Private Driver in Israel | Van and Driver by the Day',
       description:
         'Hire a private driver in Israel with a Mercedes Sprinter van. Keep the van for a full day or book a one-way ride between any two places in the country.',
@@ -491,7 +488,6 @@ const en = {
     },
 
     jerusalemTour: {
-      slug: 'jerusalem-day-tour-private',
       title: 'Private Jerusalem Day Tour | Van and Driver from Tel Aviv',
       description:
         'A private Jerusalem day tour by van with your own driver. Pickup from Tel Aviv, Ben Gurion Airport or your hotel, at your own pace and with no group to keep up with.',
@@ -542,7 +538,6 @@ const en = {
     },
 
     deadSeaTour: {
-      slug: 'dead-sea-masada-private-tour',
       title: 'Dead Sea and Masada Private Tour | Private Van and Driver',
       description:
         'A private Dead Sea and Masada tour by van, with pickup from Jerusalem, Tel Aviv or your hotel. Your own driver, your own timing, and one price for the whole van.',
@@ -593,7 +588,6 @@ const en = {
     },
 
     galileeTour: {
-      slug: 'galilee-private-tour',
       title: 'Galilee Private Tour | Van and Driver for the Day',
       description:
         'A private Galilee tour by van with your own driver. The Sea of Galilee, Nazareth, the Golan and the north of Israel, at your own pace and with hotel pickup.',
@@ -644,7 +638,6 @@ const en = {
     },
 
     contact: {
-      slug: 'contact',
       title: 'Contact IsraelPrivateVan | Private Van and Driver in Israel',
       description:
         'Get in touch about a private van and driver in Israel. Message us on WhatsApp, call, or send the quote form and we will reply with a price for your trip.',

@@ -265,7 +265,11 @@
     background-repeat: no-repeat;
     background-position: right 0.875rem center;
     background-size: 12px 8px;
-    padding-right: 2.25rem;
+    padding-inline-end: 2.25rem;
+  }
+
+  [dir='rtl'] select.field-control {
+    background-position: left 0.875rem center;
   }
 
   @media (max-width: 640px) {
@@ -301,7 +305,7 @@
   &:focus {
     position: fixed;
     top: 1rem;
-    left: 1rem;
+    inset-inline-start: 1rem;
     width: auto;
     height: auto;
     margin: 0;
@@ -310,4 +314,23 @@
     white-space: normal;
     z-index: 100;
   }
+}
+
+/* ------------------------------------------------------------------ */
+/* Right-to-left                                                       */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Layout flips on its own: the spacing and alignment utilities used here are
+ * logical (padding-inline, text-start, ms-/me-), so Hebrew needs no mirrored
+ * stylesheet. Only glyphs that encode a direction have to be turned around.
+ */
+[dir='rtl'] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* Latin and digit runs inside Hebrew text keep their own direction. */
+[dir='rtl'] .ltr-embed {
+  direction: ltr;
+  unicode-bidi: isolate;
 }

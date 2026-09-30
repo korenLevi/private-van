@@ -11,7 +11,7 @@ import { LOCALES, DEFAULT_LOCALE } from './src/i18n/config.ts';
 export default defineConfig({
   site: SITE.url,
   output: 'static',
-  trailingSlash: 'never',
+  trailingSlash: 'always',
 
   // i18n is configured from src/i18n/config.ts. Adding "es" | "fr" | "ru" there
   // is the only change needed here — no routing refactor.

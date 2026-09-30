@@ -50,6 +50,7 @@ const methods = [
     label: t.footer.whatsappLabel,
     value: CONTACT.phoneDisplay,
     href: waHref,
+    isPhone: true,
     external: true,
     note: t.common.messageOnWhatsapp,
   },
@@ -58,6 +59,7 @@ const methods = [
     label: t.footer.phoneLabel,
     value: CONTACT.phoneDisplay,
     href: telHref,
+    isPhone: true,
     external: false,
     note: t.common.callUs,
   },
@@ -66,6 +68,7 @@ const methods = [
     label: t.footer.emailLabel,
     value: CONTACT.email,
     href: `mailto:${CONTACT.email}`,
+    isPhone: false,
     external: false,
     note: '',
   },
@@ -116,7 +119,12 @@ const methods = [
                       <span class="block text-[0.6875rem] font-semibold tracking-[0.14em] text-gold-ink uppercase">
                         {method.label}
                       </span>
-                      <span class="mt-1 block break-words font-display text-[1.125rem] text-ink">
+                      <span
+                        class:list={[
+                          'mt-1 block break-words font-display text-[1.125rem] text-ink',
+                          method.isPhone && 'ltr-embed',
+                        ]}
+                      >
                         {method.value}
                       </span>
                       {method.note && (
