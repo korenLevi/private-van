@@ -1,4 +1,4 @@
-import { BUSINESS, FLEET, CONTACT } from '../../config/site';
+import { BUSINESS, FLEET, CONTACT, TRACK_RECORD } from '../../config/site';
 import type { PageContent, PageKey } from '../types';
 
 /**
@@ -105,9 +105,9 @@ const en = {
   /* Home — trust strip                                                */
   /* ---------------------------------------------------------------- */
   trust: [
-    { icon: 'van', label: `${FLEET.vanCount} new Mercedes Sprinters` },
+    { icon: 'van', label: 'New Mercedes Sprinter and Savanna vans' },
     { icon: 'plane', label: 'Pickup at Ben Gurion arrivals' },
-    { icon: 'clock', label: 'Full day or one way' },
+    { icon: 'clock', label: `${TRACK_RECORD.yearsInBusiness} years on the road` },
     { icon: 'pin', label: 'Anywhere in Israel' },
   ],
 
@@ -185,11 +185,11 @@ const en = {
   /* ---------------------------------------------------------------- */
   fleet: {
     eyebrow: 'Our fleet',
-    heading: `${FLEET.vanCount} Mercedes-Benz Sprinters`,
+    heading: 'Mercedes Sprinter and Savanna vans',
     intro:
-      'The same vans on every trip. Air conditioned, cleaned between rides, and big enough that nobody has to hold a suitcase on their lap.',
+      'Air conditioned, cleaned between rides, and big enough that nobody has to hold a suitcase on their lap.',
     specs: [
-      { label: 'Vehicle', value: FLEET.vehicleName },
+      { label: 'Vehicles', value: 'Sprinter and Savanna' },
       { label: 'Passenger seats', value: FLEET.seats },
       { label: 'Large suitcases', value: FLEET.luggage },
       { label: 'Model year', value: FLEET.modelYear },
@@ -271,7 +271,7 @@ const en = {
     items: [
       {
         q: 'How many people fit in one van?',
-        a: `Each ${FLEET.vehicleName} seats ${FLEET.seats} passengers with room for ${FLEET.luggage} large suitcases. We run ${FLEET.vanCount} vans, so a larger group can still travel together.`,
+        a: `Each van seats ${FLEET.seats} passengers with room for ${FLEET.luggage} large suitcases. For a bigger group we send more than one van so everyone travels together.`,
       },
       {
         q: 'Is the price per person or per van?',
@@ -279,19 +279,19 @@ const en = {
       },
       {
         q: 'Where do we meet you at Ben Gurion Airport?',
-        a: 'We pick up at the arrivals hall. [PLACEHOLDER — add the exact meeting point and how travellers will recognise the driver.]',
+        a: 'We pick up at the arrivals hall. [PLACEHOLDER: add the exact meeting point and how travellers will recognise the driver.]',
       },
       {
         q: 'What happens if my flight is delayed?',
-        a: '[PLACEHOLDER — describe how you track flights, how long the driver waits, and whether a delay costs anything extra.]',
+        a: '[PLACEHOLDER: describe how you track flights, how long the driver waits, and whether a delay costs anything extra.]',
       },
       {
         q: 'How do I pay?',
-        a: '[PLACEHOLDER — list the payment methods you accept and say whether payment is due before or after the trip.]',
+        a: '[PLACEHOLDER: list the payment methods you accept and say whether payment is due before or after the trip.]',
       },
       {
         q: 'Do you have child seats?',
-        a: '[PLACEHOLDER — say which child and booster seats you can supply, and whether they cost extra.]',
+        a: '[PLACEHOLDER: say which child and booster seats you can supply, and whether they cost extra.]',
       },
       {
         q: 'What languages does the driver speak?',
@@ -299,7 +299,7 @@ const en = {
       },
       {
         q: 'Can we stop along the way?',
-        a: 'On a full day with a driver, yes — the van and driver are yours for the day and you set the route. On a one-way transfer, tell us about any stops in advance so we can include them in the price.',
+        a: 'On a full day with a driver, yes. The van and driver are yours for the day and you set the route. On a one-way transfer, tell us about any stops in advance so we can include them in the price.',
       },
     ],
   },
@@ -348,8 +348,7 @@ const en = {
   /* Footer                                                            */
   /* ---------------------------------------------------------------- */
   footer: {
-    tagline:
-      'A family-run private van and driver service in Israel, for travellers who would rather not work out the buses.',
+    tagline: `Private van and driver across Israel, ${TRACK_RECORD.yearsInBusiness} years on the road. Airport transfers, full days with a driver and rides anywhere in the country.`,
     contactHeading: 'Contact',
     pagesHeading: 'Pages',
     hoursHeading: 'Hours',
@@ -408,7 +407,7 @@ const en = {
           heading: 'Departures as well as arrivals',
           paragraphs: [
             'We also drive to the airport. Tell us your flight time and where we are collecting you, and we will agree a pickup time with you in advance.',
-            '[PLACEHOLDER — add how far ahead of a flight you recommend leaving, if you want to give that guidance.]',
+            '[PLACEHOLDER: add how far ahead of a flight you recommend leaving, if you want to give that guidance.]',
           ],
           bullets: [],
         },
@@ -424,15 +423,15 @@ const en = {
       faq: [
         {
           q: 'Where does the driver wait at Ben Gurion?',
-          a: 'We pick up at the arrivals hall. [PLACEHOLDER — add the exact meeting point and how travellers will recognise the driver.]',
+          a: 'We pick up at the arrivals hall. [PLACEHOLDER: add the exact meeting point and how travellers will recognise the driver.]',
         },
         {
           q: 'What if my flight lands early or late?',
-          a: '[PLACEHOLDER — describe how you handle early and late arrivals and any waiting charge.]',
+          a: '[PLACEHOLDER: describe how you handle early and late arrivals and any waiting charge.]',
         },
         {
           q: 'Can you fit our luggage?',
-          a: `Each van takes ${FLEET.luggage} large suitcases alongside ${FLEET.seats} passengers. If you are carrying more than that — bikes, instruments, sports gear — tell us when you ask for a price.`,
+          a: `Each van takes ${FLEET.luggage} large suitcases alongside ${FLEET.seats} passengers. If you are carrying more than that, such as bikes, instruments or sports gear, tell us when you ask for a price.`,
         },
       ],
       serviceType: 'Airport transfer',
@@ -465,7 +464,7 @@ const en = {
         {
           heading: 'One-way rides between cities',
           paragraphs: [
-            'If you only need to get from one place to another, we do that too — hotel to hotel, city to port, or anywhere else in Israel.',
+            'If you only need to get from one place to another, we do that too: hotel to hotel, city to port, or anywhere else in Israel.',
             'Send us the pickup point and destination and we will reply with a price for the van.',
           ],
           bullets: [],
@@ -475,11 +474,11 @@ const en = {
       faq: [
         {
           q: 'How long is a full day?',
-          a: '[PLACEHOLDER — say how many hours a full day covers and what happens if the day runs longer.]',
+          a: '[PLACEHOLDER: say how many hours a full day covers and what happens if the day runs longer.]',
         },
         {
           q: 'Does the driver guide the tour?',
-          a: '[PLACEHOLDER — say whether your drivers act as guides, and whether you can arrange a licensed guide separately.]',
+          a: '[PLACEHOLDER: say whether your drivers act as guides, and whether you can arrange a licensed guide separately.]',
         },
         {
           q: 'Can we change the plan on the day?',
@@ -517,7 +516,7 @@ const en = {
           heading: 'Where people usually go',
           paragraphs: [
             'Most visitors want the Old City and the viewpoint on the Mount of Olives, and many add Yad Vashem or the Israel Museum. Tell us what matters to you and we will work out a sensible order.',
-            '[PLACEHOLDER — add a suggested itinerary here once you have one you are happy to publish, including entry fees you do or do not cover.]',
+            '[PLACEHOLDER: add a suggested itinerary here once you have one you are happy to publish, including entry fees you do or do not cover.]',
           ],
           bullets: [],
         },
@@ -526,7 +525,7 @@ const en = {
       faq: [
         {
           q: 'Do you include entry tickets?',
-          a: '[PLACEHOLDER — say which entry fees, if any, are included in the price.]',
+          a: '[PLACEHOLDER: say which entry fees, if any, are included in the price.]',
         },
         {
           q: 'Can we do Jerusalem and the Dead Sea in one day?',
@@ -534,7 +533,7 @@ const en = {
         },
         {
           q: 'What should we wear?',
-          a: 'Several religious sites in the Old City ask visitors to cover shoulders and knees. Comfortable shoes help — the Old City is cobbled and hilly.',
+          a: 'Several religious sites in the Old City ask visitors to cover shoulders and knees. Comfortable shoes help, because the Old City is cobbled and hilly.',
         },
       ],
       serviceType: 'Private day tour',
@@ -567,8 +566,8 @@ const en = {
         {
           heading: 'Things worth knowing',
           paragraphs: [
-            'The Dead Sea area is hot for most of the year and there is very little shade at Masada. Bring water, a hat and sunscreen, and sandals you can walk into the water with — the salt crystals on the shore are sharp.',
-            '[PLACEHOLDER — add whether the price includes the Masada cable car, beach entry, or anything else.]',
+            'The Dead Sea area is hot for most of the year and there is very little shade at Masada. Bring water, a hat and sunscreen, and sandals you can walk into the water with, because the salt crystals on the shore are sharp.',
+            '[PLACEHOLDER: add whether the price includes the Masada cable car, beach entry, or anything else.]',
           ],
           bullets: [],
         },
@@ -577,15 +576,15 @@ const en = {
       faq: [
         {
           q: 'Is the cable car at Masada included?',
-          a: '[PLACEHOLDER — say whether the cable car and site entry are included in your price.]',
+          a: '[PLACEHOLDER: say whether the cable car and site entry are included in your price.]',
         },
         {
           q: 'Which Dead Sea beach do you go to?',
-          a: '[PLACEHOLDER — name the beach or beaches you normally use and whether entry is paid.]',
+          a: '[PLACEHOLDER: name the beach or beaches you normally use and whether entry is paid.]',
         },
         {
           q: 'How long is the drive?',
-          a: '[PLACEHOLDER — add approximate drive times from Jerusalem and from Tel Aviv.]',
+          a: '[PLACEHOLDER: add approximate drive times from Jerusalem and from Tel Aviv.]',
         },
       ],
       serviceType: 'Private day tour',
@@ -619,7 +618,7 @@ const en = {
           heading: 'Staying in the north',
           paragraphs: [
             'If you are staying in Tiberias or the Galilee rather than driving up for the day, we can start from your hotel and cover more ground.',
-            '[PLACEHOLDER — add whether you offer multi-day trips in the north and how those are priced.]',
+            '[PLACEHOLDER: add whether you offer multi-day trips in the north and how those are priced.]',
           ],
           bullets: [],
         },
@@ -628,7 +627,7 @@ const en = {
       faq: [
         {
           q: 'Is a Galilee day trip from Tel Aviv too long?',
-          a: '[PLACEHOLDER — give your honest view, with the approximate drive time each way.]',
+          a: '[PLACEHOLDER: give your honest view, with the approximate drive time each way.]',
         },
         {
           q: 'Can we visit the Golan Heights?',
@@ -672,7 +671,7 @@ const en = {
   /* ---------------------------------------------------------------- */
   schema: {
     businessDescription:
-      'Family-run private van and driver service in Israel. Ben Gurion Airport transfers, full-day private tours and one-way rides anywhere in the country, in Mercedes Sprinter vans with English-speaking drivers.',
+      `Private van and driver service in Israel, ${TRACK_RECORD.yearsInBusiness} years on the road. Ben Gurion airport transfers, full-day private tours and rides anywhere in the country, in Mercedes Sprinter and Savanna vans.`,
     serviceType: 'Private van and driver hire',
     areaServed: 'Israel',
   },

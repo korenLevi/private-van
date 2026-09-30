@@ -40,10 +40,12 @@ export function whatsappHref(message: string): string {
 
 export const SITE = {
   url: 'https://israelprivatevan.com',
-  /** Rendered as "Israel" + accented "Van" in the header wordmark. */
-  nameParts: { lead: 'IsraelPrivate', accent: 'Van' },
-  name: 'IsraelPrivateVan',
-  legalName: 'IsraelPrivateVan',
+  /** Rendered as "Israel Private" + accented "Van" in the wordmark. */
+  nameParts: { lead: 'Israel Private', accent: 'Van' },
+  name: 'Israel Private Van',
+  legalName: 'Amir Levi Transportation Services Ltd.',
+  /** The registered name as it appears in Hebrew records. */
+  legalNameHe: 'אמיר לוי שירותי הסעות בע"מ',
   /** Used in the og:site_name tag and the LocalBusiness schema. */
   shortDescription:
     'Private van and driver service in Israel for English-speaking travellers.',
@@ -63,7 +65,7 @@ export const BUSINESS = {
   /** Street address is optional for a driver service; leave blank to omit. */
   address: {
     street: '',
-    locality: PLACEHOLDER,
+    locality: 'Holon',
     region: '',
     postalCode: '',
     country: 'IL',
@@ -85,7 +87,7 @@ export const BUSINESS = {
   currency: 'USD',
   priceRange: PLACEHOLDER, // e.g. "$$"
   /** Languages the drivers speak. */
-  languages: ['English', 'Hebrew'],
+  languages: ['Hebrew', 'English', 'Russian'],
   /** Profile URLs for the schema `sameAs` field. Blank entries are dropped. */
   sameAs: [] as string[],
 } as const;
@@ -95,12 +97,20 @@ export const BUSINESS = {
 /* ------------------------------------------------------------------ */
 
 export const FLEET = {
-  vehicleName: 'Mercedes-Benz Sprinter',
-  /** How many vans are in the fleet. Used in the trust strip. */
-  vanCount: 3,
-  /** Passenger seats per van, excluding the driver. */
+  /**
+   * The vehicles actually operated. No fleet size is published: the brief
+   * gives none, and a count is exactly the kind of number that must not be
+   * invented.
+   */
+  vehicles: [
+    { name: 'Mercedes-Benz Sprinter', seats: PLACEHOLDER },
+    { name: 'Savanna', seats: PLACEHOLDER },
+  ],
+  /** Used wherever one vehicle name reads better than a list. */
+  vehicleName: 'Mercedes Sprinter',
+  /** Passenger seats per vehicle, excluding the driver. */
   seats: PLACEHOLDER, // e.g. "14"
-  /** Large suitcases per van. */
+  /** Large suitcases per vehicle. */
   luggage: PLACEHOLDER, // e.g. "14"
   /** Model year or age description. */
   modelYear: PLACEHOLDER, // e.g. "2024"
@@ -114,6 +124,20 @@ export const FLEET = {
     'Bottled water',
     'Child seats on request',
   ],
+} as const;
+
+/* ------------------------------------------------------------------ */
+/* Track record                                                        */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Supplied by the business. Both are real figures, so they may be stated on
+ * the site; anything not listed here stays a placeholder.
+ */
+export const TRACK_RECORD = {
+  yearsInBusiness: 30,
+  /** Stated as "over 200", never as an exact count. */
+  regularCustomersOver: 200,
 } as const;
 
 /* ------------------------------------------------------------------ */
@@ -247,7 +271,7 @@ export const MAX_PASSENGERS = 16;
  * True when a value still contains an unfilled placeholder.
  *
  * Matches the bare markers and the explanatory form used in the copy,
- * `[PLACEHOLDER — describe how you handle delayed flights.]`, so that text can
+ * `[PLACEHOLDER: describe how you handle delayed flights.]`, so that text can
  * be visible on the page as a reminder while staying out of the structured
  * data.
  */

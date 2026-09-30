@@ -14,10 +14,21 @@ const t = useTranslations(locale);
 
 const { reviews, arePlaceholders } = reviewsData;
 
-/** Shown only while running `astro dev`, so it never reaches a visitor. */
+/**
+ * Placeholder reviews are never published. The brief is explicit that
+ * numbers, reviews and claims are not to be invented, and six invented
+ * five-star cards are exactly that.
+ *
+ * In development the section still renders, with a notice, so it can be
+ * styled. In a production build it disappears until `arePlaceholders` is
+ * set to false in src/data/reviews.json, at which point it returns on its
+ * own with no code change.
+ */
 const showDevNotice = import.meta.env.DEV && arePlaceholders;
+const render = !arePlaceholders || import.meta.env.DEV;
 ---
 
+{render && (
 <section id="reviews" class="section-y bg-sand">
   <div class="container-page">
     <SectionHeading
@@ -76,3 +87,4 @@ const showDevNotice = import.meta.env.DEV && arePlaceholders;
     </ul>
   </div>
 </section>
+)}
