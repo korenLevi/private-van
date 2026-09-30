@@ -1,3 +1,4 @@
+import { FLEET } from '../../config/site';
 import pages from './he-pages';
 import type { Translation } from './index';
 
@@ -104,7 +105,11 @@ const he: Translation = {
   },
 
   footer: {
+    tagline: 'ואן פרטי עם נהג בכל הארץ, 30 שנה על הכביש. הסעות לנתב"ג, ימים שלמים עם נהג צמוד והסעות לכל מקום.',
     contactHeading: 'יצירת קשר',
+    servicesHeading: 'שירותים',
+    toursHeading: 'טיולים',
+    companyHeading: 'החברה',
     pagesHeading: 'עמודים',
     hoursHeading: 'שעות פעילות',
     phoneLabel: 'טלפון',
@@ -120,6 +125,128 @@ const he: Translation = {
     heading: 'לא הצלחנו למצוא את הדף הזה',
     body: 'ייתכן שהקישור אינו מעודכן. נסו את דף הבית, או שלחו לנו הודעה ונכוון אתכם.',
     cta: 'מעבר לדף הבית',
+  },
+  trust: [
+    { icon: 'van', label: 'רכבי מרצדס ספרינטר וסוואנה חדשים' },
+    { icon: 'plane', label: 'איסוף באולם הנכנסים בנתב"ג' },
+    { icon: 'clock', label: '30 שנה על הכביש' },
+    { icon: 'pin', label: 'לכל מקום בארץ' },
+  ],
+
+  trip: {
+    heading: 'פרטי הנסיעה',
+    duration: 'זמן נסיעה',
+    distance: 'מרחק',
+    vehicle: 'רכב',
+    seats: 'מקומות',
+    included: 'מה כולל המחיר',
+  },
+
+  related: {
+    heading: 'עמודים קשורים',
+    backToHub: 'חזרה אל',
+  },
+
+  services: {
+    eyebrow: 'מה אנחנו עושים',
+    heading: 'שלוש דרכים לנסוע איתנו',
+    intro:
+      'כל נסיעה היא פרטית. הרכב שלכם והנהג נשאר איתכם, כך שאין נוסעים אחרים ואין שעות יציאה קבועות.',
+    items: [
+      {
+        id: 'airport-transfer',
+        title: 'הסעות לנתב"ג',
+        body: 'אנחנו אוספים אתכם באולם הנכנסים ונוסעים ישירות למלון או לבית. מחיר אחד לרכב כולו, כך שהקבוצה והמזוודות נשארות יחד.',
+        image: 'serviceAirport',
+        imageAlt: 'נוסעים מעמיסים מזוודות לוואן לבן מחוץ לטרמינל.',
+        pageKey: 'airportTransfers',
+        linkLabel: 'הסעות לנתב"ג',
+      },
+      {
+        id: 'full-day',
+        title: 'ואן עם נהג ליום שלם',
+        body: 'הוואן והנהג שלכם ליום שלם, ואתם קובעים את המסלול. מתאים למשפחות ולקבוצות שרוצות לכסות כמה מקומות בלי להחליף רכב.',
+        image: 'serviceFullDay',
+        imageAlt: 'נהג עומד ליד דלת הצד הפתוחה של ואן נוסעים.',
+        pageKey: 'vanWithDriver',
+        linkLabel: 'ואן עם נהג',
+      },
+      {
+        id: 'city-to-city',
+        title: 'הסעות פרטיות בכל הארץ',
+        body: 'נסיעות בכיוון אחד בין ערים, מלונות, נמלים ומעברי גבול. תגידו לנו מאיפה ולאן ונחזור עם מחיר.',
+        image: 'serviceCityToCity',
+        imageAlt: 'ואן נוסעים לבן בכביש מהיר באזור פתוח בישראל.',
+        pageKey: 'privateTransfers',
+        linkLabel: 'הסעות פרטיות',
+      },
+    ],
+  },
+
+  routes: {
+    eyebrow: 'מסלולים ומחירים',
+    heading: 'מסלולים נפוצים',
+    intro:
+      'המחירים הם לרכב כולו, לכיוון אחד, כולל נהג. תגידו לנו את נקודת האיסוף המדויקת ונאשר את המחיר לפני ההזמנה.',
+    priceLabel: 'החל מ',
+    perVan: 'לרכב',
+    durationLabel: 'זמן נסיעה',
+    ctaLabel: 'לשאול על המסלול',
+    notListed: 'נוסעים למקום אחר?',
+    notListedBody: 'אנחנו נוסעים לכל מקום בארץ. שלחו נקודת איסוף ויעד ונחזור עם מחיר.',
+    notListedCta: 'לבקש מחיר',
+    routeNames: {
+      'Ben Gurion Airport': 'נתב"ג',
+      Jerusalem: 'ירושלים',
+      'Tel Aviv': 'תל אביב',
+      'Dead Sea': 'ים המלח',
+      Haifa: 'חיפה',
+      Tiberias: 'טבריה',
+      Eilat: 'אילת',
+    },
+  },
+
+  how: {
+    eyebrow: 'איך זה עובד',
+    heading: 'שלושה שלבים, בלי הרשמה',
+    steps: [
+      {
+        title: 'ספרו לנו על הנסיעה',
+        body: 'שלחו את התאריך, את נקודת האיסוף ולאן אתם רוצים להגיע. וואטסאפ היא בדרך כלל הדרך המהירה ביותר.',
+      },
+      {
+        title: 'אנחנו שולחים מחיר',
+        body: 'תקבלו מחיר לרכב כולו כולל נהג, כך שאתם יודעים את העלות לפני שאתם מתחייבים.',
+      },
+      {
+        title: 'נפגשים עם הנהג',
+        body: 'אנחנו מאשרים איתכם את פרטי האיסוף יום קודם, והנהג מגיע בשעה ובמקום שסוכמו.',
+      },
+    ],
+  },
+
+  fleet: {
+    eyebrow: 'הצי שלנו',
+    heading: 'רכבי מרצדס ספרינטר וסוואנה',
+    intro: 'ממוזגים, מנוקים בין נסיעות, וגדולים מספיק כדי שאף אחד לא יחזיק מזוודה על הברכיים.',
+    amenitiesHeading: 'בכל רכב',
+    videoHeading: 'מבט מבפנים',
+    videoCta: 'לצפייה',
+    specs: [
+      { label: 'רכבים', value: 'ספרינטר וסוואנה' },
+      { label: 'מספר מקומות', value: FLEET.seats },
+      { label: 'מזוודות גדולות', value: FLEET.luggage },
+      { label: 'שנת ייצור', value: FLEET.modelYear },
+    ],
+    amenities: ['מיזוג אוויר', 'עמדות טעינה USB', 'מים בבקבוקים', 'כיסאות בטיחות לפי בקשה'],
+  },
+
+  reviews: { eyebrow: 'ביקורות', heading: 'מה אומרים עלינו', intro: '' },
+
+  faq: {
+    eyebrow: 'שאלות',
+    heading: 'שאלות נפוצות',
+    intro: 'אם השאלה שלכם לא כאן, שלחו לנו אותה בוואטסאפ.',
   },
 
   pages,

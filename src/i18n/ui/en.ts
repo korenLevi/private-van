@@ -195,6 +195,12 @@ const en = {
       { label: 'Model year', value: FLEET.modelYear },
     ],
     amenitiesHeading: 'In every van',
+    amenities: [
+      'Air conditioning',
+      'USB charging',
+      'Bottled water',
+      'Child seats on request',
+    ],
     videoHeading: 'A look inside the van',
     videoCta: 'Play video',
     videoAlt: 'Video thumbnail showing the inside of the Mercedes Sprinter van.',

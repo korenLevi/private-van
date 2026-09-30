@@ -64,8 +64,6 @@ export type PageContent = {
   /** Key into the image registry in src/assets. */
   heroImage: string;
   heroImageAlt: string;
-  /** Legacy alias for `intro`, used by the hero templates. */
-  lead: string;
   /** Route pages only: trip time, distance, vehicle and seats. */
   trip?: TripFacts;
   /** What the price covers. Rendered as a checked list. */

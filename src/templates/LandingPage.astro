@@ -82,7 +82,7 @@ const waHref = whatsappHref(t.form.genericWhatsappMessage);
           alt={page.heroImageAlt}
           formats={['avif', 'webp']}
           fallbackFormat="jpg"
-          widths={[640, 960, 1280, 1800]}
+          widths={[420, 640, 960, 1280, 1800]}
           sizes="(min-width: 1280px) 1216px, (min-width: 768px) calc(100vw - 4rem), calc(100vw - 2.5rem)"
           loading="eager"
           decoding="async"
@@ -108,7 +108,7 @@ const waHref = whatsappHref(t.form.genericWhatsappMessage);
           <p
             class="mt-6 max-w-2xl text-[1.0625rem] leading-relaxed text-white/85 sm:text-lg"
           >
-            {page.lead}
+            {page.intro}
           </p>
           <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
             <a href={waHref} target="_blank" rel="noopener" class="btn btn-on-dark">

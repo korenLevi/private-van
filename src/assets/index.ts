@@ -8,7 +8,7 @@
  * To use a real photo, overwrite the file of the same name in this folder.
  * The keys, and therefore every reference in the site, stay the same.
  */
-import heroPoster from './main-pic.jpg';
+import heroPoster from './black-sprinter-forward-01.jpg';
 
 import serviceAirport from './service-airport-transfer.jpg';
 import serviceFullDay from './service-full-day.jpg';

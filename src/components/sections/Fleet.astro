@@ -2,7 +2,7 @@
 import { Picture } from 'astro:assets';
 
 import { getImage } from '../../assets';
-import { FLEET, MEDIA, isPlaceholder } from '../../config/site';
+import { MEDIA, isPlaceholder } from '../../config/site';
 import type { Locale } from '../../i18n/config';
 import { useTranslations } from '../../i18n/utils';
 import Icon from '../Icon.astro';
@@ -102,7 +102,7 @@ const [lead, ...rest] = t.fleet.gallery;
         </h3>
         <ul class="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-1">
           {
-            FLEET.amenities.map((amenity) => (
+            t.fleet.amenities.map((amenity) => (
               <li class="flex items-start gap-2.5 text-[0.9375rem] text-muted">
                 <Icon name="check" size={17} class="mt-1 shrink-0 text-gold" />
                 {amenity}
