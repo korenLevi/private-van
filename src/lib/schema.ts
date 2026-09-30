@@ -106,7 +106,7 @@ export function taxiServiceSchema(description: string, serviceType: string) {
   return prune({
     '@type': 'TaxiService',
     '@id': `${SITE.url}/#taxiservice`,
-    name: `${SITE.name} — private van and driver`,
+    name: `${SITE.name}: private van and driver`,
     description,
     serviceType,
     provider: { '@id': businessId },
@@ -132,6 +132,40 @@ export function websiteSchema() {
     name: SITE.name,
     publisher: { '@id': businessId },
     inLanguage: 'en',
+  });
+}
+
+/* ------------------------------------------------------------------ */
+/* Service (service and route pages)                                   */
+/* ------------------------------------------------------------------ */
+
+/**
+ * One Service node per service or route page, pointing back at the
+ * LocalBusiness as its provider.
+ *
+ * No `offers` block: prices are still unconfirmed, and a made-up price in
+ * structured data is worse than none. Add `offers` here once the real
+ * numbers are in the config.
+ */
+export function serviceSchema(options: {
+  name: string;
+  description: string;
+  serviceType: string;
+  url: string;
+  areaServed?: string;
+  language: string;
+}) {
+  return prune({
+    '@type': 'Service',
+    '@id': `${options.url}#service`,
+    name: options.name,
+    description: options.description,
+    serviceType: options.serviceType,
+    provider: { '@id': businessId },
+    areaServed: { '@type': 'Country', name: options.areaServed ?? 'Israel' },
+    availableLanguage: [...BUSINESS.languages],
+    inLanguage: options.language,
+    url: options.url,
   });
 }
 

@@ -41,4 +41,9 @@ export type PageContent = {
   /** Route ids from the config to show on this page. */
   routeIds: readonly string[];
   faq: readonly FaqItem[];
+  /**
+   * schema.org serviceType for this page. Present on service and route
+   * pages, absent on the home page and on purely informational pages.
+   */
+  serviceType?: string;
 };

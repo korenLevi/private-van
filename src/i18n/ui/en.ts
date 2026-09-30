@@ -368,7 +368,7 @@ const en = {
     home: {
       title: 'Private Van and Driver in Israel | IsraelPrivateVan',
       description:
-        'Private van with an English-speaking driver in Israel. Ben Gurion Airport transfers, full-day private tours and one-way rides anywhere in the country, in a new Mercedes Sprinter.',
+        'Private van with an English-speaking driver in Israel. Ben Gurion airport transfers, full-day private tours and rides anywhere in the country.',
       breadcrumb: 'Home',
       h1: 'Your private van and driver in Israel',
       heroImage: 'heroPoster',
@@ -383,7 +383,7 @@ const en = {
     airportTransfer: {
       title: 'Ben Gurion Airport Transfer | Private Van and Driver',
       description:
-        'Book a private Ben Gurion Airport transfer in a Mercedes Sprinter van. Pickup at arrivals, one price for the whole van, and an English-speaking driver to your hotel anywhere in Israel.',
+        'Private Ben Gurion airport transfer by Mercedes Sprinter van. Pickup at arrivals, one price for the whole van, English-speaking driver to your hotel.',
       breadcrumb: 'Ben Gurion Airport Transfer',
       h1: 'Ben Gurion Airport transfer by private van',
       heroImage: 'pageAirport',
@@ -435,12 +435,13 @@ const en = {
           a: `Each van takes ${FLEET.luggage} large suitcases alongside ${FLEET.seats} passengers. If you are carrying more than that — bikes, instruments, sports gear — tell us when you ask for a price.`,
         },
       ],
+      serviceType: 'Airport transfer',
     },
 
     privateDriver: {
       title: 'Private Driver in Israel | Van and Driver by the Day',
       description:
-        'Hire a private driver in Israel with a Mercedes Sprinter van. Keep the van for a full day or book a one-way ride between any two places in the country.',
+        'Hire a private driver in Israel with a Mercedes Sprinter van. Keep the van for a full day, or book a one-way ride between any two places.',
       breadcrumb: 'Private Driver Israel',
       h1: 'Private driver in Israel',
       heroImage: 'pagePrivateDriver',
@@ -485,12 +486,13 @@ const en = {
           a: 'Usually yes. Tell the driver what you would like to do and they will say whether it fits in the time you have booked.',
         },
       ],
+      serviceType: 'Private van with driver',
     },
 
     jerusalemTour: {
       title: 'Private Jerusalem Day Tour | Van and Driver from Tel Aviv',
       description:
-        'A private Jerusalem day tour by van with your own driver. Pickup from Tel Aviv, Ben Gurion Airport or your hotel, at your own pace and with no group to keep up with.',
+        'A private Jerusalem day tour by van with your own driver. Pickup from Tel Aviv, Ben Gurion or your hotel, at your own pace with no group to follow.',
       breadcrumb: 'Jerusalem Day Tour',
       h1: 'Private Jerusalem day tour',
       heroImage: 'pageJerusalem',
@@ -535,12 +537,13 @@ const en = {
           a: 'Several religious sites in the Old City ask visitors to cover shoulders and knees. Comfortable shoes help — the Old City is cobbled and hilly.',
         },
       ],
+      serviceType: 'Private day tour',
     },
 
     deadSeaTour: {
       title: 'Dead Sea and Masada Private Tour | Private Van and Driver',
       description:
-        'A private Dead Sea and Masada tour by van, with pickup from Jerusalem, Tel Aviv or your hotel. Your own driver, your own timing, and one price for the whole van.',
+        'A private Dead Sea and Masada tour by van. Pickup from Jerusalem, Tel Aviv or your hotel, your own driver, and one price for the whole van.',
       breadcrumb: 'Dead Sea & Masada Tour',
       h1: 'Dead Sea and Masada private tour',
       heroImage: 'pageDeadSea',
@@ -585,12 +588,13 @@ const en = {
           a: '[PLACEHOLDER — add approximate drive times from Jerusalem and from Tel Aviv.]',
         },
       ],
+      serviceType: 'Private day tour',
     },
 
     galileeTour: {
       title: 'Galilee Private Tour | Van and Driver for the Day',
       description:
-        'A private Galilee tour by van with your own driver. The Sea of Galilee, Nazareth, the Golan and the north of Israel, at your own pace and with hotel pickup.',
+        'A private Galilee tour by van with your own driver. The Sea of Galilee, Nazareth and the north of Israel, at your own pace with hotel pickup.',
       breadcrumb: 'Galilee Tour',
       h1: 'Galilee private tour',
       heroImage: 'pageGalilee',
@@ -635,12 +639,13 @@ const en = {
           a: 'Yes, Nazareth is a common stop on a Galilee day and we can build the route around it.',
         },
       ],
+      serviceType: 'Private day tour',
     },
 
     contact: {
       title: 'Contact IsraelPrivateVan | Private Van and Driver in Israel',
       description:
-        'Get in touch about a private van and driver in Israel. Message us on WhatsApp, call, or send the quote form and we will reply with a price for your trip.',
+        'Get in touch about a private van and driver in Israel. Message us on WhatsApp, call, or send the form and we will reply with a price.',
       breadcrumb: 'Contact',
       h1: 'Contact us',
       heroImage: 'pageContact',

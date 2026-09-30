@@ -14,8 +14,8 @@ import { whatsappHref } from '../config/site';
 import type { Locale } from '../i18n/config';
 import { pathFor, type PageKey } from '../i18n/routes';
 import { getPage } from '../i18n/ui';
-import { absoluteUrl, useTranslations } from '../i18n/utils';
-import { breadcrumbSchema, faqSchema, graph } from '../lib/schema';
+import { absoluteUrl, localeDefinition, useTranslations } from '../i18n/utils';
+import { breadcrumbSchema, faqSchema, graph, serviceSchema } from '../lib/schema';
 
 interface Props {
   locale: Locale;
@@ -31,6 +31,8 @@ const trail = [
   { name: page.breadcrumb, path: pathFor(pageKey, locale) },
 ];
 
+const canonical = absoluteUrl(pathFor(pageKey, locale), Astro.site);
+
 const jsonLd = graph(
   breadcrumbSchema(
     trail.map((crumb) => ({
@@ -38,6 +40,15 @@ const jsonLd = graph(
       url: absoluteUrl(crumb.path, Astro.site),
     })),
   ),
+  page.serviceType
+    ? serviceSchema({
+        name: page.h1,
+        description: page.description,
+        serviceType: page.serviceType,
+        url: canonical,
+        language: localeDefinition(locale).hreflang,
+      })
+    : undefined,
   faqSchema(page.faq),
 );
 

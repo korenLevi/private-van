@@ -1,6 +1,8 @@
 ---
 import { Font } from 'astro:assets';
 
+import { IS_PREVIEW_DEPLOY } from '../lib/deploy';
+
 import '../styles/global.css';
 
 import Footer from '../components/Footer.astro';
@@ -58,7 +60,7 @@ const { hreflang, dir } = localeDefinition(locale);
       locale={locale}
       alternates={alternates}
       ogImage={ogImage}
-      noindex={noindex}
+      noindex={noindex || IS_PREVIEW_DEPLOY}
     />
 
     {/*

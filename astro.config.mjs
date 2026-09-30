@@ -4,6 +4,10 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
+import { rename, rm, readdir } from 'node:fs/promises';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 import { SITE } from './src/config/site.ts';
 import { LOCALES, DEFAULT_LOCALE } from './src/i18n/config.ts';
 
@@ -62,6 +66,34 @@ export default defineConfig({
   },
 
   integrations: [
+    /**
+     * `build.format: 'directory'` is what gives every URL its trailing slash,
+     * but it also turns src/pages/he/404.astro into he/404/index.html.
+     * Cloudflare Pages looks for a literal 404.html walking up from the
+     * requested path, so the localized 404s have to sit at he/404.html and
+     * ru/404.html or /he/nonsense falls through to the English one.
+     */
+    {
+      name: 'localized-404-filenames',
+      hooks: {
+        'astro:build:done': async ({ dir, logger }) => {
+          // `dir` is a file URL. This project path contains a space, so
+          // reading .pathname directly yields %20 and every fs call misses.
+          const root = fileURLToPath(dir);
+          for (const entry of await readdir(root, { withFileTypes: true })) {
+            if (!entry.isDirectory()) continue;
+            const nested = join(root, entry.name, '404', 'index.html');
+            try {
+              await rename(nested, join(root, entry.name, '404.html'));
+              await rm(join(root, entry.name, '404'), { recursive: true, force: true });
+              logger.info(`moved ${entry.name}/404/index.html to ${entry.name}/404.html`);
+            } catch {
+              // No 404 in this directory, which is the normal case.
+            }
+          }
+        },
+      },
+    },
     react(),
     sitemap({
       i18n: {
