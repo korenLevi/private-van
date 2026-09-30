@@ -1,0 +1,72 @@
+---
+/**
+ * The repeating section header: small uppercase gold label, large Fraunces
+ * heading, 64px gold rule underneath.
+ */
+interface Props {
+  eyebrow?: string;
+  heading: string;
+  intro?: string;
+  /** Renders the heading as an <h1>. Only one per page. */
+  as?: 'h1' | 'h2';
+  align?: 'center' | 'left';
+  /** Inverts the colours for use on the dark CTA band. */
+  tone?: 'light' | 'dark';
+  id?: string;
+  class?: string;
+}
+
+const {
+  eyebrow,
+  heading,
+  intro,
+  as: Tag = 'h2',
+  align = 'center',
+  tone = 'light',
+  id,
+  class: className = '',
+} = Astro.props;
+
+const centered = align === 'center';
+const onDark = tone === 'dark';
+---
+
+<header
+  class:list={[
+    'flex flex-col',
+    centered ? 'items-center text-center' : 'items-start text-left',
+    className,
+  ]}
+>
+  {
+    eyebrow && (
+      <p class:list={['eyebrow', onDark && 'text-gold']}>{eyebrow}</p>
+    )
+  }
+
+  <Tag
+    id={id}
+    class:list={[
+      'mt-3 text-balance',
+      'text-[2rem] leading-[1.1] sm:text-[2.5rem] lg:text-[3rem]',
+      onDark ? 'text-white' : 'text-ink',
+    ]}
+  >
+    {heading}
+  </Tag>
+
+  <span class="gold-rule mt-5" aria-hidden="true"></span>
+
+  {
+    intro && (
+      <p
+        class:list={[
+          'mt-6 max-w-2xl text-[1.0625rem] leading-relaxed',
+          onDark ? 'text-white/75' : 'text-muted',
+        ]}
+      >
+        {intro}
+      </p>
+    )
+  }
+</header>

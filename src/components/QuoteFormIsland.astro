@@ -1,0 +1,97 @@
+---
+/**
+ * Astro wrapper around the one React island.
+ *
+ * It picks out exactly the strings the form needs, so the props serialised
+ * into the HTML stay small and the client bundle never imports the config
+ * file or the full dictionary.
+ */
+import { CONTACT, MAX_PASSENGERS, SERVICE_TYPES } from '../config/site';
+import type { Locale } from '../i18n/config';
+import { useTranslations } from '../i18n/utils';
+import QuoteForm, {
+  type QuoteFormStrings,
+  type ServiceOption,
+} from './react/QuoteForm.tsx';
+
+interface Props {
+  locale: Locale;
+  variant?: 'bar' | 'card';
+  contactFields?: boolean;
+  source?: string;
+  /** `idle` for the hero (visible immediately), `visible` further down a page. */
+  hydrate?: 'idle' | 'visible';
+}
+
+const {
+  locale,
+  variant = 'card',
+  contactFields,
+  source,
+  hydrate = 'idle',
+} = Astro.props;
+
+const t = useTranslations(locale);
+const f = t.form;
+
+const strings: QuoteFormStrings = {
+  title: f.title,
+  subtitle: f.subtitle,
+  service: f.service,
+  servicePlaceholder: f.servicePlaceholder,
+  from: f.from,
+  fromPlaceholder: f.fromPlaceholder,
+  to: f.to,
+  toPlaceholder: f.toPlaceholder,
+  date: f.date,
+  passengers: f.passengers,
+  name: f.name,
+  namePlaceholder: f.namePlaceholder,
+  email: f.email,
+  emailPlaceholder: f.emailPlaceholder,
+  notes: f.notes,
+  notesPlaceholder: f.notesPlaceholder,
+  submit: f.submit,
+  submitting: f.submitting,
+  successTitle: f.successTitle,
+  successBody: f.successBody,
+  errorRequired: f.errorRequired,
+  errorEmail: f.errorEmail,
+  emailCopyNote: f.emailCopyNote,
+  passengerSuffix: f.passengerSuffix,
+  passengerSuffixOne: f.passengerSuffixOne,
+  whatsappTemplate: f.whatsappTemplate,
+  whatsappNotesPrefix: f.whatsappNotesPrefix,
+};
+
+const services: ServiceOption[] = SERVICE_TYPES.map((service) => ({
+  id: service.id,
+  label: f.serviceOptions[service.id],
+}));
+---
+
+{
+  hydrate === 'idle' ? (
+    <QuoteForm
+      client:idle
+      strings={strings}
+      services={services}
+      maxPassengers={MAX_PASSENGERS}
+      whatsappNumber={CONTACT.whatsapp}
+      variant={variant}
+      contactFields={contactFields}
+      source={source}
+    />
+  ) : (
+    <QuoteForm
+      client:visible
+      strings={strings}
+      services={services}
+      maxPassengers={MAX_PASSENGERS}
+      whatsappNumber={CONTACT.whatsapp}
+      variant={variant}
+      contactFields={contactFields}
+      source={source}
+    />
+  )
+}

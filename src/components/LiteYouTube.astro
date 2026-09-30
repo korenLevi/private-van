@@ -1,0 +1,97 @@
+---
+/**
+ * Facade YouTube player.
+ *
+ * Renders a thumbnail and a play button. The iframe — and every script and
+ * cookie that comes with it — is only created when someone actually clicks.
+ *
+ * The thumbnail is served straight from YouTube rather than through Astro's
+ * image pipeline: it is the one image on the site whose source is a remote id
+ * rather than a file in src/assets, and YouTube already serves it in the right
+ * sizes. It still gets explicit dimensions and lazy loading.
+ */
+import Icon from './Icon.astro';
+
+interface Props {
+  videoId: string;
+  /** Shown as the accessible name of the play button. */
+  title: string;
+  /** Describes the still frame for anyone who cannot see it. */
+  thumbnailAlt: string;
+  playLabel: string;
+  class?: string;
+}
+
+const {
+  videoId,
+  title,
+  thumbnailAlt,
+  playLabel,
+  class: className = '',
+} = Astro.props;
+
+const thumb = (name: string) => `https://i.ytimg.com/vi/${videoId}/${name}.jpg`;
+---
+
+<div
+  class:list={[
+    'lite-yt relative aspect-video w-full overflow-hidden rounded-[var(--radius-media)] bg-ink',
+    className,
+  ]}
+  data-video-id={videoId}
+  data-title={title}
+>
+  <img
+    src={thumb('hqdefault')}
+    srcset={`${thumb('hqdefault')} 480w, ${thumb('sddefault')} 640w, ${thumb('maxresdefault')} 1280w`}
+    sizes="(min-width: 1024px) 700px, 100vw"
+    alt={thumbnailAlt}
+    width="1280"
+    height="720"
+    loading="lazy"
+    decoding="async"
+    class="absolute inset-0 h-full w-full object-cover"
+  />
+
+  <div class="absolute inset-0 bg-black/25" aria-hidden="true"></div>
+
+  <button
+    type="button"
+    class="absolute inset-0 flex cursor-pointer items-center justify-center"
+    data-lite-yt-play
+  >
+    <span class="sr-only">{playLabel}: {title}</span>
+    <span
+      class="flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full bg-paper/95 text-ink shadow-[0_8px_30px_rgba(0,0,0,0.3)] transition-transform duration-200 hover:scale-105"
+      aria-hidden="true"
+    >
+      <Icon name="play" size={26} class="ml-1" />
+    </span>
+  </button>
+</div>
+
+<script>
+  for (const container of document.querySelectorAll<HTMLElement>('.lite-yt')) {
+    const button = container.querySelector<HTMLButtonElement>('[data-lite-yt-play]');
+    const videoId = container.dataset.videoId;
+    if (!button || !videoId) continue;
+
+    button.addEventListener(
+      'click',
+      () => {
+        const iframe = document.createElement('iframe');
+        iframe.src =
+          `https://www.youtube-nocookie.com/embed/${videoId}` +
+          '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+        iframe.title = container.dataset.title ?? 'Video';
+        iframe.allow =
+          'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        iframe.className = 'absolute inset-0 h-full w-full border-0';
+        container.replaceChildren(iframe);
+        iframe.focus();
+      },
+      { once: true },
+    );
+  }
+</script>

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Astro's on-the-fly image endpoint is not a page
+Disallow: /_image
+
+Sitemap: https://israelprivatevan.com/sitemap-index.xml

@@ -1,0 +1,45 @@
+---
+import { telHref, whatsappHref } from '../../config/site';
+import type { Locale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/utils';
+import Icon from '../Icon.astro';
+import SectionHeading from '../SectionHeading.astro';
+
+interface Props {
+  locale: Locale;
+  heading?: string;
+  body?: string;
+}
+
+const { locale, heading, body } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section class="bg-ink">
+  <div class="container-page py-16 md:py-20">
+    <div class="flex flex-col items-center text-center">
+      <SectionHeading
+        heading={heading ?? t.cta.heading}
+        intro={body ?? t.cta.body}
+        tone="dark"
+      />
+
+      <div class="mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:gap-4">
+        <a
+          href={whatsappHref(t.form.genericWhatsappMessage)}
+          target="_blank"
+          rel="noopener"
+          class="btn btn-on-dark"
+          data-analytics="cta-whatsapp"
+        >
+          <Icon name="whatsapp" size={18} />
+          {t.cta.primary}
+        </a>
+        <a href={telHref} class="btn btn-ghost-on-dark" data-analytics="cta-call">
+          <Icon name="phone" size={17} />
+          {t.cta.secondary}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

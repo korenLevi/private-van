@@ -1,0 +1,15 @@
+# Copy to `.dev.vars` for local `wrangler pages dev` runs.
+# In production these go in the Cloudflare Pages dashboard:
+#   Settings → Environment variables.
+#
+# Leave them unset and the quote form still works — it opens WhatsApp as
+# normal and simply skips the email copy.
+
+# API key from https://resend.com
+RESEND_API_KEY=
+
+# Where quote requests land.
+QUOTE_TO_EMAIL=hello@israelprivatevan.com
+
+# A verified sender on your own domain.
+QUOTE_FROM_EMAIL=site@israelprivatevan.com

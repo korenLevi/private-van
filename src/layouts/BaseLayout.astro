@@ -1,0 +1,95 @@
+---
+import { Font } from 'astro:assets';
+
+import '../styles/global.css';
+
+import Footer from '../components/Footer.astro';
+import FloatingActions from '../components/FloatingActions.astro';
+import Header from '../components/Header.astro';
+import Seo from '../components/Seo.astro';
+import { localeDefinition, type Locale } from '../i18n/config';
+import { alternatesFor, pathFor, type PageKey } from '../i18n/routes';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  pageKey: PageKey;
+  locale: Locale;
+  title: string;
+  description: string;
+  /** JSON-LD for this page, already stringified. */
+  jsonLd?: string;
+  ogImage?: string;
+  noindex?: boolean;
+  /** Override the canonical path. Defaults to this page's registered path. */
+  path?: string;
+  /** Override the hreflang set. Pass [] for pages outside the registry. */
+  alternates?: Array<{ locale: Locale; path: string }>;
+}
+
+const {
+  pageKey,
+  locale,
+  title,
+  description,
+  jsonLd,
+  ogImage,
+  noindex = false,
+  path = pathFor(pageKey, locale),
+  alternates = alternatesFor(pageKey),
+} = Astro.props;
+
+const t = useTranslations(locale);
+const { hreflang, dir } = localeDefinition(locale);
+---
+
+<!doctype html>
+<html lang={hreflang} dir={dir}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#141414" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <Seo
+      title={title}
+      description={description}
+      path={path}
+      locale={locale}
+      alternates={alternates}
+      ogImage={ogImage}
+      noindex={noindex}
+    />
+
+    {/*
+      Fonts are downloaded at build time and served from this origin, so there
+      is no third-party connection on the critical path. Preloading only the
+      faces used above the fold keeps the header light.
+    */}
+    <Font cssVariable="--font-fraunces" preload />
+    <Font cssVariable="--font-manrope" preload={[{ weight: 400 }, { weight: 600 }]} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    {jsonLd && <script type="application/ld+json" is:inline set:html={jsonLd} />}
+
+    <slot name="head" />
+  </head>
+
+  <body class="flex min-h-svh flex-col">
+    <a href="#main" class="sr-only-focusable btn btn-primary">
+      {t.common.skipToContent}
+    </a>
+
+    <Header locale={locale} />
+
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+
+    <Footer locale={locale} />
+    <FloatingActions locale={locale} />
+  </body>
+</html>

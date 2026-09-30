@@ -1,0 +1,195 @@
+---
+import { CONTACT, SITE, telHref, whatsappHref } from '../config/site';
+import type { Locale } from '../i18n/config';
+import { pathFor } from '../i18n/routes';
+import { useTranslations } from '../i18n/utils';
+import Icon from './Icon.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const home = pathFor('home', locale);
+
+/** Homepage section anchors work from any page. */
+const sections = [
+  { label: t.nav.services, hash: 'services' },
+  { label: t.nav.routes, hash: 'routes' },
+  { label: t.nav.fleet, hash: 'fleet' },
+  { label: t.nav.reviews, hash: 'reviews' },
+  { label: t.nav.faq, hash: 'faq' },
+];
+
+const isHome = Astro.url.pathname.replace(/\/$/, '') === home.replace(/\/$/, '');
+const navLinks = sections.map((s) => ({
+  label: s.label,
+  href: isHome ? `#${s.hash}` : `${home === '/' ? '' : home}/#${s.hash}`,
+}));
+
+const waHref = whatsappHref(t.form.genericWhatsappMessage);
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-line bg-paper/95 backdrop-blur-sm supports-[backdrop-filter]:bg-paper/80"
+>
+  <div class="container-page flex h-[72px] items-center justify-between gap-6 lg:h-20">
+    <!-- Wordmark -->
+    <a
+      href={home}
+      class="shrink-0 font-display text-[1.375rem] leading-none tracking-tight text-ink lg:text-2xl"
+      aria-label={`${SITE.name} — ${t.common.home}`}
+    >
+      {/* The wordmark sits at 22px, which WCAG counts as normal text, so the
+          accent uses the darker gold. The footer wordmark keeps #B08A4E
+          because it sits on black. */}
+      {SITE.nameParts.lead}<span class="text-gold-ink">{SITE.nameParts.accent}</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav aria-label="Main" class="hidden xl:block">
+      <ul class="flex items-center gap-8">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-[0.9375rem] font-medium text-muted transition-colors hover:text-ink"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <!-- Desktop actions -->
+    <div class="hidden items-center gap-5 md:flex">
+      <a
+        href={telHref}
+        class="flex items-center gap-2 text-[0.9375rem] font-semibold text-ink transition-colors hover:text-gold-ink"
+      >
+        <Icon name="phone" size={17} class="text-gold" />
+        <span>{CONTACT.phoneDisplay}</span>
+      </a>
+      <a
+        href={waHref}
+        target="_blank"
+        rel="noopener"
+        class="btn btn-primary"
+        data-analytics="header-whatsapp"
+      >
+        {t.common.bookOnWhatsapp}
+      </a>
+    </div>
+
+    <!-- Mobile menu toggle -->
+    <button
+      type="button"
+      id="menu-toggle"
+      class="-mr-2 inline-flex h-11 w-11 items-center justify-center rounded-full text-ink md:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label={t.common.menu}
+    >
+      <Icon name="menu" size={24} class="menu-open-icon" />
+      <Icon name="close" size={24} class="menu-close-icon hidden" />
+    </button>
+
+    <!-- Tablet: actions collapse to icons -->
+    <div class="hidden items-center gap-2 md:flex xl:hidden">
+      <button
+        type="button"
+        id="menu-toggle-tablet"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line text-ink"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label={t.common.menu}
+      >
+        <Icon name="menu" size={22} class="menu-open-icon" />
+        <Icon name="close" size={22} class="menu-close-icon hidden" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile / tablet panel -->
+  <div id="mobile-menu" hidden class="border-t border-line bg-paper xl:hidden">
+    <nav aria-label="Main" class="container-page py-5">
+      <ul class="flex flex-col">
+        {
+          navLinks.map((link) => (
+            <li class="border-b border-line last:border-0">
+              <a
+                href={link.href}
+                class="block py-3.5 text-[1.0625rem] font-medium text-ink"
+                data-menu-link
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="mt-6 flex flex-col gap-3">
+        <a href={waHref} target="_blank" rel="noopener" class="btn btn-primary w-full">
+          <Icon name="whatsapp" size={18} />
+          {t.common.bookOnWhatsapp}
+        </a>
+        <a href={telHref} class="btn btn-outline w-full">
+          <Icon name="phone" size={17} class="text-gold" />
+          {CONTACT.phoneDisplay}
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const panel = document.getElementById('mobile-menu');
+  const toggles = Array.from(
+    document.querySelectorAll<HTMLButtonElement>(
+      '#menu-toggle, #menu-toggle-tablet',
+    ),
+  );
+
+  function setOpen(open: boolean) {
+    if (!panel) return;
+    panel.hidden = !open;
+    for (const toggle of toggles) {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle
+        .querySelector('.menu-open-icon')
+        ?.classList.toggle('hidden', open);
+      toggle
+        .querySelector('.menu-close-icon')
+        ?.classList.toggle('hidden', !open);
+    }
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+  }
+
+  for (const toggle of toggles) {
+    toggle.addEventListener('click', () => {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+  }
+
+  // Close when a link is followed, and when the viewport grows past the
+  // breakpoint where the panel is hidden anyway.
+  for (const link of document.querySelectorAll('[data-menu-link]')) {
+    link.addEventListener('click', () => setOpen(false));
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && panel && !panel.hidden) {
+      setOpen(false);
+      toggles[0]?.focus();
+    }
+  });
+
+  window.matchMedia('(min-width: 1280px)').addEventListener('change', (event) => {
+    if (event.matches) setOpen(false);
+  });
+</script>

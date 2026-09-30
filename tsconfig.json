@@ -1,0 +1,31 @@
+{
+  // Resolved through the path rather than the "astro/tsconfigs/strict"
+  // package specifier: both give tsc identical options, but editors validate
+  // "extends" as a plain file path and do not follow a package exports map,
+  // so the specifier form shows a false "file not found" in the IDE.
+  // Note "astro/tsconfigs/strict.json" does not resolve at all — astro's
+  // exports map sends the .json subpath to an extensionless file.
+  // Switch back to "astro/tsconfigs/strict" if this ever moves to pnpm,
+  // Yarn PnP, or a monorepo where node_modules is not hoisted here.
+  "extends": "./node_modules/astro/tsconfigs/strict.json",
+  "include": [".astro/types.d.ts", "**/*.ts", "**/*.tsx", "**/*.astro"],
+  "exclude": ["dist", "node_modules"],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "strictNullChecks": true,
+    "allowJs": true,
+    // No "baseUrl": it is deprecated and stops working in TypeScript 7.
+    // Since TS 4.4 "paths" works on its own, resolved relative to this file,
+    // which is why each target starts with "./".
+    // Nothing imports through these aliases yet — every import in src/ is
+    // relative. They are here for convenience; delete the block if unwanted.
+    "paths": {
+      "@/*": ["./src/*"],
+      "@config": ["./src/config/site.ts"],
+      "@i18n/*": ["./src/i18n/*"],
+      "@components/*": ["./src/components/*"],
+      "@assets/*": ["./src/assets/*"]
+    }
+  }
+}

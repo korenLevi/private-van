@@ -1,0 +1,313 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ */
+/* Design tokens                                                       */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* Surfaces */
+  --color-paper: #ffffff;
+  --color-sand: #f7f5f1;
+  --color-line: #ece8e1;
+
+  /* Text */
+  --color-ink: #141414;
+  --color-muted: #4e4a44;
+
+  /* Accent. `gold` for lines, icons and stars; `gold-ink` for small text,
+     where the lighter tone would not reach 4.5:1 against white. */
+  --color-gold: #b08a4e;
+  --color-gold-ink: #8a6a38;
+
+  /* WhatsApp brand green, used only for the floating button */
+  --color-whatsapp: #25d366;
+
+  /* Typefaces. The variables come from Astro's font pipeline, which
+     self-hosts the Google Fonts files and supplies a metric-matched
+     fallback so nothing shifts when the real face arrives. */
+  --font-display: var(--font-fraunces), Georgia, 'Times New Roman', serif;
+  --font-body: var(--font-manrope), system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Rhythm */
+  --spacing-section: 5rem;
+  --radius-media: 1.5rem;
+  --radius-card: 1rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                                */
+/* ------------------------------------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Keep anchored sections clear of the sticky header */
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold-ink);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-gold);
+    color: #ffffff;
+  }
+
+  /* Astro's Image component sets width/height; keep it fluid anyway. */
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Components                                                          */
+/* ------------------------------------------------------------------ */
+@layer components {
+  /* Page gutter, consistent everywhere */
+  .container-page {
+    width: 100%;
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* --- Buttons --- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    line-height: 1;
+    padding: 0.9375rem 1.75rem;
+    white-space: nowrap;
+    transition:
+      background-color 180ms ease,
+      color 180ms ease,
+      border-color 180ms ease,
+      transform 180ms ease;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .btn:active {
+    transform: translateY(1px);
+  }
+
+  .btn-primary {
+    background-color: var(--color-ink);
+    color: #ffffff;
+    border: 1px solid var(--color-ink);
+  }
+
+  .btn-primary:hover {
+    background-color: #000000;
+    border-color: #000000;
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    color: var(--color-ink);
+    border: 1px solid var(--color-line);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--color-gold);
+    background-color: var(--color-sand);
+  }
+
+  /* On dark media: white pill, dark text */
+  .btn-on-dark {
+    background-color: #ffffff;
+    color: var(--color-ink);
+    border: 1px solid #ffffff;
+  }
+
+  .btn-on-dark:hover {
+    background-color: var(--color-sand);
+  }
+
+  .btn-ghost-on-dark {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid rgb(255 255 255 / 0.45);
+  }
+
+  .btn-ghost-on-dark:hover {
+    border-color: #ffffff;
+    background-color: rgb(255 255 255 / 0.1);
+  }
+
+  /* --- Small uppercase gold label above a heading --- */
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-gold-ink);
+  }
+
+  /* --- The 64px gold rule under a heading --- */
+  .gold-rule {
+    display: block;
+    width: 64px;
+    height: 2px;
+    background-color: var(--color-gold);
+    border: 0;
+  }
+
+  /* --- Cards --- */
+  .card {
+    background-color: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-card);
+  }
+
+  /* --- Form controls --- */
+  .field-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 0.375rem;
+  }
+
+  .field-control {
+    width: 100%;
+    background-color: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: 0.625rem;
+    padding: 0.75rem 0.875rem;
+    font-size: 0.9375rem;
+    font-family: inherit;
+    color: var(--color-ink);
+    line-height: 1.4;
+    transition:
+      border-color 160ms ease,
+      box-shadow 160ms ease;
+    /* Stop iOS zooming the page when a field is focused */
+    min-height: 2.875rem;
+  }
+
+  .field-control::placeholder {
+    color: #9b958c;
+  }
+
+  .field-control:hover {
+    border-color: #ddd7cc;
+  }
+
+  .field-control:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 3px rgb(176 138 78 / 0.16);
+  }
+
+  .field-control[aria-invalid='true'] {
+    border-color: #b4342a;
+  }
+
+  select.field-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5l5-5' stroke='%234E4A44' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.875rem center;
+    background-size: 12px 8px;
+    padding-right: 2.25rem;
+  }
+
+  @media (max-width: 640px) {
+    /* 16px prevents the iOS focus zoom */
+    .field-control {
+      font-size: 1rem;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Utilities                                                           */
+/* ------------------------------------------------------------------ */
+@utility section-y {
+  padding-block: 4rem;
+
+  @media (width >= 768px) {
+    padding-block: var(--spacing-section);
+  }
+}
+
+/* Visually hidden but readable by screen readers */
+@utility sr-only-focusable {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+
+  &:focus {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+    z-index: 100;
+  }
+}

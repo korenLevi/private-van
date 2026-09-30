@@ -1,0 +1,46 @@
+---
+/**
+ * Every page on the site, in every locale.
+ *
+ * The URLs come from the page registry in src/i18n/routes.ts, which reads each
+ * locale's slugs out of that locale's dictionary. Adding Spanish means adding
+ * a dictionary and one line in src/i18n/config.ts — this file does not change,
+ * and neither does any other route file.
+ *
+ * Current output:
+ *   /                                  home
+ *   /ben-gurion-airport-transfer       landing
+ *   /private-driver-israel             landing
+ *   /jerusalem-day-tour-private        landing
+ *   /dead-sea-masada-private-tour      landing
+ *   /galilee-private-tour              landing
+ *   /contact                           contact
+ */
+import type { Locale } from '../i18n/config';
+import { allPagePaths, type PageKey, type PageKind } from '../i18n/routes';
+import ContactPage from '../templates/ContactPage.astro';
+import HomePage from '../templates/HomePage.astro';
+import LandingPage from '../templates/LandingPage.astro';
+
+export function getStaticPaths() {
+  return allPagePaths();
+}
+
+interface Props {
+  pageKey: PageKey;
+  locale: Locale;
+  kind: PageKind;
+}
+
+const { pageKey, locale, kind } = Astro.props;
+---
+
+{
+  kind === 'home' ? (
+    <HomePage locale={locale} />
+  ) : kind === 'contact' ? (
+    <ContactPage locale={locale} />
+  ) : (
+    <LandingPage locale={locale} pageKey={pageKey} />
+  )
+}

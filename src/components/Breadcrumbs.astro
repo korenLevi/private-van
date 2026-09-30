@@ -1,0 +1,57 @@
+---
+/**
+ * Visible breadcrumb trail. The matching BreadcrumbList schema is built by the
+ * page from the same array, so the two can never drift apart.
+ */
+import type { Locale } from '../i18n/config';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  trail: ReadonlyArray<{ name: string; path: string }>;
+  tone?: 'light' | 'dark';
+}
+
+const { locale, trail, tone = 'light' } = Astro.props;
+const t = useTranslations(locale);
+const onDark = tone === 'dark';
+---
+
+<nav aria-label={t.common.breadcrumb}>
+  <ol
+    class:list={[
+      'flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.8125rem]',
+      onDark ? 'text-white/65' : 'text-muted',
+    ]}
+  >
+    {
+      trail.map((crumb, index) => {
+        const isLast = index === trail.length - 1;
+        return (
+          <li class="flex items-center gap-2">
+            {index > 0 && (
+              <span class="text-gold" aria-hidden="true">
+                /
+              </span>
+            )}
+            {isLast ? (
+              <span aria-current="page" class={onDark ? 'text-white' : 'text-ink'}>
+                {crumb.name}
+              </span>
+            ) : (
+              <a
+                href={crumb.path}
+                class:list={[
+                  'transition-colors',
+                  onDark ? 'hover:text-white' : 'hover:text-ink',
+                ]}
+              >
+                {crumb.name}
+              </a>
+            )}
+          </li>
+        );
+      })
+    }
+  </ol>
+</nav>

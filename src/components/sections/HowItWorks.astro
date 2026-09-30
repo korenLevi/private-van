@@ -1,0 +1,47 @@
+---
+import type { Locale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/utils';
+import SectionHeading from '../SectionHeading.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section class="section-y" aria-labelledby="how-it-works-heading">
+  <div class="container-page">
+    <SectionHeading
+      eyebrow={t.how.eyebrow}
+      heading={t.how.heading}
+      id="how-it-works-heading"
+    />
+
+    <ol class="mt-12 grid gap-8 md:grid-cols-3 md:gap-10 lg:mt-14">
+      {
+        t.how.steps.map((step, index) => (
+          <li class="relative flex flex-col">
+            {/* Full-strength gold, not a faded tint: at any opacity that reads
+                as "quiet" the numeral drops below the 3:1 a 44px character
+                needs, and axe flags it even though it is aria-hidden. */}
+            <span
+              class="font-display text-[2.75rem] leading-none text-gold"
+              aria-hidden="true"
+            >
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <h3 class="mt-4 text-[1.3125rem] leading-snug text-ink">
+              {step.title}
+            </h3>
+            <span class="gold-rule mt-4" aria-hidden="true" />
+            <p class="mt-4 text-[0.9375rem] leading-relaxed text-muted">
+              {step.body}
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

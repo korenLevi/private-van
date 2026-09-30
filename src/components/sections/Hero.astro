@@ -1,0 +1,175 @@
+---
+import { Picture } from 'astro:assets';
+
+import { IMAGES } from '../../assets';
+import { MEDIA, whatsappHref } from '../../config/site';
+import type { Locale } from '../../i18n/config';
+import { pathFor } from '../../i18n/routes';
+import { useTranslations } from '../../i18n/utils';
+import Icon from '../Icon.astro';
+import QuoteFormIsland from '../QuoteFormIsland.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const home = pathFor('home', locale);
+const waHref = whatsappHref(t.form.genericWhatsappMessage);
+const videoSrc = MEDIA.heroVideo.mp4;
+---
+
+<section class="relative pt-5 md:pt-7">
+  <div class="container-page">
+    <!-- Media block -->
+    <div
+      class="relative isolate overflow-hidden rounded-[var(--radius-media)] bg-ink"
+    >
+      <!--
+        The poster is the LCP element: eager, high priority, and sized for the
+        widest the block ever gets. The video is a decoration layered on top
+        and is not fetched until the page is idle.
+      -->
+      <Picture
+        src={IMAGES.heroPoster}
+        alt={t.hero.posterAlt}
+        formats={['avif', 'webp']}
+        fallbackFormat="jpg"
+        widths={[640, 960, 1280, 1600, 1920]}
+        sizes="(min-width: 1280px) 1216px, (min-width: 768px) calc(100vw - 4rem), calc(100vw - 2.5rem)"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+        layout="full-width"
+        class="absolute inset-0 h-full w-full object-cover"
+      />
+
+      {
+        videoSrc && (
+          <video
+            data-hero-video
+            data-src={videoSrc}
+            class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-700 [&.is-playing]:opacity-100"
+            muted
+            loop
+            playsinline
+            preload="none"
+            aria-hidden="true"
+            tabindex="-1"
+          />
+        )
+      }
+
+      <!-- Darkening layer so the white text stays readable over any photo -->
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/62 to-black/58"
+        aria-hidden="true"
+      >
+      </div>
+
+      <!-- Content -->
+      <div
+        class="relative flex min-h-[30rem] flex-col items-center justify-center px-5 pt-20 pb-32 text-center sm:min-h-[34rem] sm:px-8 md:pt-24 md:pb-36 lg:min-h-[38rem] lg:pt-28 lg:pb-40"
+      >
+        {/* A small gold label sits at whatever brightness the photograph
+            happens to have at the top of the frame. The shadow keeps it
+            legible against any image dropped in here later, without
+            changing the brand gold. */}
+        <p
+          class="text-[0.75rem] font-semibold tracking-[0.18em] text-gold uppercase [text-shadow:0_1px_4px_rgba(0,0,0,0.75)]"
+        >
+          {t.hero.eyebrow}
+        </p>
+
+        <h1
+          class="mt-4 max-w-4xl text-[2.125rem] leading-[1.08] text-white sm:text-[2.75rem] lg:text-[3.5rem]"
+        >
+          {t.hero.h1}
+        </h1>
+
+        <span class="gold-rule mt-6" aria-hidden="true"></span>
+
+        <p
+          class="mt-6 max-w-2xl text-[1.0625rem] leading-relaxed text-white/85 sm:text-lg"
+        >
+          {t.hero.subtitle}
+        </p>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
+          <a
+            href={waHref}
+            target="_blank"
+            rel="noopener"
+            class="btn btn-on-dark"
+            data-analytics="hero-whatsapp"
+          >
+            <Icon name="whatsapp" size={18} />
+            {t.hero.primaryCta}
+          </a>
+          <a href={`${home === '/' ? '' : home}/#routes`} class="btn btn-ghost-on-dark">
+            {t.hero.secondaryCta}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- White quote bar, overlapping the bottom edge of the media block -->
+    <div class="relative z-10 -mt-20 mb-14 px-0 sm:-mt-24 lg:-mt-16 lg:mb-16">
+      <div
+        class="mx-auto max-w-[70rem] rounded-[1.25rem] border border-line bg-paper p-5 shadow-[0_18px_48px_-24px_rgba(20,20,20,0.35)] sm:p-6 lg:px-8 lg:py-7"
+      >
+        <div class="mb-5 flex flex-col gap-1 text-center lg:mb-6 lg:text-left">
+          <h2 class="font-display text-xl text-ink lg:text-[1.375rem]">
+            {t.form.title}
+          </h2>
+          <p class="text-sm text-muted">{t.form.subtitle}</p>
+        </div>
+
+        <QuoteFormIsland
+          locale={locale}
+          variant="bar"
+          contactFields={false}
+          source="homepage-hero"
+          hydrate="idle"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  /**
+   * Bring the hero video in only once the page is idle, and skip it entirely
+   * for visitors who asked for less motion or are on a metered connection.
+   * The poster image has already painted, so nothing is waiting on this.
+   */
+  const video = document.querySelector<HTMLVideoElement>('[data-hero-video]');
+  const src = video?.dataset.src;
+
+  type Connection = { saveData?: boolean; effectiveType?: string };
+  const connection = (navigator as Navigator & { connection?: Connection }).connection;
+  const constrained =
+    connection?.saveData === true ||
+    /(^|-)(2g|slow-2g)$/.test(connection?.effectiveType ?? '');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (video && src && !constrained && !reducedMotion) {
+    const start = () => {
+      video.src = src;
+      video.load();
+      void video
+        .play()
+        .then(() => video.classList.add('is-playing'))
+        .catch(() => {
+          /* Autoplay refused — the poster stays, which is the same picture. */
+        });
+    };
+
+    if (typeof window.requestIdleCallback === 'function') {
+      window.requestIdleCallback(start, { timeout: 3000 });
+    } else {
+      window.setTimeout(start, 1500);
+    }
+  }
+</script>

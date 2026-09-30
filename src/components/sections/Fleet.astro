@@ -1,0 +1,134 @@
+---
+import { Picture } from 'astro:assets';
+
+import { getImage } from '../../assets';
+import { FLEET, MEDIA, isPlaceholder } from '../../config/site';
+import type { Locale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/utils';
+import Icon from '../Icon.astro';
+import LiteYouTube from '../LiteYouTube.astro';
+import SectionHeading from '../SectionHeading.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const [lead, ...rest] = t.fleet.gallery;
+---
+
+<section id="fleet" class="section-y bg-sand">
+  <div class="container-page">
+    <SectionHeading
+      eyebrow={t.fleet.eyebrow}
+      heading={t.fleet.heading}
+      intro={t.fleet.intro}
+    />
+
+    <!--
+      A 3x3 grid: the lead photo takes the top-left 2x2 block and the other
+      five fill the rest. Row height comes from the 4:3 thumbnails and the
+      lead stretches to fill its two rows, which lands it on the same ratio
+      at every width. On mobile it is a 2-column grid with the lead and the
+      last thumbnail spanning both.
+    -->
+    <ul class="mt-12 grid grid-cols-2 gap-4 lg:mt-14 lg:grid-cols-3 lg:gap-5">
+      <li class="col-span-2 aspect-[4/3] lg:row-span-2 lg:aspect-auto">
+        <Picture
+          src={getImage(lead.image)}
+          alt={lead.alt}
+          formats={['avif', 'webp']}
+          fallbackFormat="jpg"
+          widths={[600, 900, 1200]}
+          sizes="(min-width: 1024px) 66vw, calc(100vw - 2.5rem)"
+          loading="lazy"
+          decoding="async"
+          layout="full-width"
+          class="h-full w-full rounded-[var(--radius-card)] object-cover"
+        />
+      </li>
+
+      {
+        rest.map((photo) => (
+          <li class="aspect-[4/3] last:col-span-2 lg:last:col-span-1">
+            <Picture
+              src={getImage(photo.image)}
+              alt={photo.alt}
+              formats={['avif', 'webp']}
+              fallbackFormat="jpg"
+              widths={[300, 450, 600]}
+              sizes="(min-width: 1024px) 33vw, calc(50vw - 1.75rem)"
+              loading="lazy"
+              decoding="async"
+              layout="full-width"
+              class="h-full w-full rounded-[var(--radius-card)] object-cover"
+            />
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- Specs and amenities -->
+    <div class="mt-10 grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:gap-8">
+      <dl class="card grid grid-cols-2 gap-x-6 gap-y-5 p-6 sm:grid-cols-4 lg:p-7">
+        {
+          t.fleet.specs.map((spec) => (
+            <div class="min-w-0">
+              <dt class="text-[0.6875rem] font-semibold tracking-[0.14em] text-gold-ink uppercase">
+                {spec.label}
+              </dt>
+              {/* A value still waiting on a real number reads as a note, not a
+                  spec — and at body size it cannot overflow its column. */}
+              <dd
+                class:list={[
+                  'mt-1.5 leading-tight break-words',
+                  isPlaceholder(spec.value)
+                    ? 'text-sm text-muted'
+                    : 'font-display text-[1.125rem] text-ink',
+                ]}
+              >
+                {spec.value}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+
+      <div class="card p-6 lg:p-7">
+        <h3 class="text-[0.6875rem] font-semibold tracking-[0.14em] text-gold-ink uppercase">
+          {t.fleet.amenitiesHeading}
+        </h3>
+        <ul class="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-1">
+          {
+            FLEET.amenities.map((amenity) => (
+              <li class="flex items-start gap-2.5 text-[0.9375rem] text-muted">
+                <Icon name="check" size={17} class="mt-1 shrink-0 text-gold" />
+                {amenity}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    {
+      MEDIA.youtubeId && (
+        <div class="mt-10 lg:mt-12">
+          <h3 class="mb-5 text-center font-display text-[1.5rem] text-ink">
+            {t.fleet.videoHeading}
+          </h3>
+          <div class="mx-auto max-w-4xl">
+            <LiteYouTube
+              videoId={MEDIA.youtubeId}
+              title={t.fleet.videoHeading}
+              thumbnailAlt={t.fleet.videoAlt}
+              playLabel={t.fleet.videoCta}
+            />
+          </div>
+        </div>
+      )
+    }
+  </div>
+</section>

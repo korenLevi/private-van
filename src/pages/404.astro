@@ -1,0 +1,72 @@
+---
+import Icon from '../components/Icon.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import { whatsappHref } from '../config/site';
+import { DEFAULT_LOCALE } from '../i18n/config';
+import { FOOTER_NAV, pathFor } from '../i18n/routes';
+import { useTranslations } from '../i18n/utils';
+
+const locale = DEFAULT_LOCALE;
+const t = useTranslations(locale);
+
+const links = FOOTER_NAV.map((key) => ({
+  label: t.pages[key].breadcrumb,
+  href: pathFor(key, locale),
+}));
+---
+
+<BaseLayout
+  pageKey="home"
+  locale={locale}
+  title={`${t.notFound.title} | ${t.pages.home.title}`}
+  description={t.notFound.body}
+  path="/404"
+  alternates={[]}
+  noindex
+>
+  <section class="section-y">
+    <div class="container-page">
+      <div class="mx-auto flex max-w-2xl flex-col items-center text-center">
+        <p class="eyebrow">404</p>
+        <h1 class="mt-3 text-[2rem] leading-[1.1] sm:text-[2.5rem]">
+          {t.notFound.heading}
+        </h1>
+        <span class="gold-rule mt-5" aria-hidden="true"></span>
+        <p class="mt-6 text-[1.0625rem] leading-relaxed text-muted">
+          {t.notFound.body}
+        </p>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
+          <a href={pathFor('home', locale)} class="btn btn-primary">
+            {t.notFound.cta}
+          </a>
+          <a
+            href={whatsappHref(t.form.genericWhatsappMessage)}
+            target="_blank"
+            rel="noopener"
+            class="btn btn-outline"
+          >
+            <Icon name="whatsapp" size={18} class="text-gold" />
+            {t.common.bookOnWhatsapp}
+          </a>
+        </div>
+
+        <ul class="mt-12 flex flex-wrap justify-center gap-x-6 gap-y-2">
+          {
+            links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-[0.9375rem] text-muted underline decoration-line underline-offset-4 transition-colors hover:text-ink hover:decoration-gold"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

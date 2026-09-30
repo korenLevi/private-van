@@ -1,0 +1,79 @@
+---
+/**
+ * Accordion built on <details>/<summary>: keyboard accessible, works with no
+ * JavaScript, and the `name` attribute makes it exclusive in browsers that
+ * support it without costing anything in those that do not.
+ *
+ * The FAQPage structured data is emitted by the page, not here, so a page can
+ * combine its own questions with the shared ones in a single schema block.
+ */
+import type { Locale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/utils';
+import Icon from '../Icon.astro';
+import SectionHeading from '../SectionHeading.astro';
+
+interface Props {
+  locale: Locale;
+  items?: ReadonlyArray<{ q: string; a: string }>;
+  heading?: string;
+  eyebrow?: string;
+  intro?: string;
+  tone?: 'paper' | 'sand';
+  id?: string;
+}
+
+const {
+  locale,
+  items,
+  heading,
+  eyebrow,
+  intro,
+  tone = 'paper',
+  id = 'faq',
+} = Astro.props;
+
+const t = useTranslations(locale);
+const questions = items ?? t.faq.items;
+const groupName = `faq-${id}`;
+---
+
+<section id={id} class:list={['section-y', tone === 'sand' && 'bg-sand']}>
+  <div class="container-page">
+    <SectionHeading
+      eyebrow={eyebrow ?? t.faq.eyebrow}
+      heading={heading ?? t.faq.heading}
+      intro={intro ?? t.faq.intro}
+    />
+
+    <div class="mx-auto mt-12 max-w-3xl lg:mt-14">
+      {
+        questions.map((item) => (
+          <details name={groupName} class="faq-item group border-b border-line">
+            <summary
+              class="flex cursor-pointer list-none items-start justify-between gap-5 py-5 text-left"
+            >
+              <h3 class="font-body text-[1.0625rem] leading-snug font-semibold text-ink">
+                {item.q}
+              </h3>
+              <Icon
+                name="chevron-down"
+                size={20}
+                class="mt-0.5 shrink-0 text-gold transition-transform duration-200 group-open:-rotate-180"
+              />
+            </summary>
+            <p class="pb-5 pr-9 text-[0.9375rem] leading-relaxed text-muted">
+              {item.a}
+            </p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Hide the default disclosure triangle in WebKit */
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+</style>

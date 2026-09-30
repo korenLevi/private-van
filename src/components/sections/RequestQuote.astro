@@ -1,0 +1,63 @@
+---
+/**
+ * Enquiry form at the foot of the homepage.
+ *
+ * The React island gets only the strings it needs, so the props serialised
+ * into the HTML stay small and the client bundle never imports the config
+ * file or the full dictionary. It hydrates on `visible` — it sits at the
+ * bottom of the page, so there is no reason to pay for it at load.
+ */
+import { CONTACT } from '../../config/site';
+import type { Locale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/utils';
+import SectionHeading from '../SectionHeading.astro';
+import RequestQuoteForm, {
+  type RequestQuoteStrings,
+} from '../react/RequestQuoteForm.tsx';
+
+interface Props {
+  locale: Locale;
+  tone?: 'paper' | 'sand';
+  id?: string;
+  source?: string;
+}
+
+const { locale, tone = 'paper', id = 'request-quote', source } = Astro.props;
+
+const t = useTranslations(locale);
+const q = t.requestQuote;
+
+const strings: RequestQuoteStrings = {
+  name: q.name,
+  phone: q.phone,
+  email: q.email,
+  message: q.message,
+  messagePlaceholder: q.messagePlaceholder,
+  submit: q.submit,
+  sending: q.sending,
+  successTitle: q.successTitle,
+  successBody: q.successBody,
+  fallbackTitle: q.fallbackTitle,
+  fallbackBody: q.fallbackBody,
+  fallbackCta: q.fallbackCta,
+  errorRequired: q.errorRequired,
+  errorEmail: q.errorEmail,
+  errorContact: q.errorContact,
+  whatsappTemplate: q.whatsappTemplate,
+};
+---
+
+<section id={id} class:list={['section-y', tone === 'sand' && 'bg-sand']}>
+  <div class="container-page">
+    <SectionHeading eyebrow={q.eyebrow} heading={q.heading} intro={q.intro} />
+
+    <div class="mx-auto mt-12 max-w-4xl lg:mt-14">
+      <RequestQuoteForm
+        client:visible
+        strings={strings}
+        whatsappNumber={CONTACT.whatsapp}
+        source={source ?? `${id}-${locale}`}
+      />
+    </div>
+  </div>
+</section>

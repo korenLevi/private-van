@@ -1,0 +1,78 @@
+---
+import reviewsData from '../../data/reviews.json';
+import type { Locale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/utils';
+import Icon from '../Icon.astro';
+import SectionHeading from '../SectionHeading.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const { reviews, arePlaceholders } = reviewsData;
+
+/** Shown only while running `astro dev`, so it never reaches a visitor. */
+const showDevNotice = import.meta.env.DEV && arePlaceholders;
+---
+
+<section id="reviews" class="section-y bg-sand">
+  <div class="container-page">
+    <SectionHeading
+      eyebrow={t.reviews.eyebrow}
+      heading={t.reviews.heading}
+      intro={t.reviews.intro}
+    />
+
+    {
+      showDevNotice && (
+        <p class="mx-auto mt-8 max-w-2xl rounded-lg border border-dashed border-gold bg-paper px-5 py-3 text-center text-sm text-gold-ink">
+          {t.reviews.placeholderNotice}
+        </p>
+      )
+    }
+
+    <ul class="mt-12 grid gap-5 md:grid-cols-2 lg:mt-14 lg:grid-cols-3">
+      {
+        reviews.map((review) => (
+          <li class="card flex flex-col p-6 lg:p-7">
+            {/* The rating is read out as text; the stars themselves are
+                decorative, so they carry no label of their own. `aria-label`
+                is not allowed on a <p>. */}
+            <p class="flex items-center gap-0.5 text-gold">
+              <span class="sr-only">
+                {t.reviews.ratingLabel}: {review.rating} {t.reviews.outOf}
+              </span>
+              {Array.from({ length: 5 }, (_, i) => (
+                <Icon
+                  name="star"
+                  size={16}
+                  class={i < review.rating ? 'text-gold' : 'text-line'}
+                />
+              ))}
+            </p>
+
+            <blockquote class="mt-4 flex-1">
+              <p class="text-[0.9375rem] leading-relaxed text-muted">
+                {review.text}
+              </p>
+            </blockquote>
+
+            <footer class="mt-5 border-t border-line pt-4">
+              <p class="text-[0.9375rem] font-semibold text-ink">{review.name}</p>
+              <p class="mt-0.5 text-sm text-muted">
+                {review.location}
+                <span class="mx-1.5 text-gold" aria-hidden="true">
+                  &middot;
+                </span>
+                {review.service}
+              </p>
+            </footer>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

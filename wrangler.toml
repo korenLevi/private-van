@@ -1,0 +1,14 @@
+# Cloudflare Pages project config.
+#
+# Only needed for `npx wrangler pages dev dist` and `npx wrangler pages deploy`.
+# If you connect the Git repo in the Cloudflare dashboard instead, set:
+#   Build command:       npm run build
+#   Build output:        dist
+#   Node version:        20 or later
+#
+# Secrets (RESEND_API_KEY, QUOTE_TO_EMAIL, QUOTE_FROM_EMAIL) belong in the
+# dashboard under Settings → Environment variables, never in this file.
+
+name = "israelprivatevan"
+compatibility_date = "2026-09-22"
+pages_build_output_dir = "dist"

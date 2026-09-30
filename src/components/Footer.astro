@@ -1,0 +1,152 @@
+---
+import { BUSINESS, CONTACT, SITE, telHref, whatsappHref, isPlaceholder } from '../config/site';
+import type { Locale } from '../i18n/config';
+import { FOOTER_NAV, pathFor } from '../i18n/routes';
+import { useTranslations } from '../i18n/utils';
+import Icon from './Icon.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const home = pathFor('home', locale);
+const year = new Date().getFullYear();
+
+const links = FOOTER_NAV.map((key) => ({
+  label: t.pages[key].breadcrumb,
+  href: pathFor(key, locale),
+}));
+
+const waHref = whatsappHref(t.form.genericWhatsappMessage);
+const showHours = !isPlaceholder(BUSINESS.hoursText);
+---
+
+<footer class="bg-ink text-white">
+  <div class="container-page py-14 md:py-16">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr]">
+      <!-- Identity -->
+      <div>
+        <a
+          href={home}
+          class="font-display text-2xl leading-none tracking-tight text-white"
+        >
+          {SITE.nameParts.lead}<span class="text-gold">{SITE.nameParts.accent}</span>
+        </a>
+        <span class="gold-rule mt-5" aria-hidden="true"></span>
+        <p class="mt-5 max-w-sm text-[0.9375rem] leading-relaxed text-white/65">
+          {t.footer.tagline}
+        </p>
+
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href={waHref} target="_blank" rel="noopener" class="btn btn-on-dark">
+            <Icon name="whatsapp" size={18} />
+            {t.common.bookOnWhatsapp}
+          </a>
+          <a href={telHref} class="btn btn-ghost-on-dark">
+            <Icon name="phone" size={17} />
+            {t.common.callUs}
+          </a>
+        </div>
+      </div>
+
+      <!-- Pages -->
+      <nav aria-label="Footer">
+        <h2 class="text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-gold">
+          {t.footer.pagesHeading}
+        </h2>
+        <ul class="mt-5 flex flex-col gap-3">
+          <li>
+            <a
+              href={home}
+              class="text-[0.9375rem] text-white/70 transition-colors hover:text-white"
+            >
+              {t.common.home}
+            </a>
+          </li>
+          {
+            links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-[0.9375rem] text-white/70 transition-colors hover:text-white"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <!-- Contact -->
+      <div>
+        <h2 class="text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-gold">
+          {t.footer.contactHeading}
+        </h2>
+        <ul class="mt-5 flex flex-col gap-3 text-[0.9375rem]">
+          <li>
+            <a
+              href={telHref}
+              class="flex items-start gap-2.5 text-white/70 transition-colors hover:text-white"
+            >
+              <Icon name="phone" size={17} class="mt-0.5 shrink-0 text-gold" />
+              <span>
+                <span class="sr-only">{t.footer.phoneLabel}: </span>
+                {CONTACT.phoneDisplay}
+              </span>
+            </a>
+          </li>
+          <li>
+            <a
+              href={waHref}
+              target="_blank"
+              rel="noopener"
+              class="flex items-start gap-2.5 text-white/70 transition-colors hover:text-white"
+            >
+              <Icon name="whatsapp" size={17} class="mt-0.5 shrink-0 text-gold" />
+              <span>{t.footer.whatsappLabel}</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href={`mailto:${CONTACT.email}`}
+              class="flex items-start gap-2.5 break-all text-white/70 transition-colors hover:text-white"
+            >
+              <Icon name="mail" size={17} class="mt-0.5 shrink-0 text-gold" />
+              <span>
+                <span class="sr-only">{t.footer.emailLabel}: </span>
+                {CONTACT.email}
+              </span>
+            </a>
+          </li>
+          {
+            showHours && (
+              <li class="flex items-start gap-2.5 text-white/70">
+                <Icon name="clock" size={17} class="mt-0.5 shrink-0 text-gold" />
+                <span>
+                  <span class="sr-only">{t.footer.hoursHeading}: </span>
+                  {BUSINESS.hoursText}
+                </span>
+              </li>
+            )
+          }
+        </ul>
+
+        <h2 class="mt-8 text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-gold">
+          {t.footer.serviceAreaHeading}
+        </h2>
+        <p class="mt-4 text-[0.9375rem] leading-relaxed text-white/65">
+          {t.footer.serviceArea}
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="mt-12 border-t border-white/10 pt-7 text-[0.8125rem] text-white/45"
+    >
+      <p>&copy; {year} {SITE.name}. {t.footer.rights}</p>
+    </div>
+  </div>
+</footer>

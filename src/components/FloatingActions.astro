@@ -1,0 +1,41 @@
+---
+/**
+ * Floating WhatsApp and call buttons, fixed to the right edge on every page.
+ * Sized at 56px so they clear the 44px minimum tap target comfortably.
+ */
+import { telHref, whatsappHref } from '../config/site';
+import type { Locale } from '../i18n/config';
+import { useTranslations } from '../i18n/utils';
+import Icon from './Icon.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const waHref = whatsappHref(t.form.genericWhatsappMessage);
+---
+
+<div
+  class="fixed right-4 bottom-5 z-50 flex flex-col gap-3 md:right-6 md:bottom-7"
+  style="padding-bottom: env(safe-area-inset-bottom);"
+>
+  <a
+    href={waHref}
+    target="_blank"
+    rel="noopener"
+    class="flex h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-[0_6px_24px_rgba(20,20,20,0.22)] transition-transform duration-200 hover:scale-105 active:scale-95"
+    data-analytics="floating-whatsapp"
+  >
+    <Icon name="whatsapp" size={30} title={t.common.messageOnWhatsapp} />
+  </a>
+
+  <a
+    href={telHref}
+    class="flex h-14 w-14 items-center justify-center rounded-full bg-ink text-white shadow-[0_6px_24px_rgba(20,20,20,0.22)] transition-transform duration-200 hover:scale-105 active:scale-95"
+    data-analytics="floating-call"
+  >
+    <Icon name="phone" size={23} title={t.common.callUs} />
+  </a>
+</div>

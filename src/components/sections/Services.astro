@@ -1,0 +1,68 @@
+---
+import { Picture } from 'astro:assets';
+
+import { getImage } from '../../assets';
+import type { Locale } from '../../i18n/config';
+import { pathFor, type PageKey } from '../../i18n/routes';
+import { useTranslations } from '../../i18n/utils';
+import Icon from '../Icon.astro';
+import SectionHeading from '../SectionHeading.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section id="services" class="section-y bg-sand">
+  <div class="container-page">
+    <SectionHeading
+      eyebrow={t.services.eyebrow}
+      heading={t.services.heading}
+      intro={t.services.intro}
+    />
+
+    <ul class="mt-12 grid gap-6 md:grid-cols-3 lg:mt-14 lg:gap-7">
+      {
+        t.services.items.map((service) => (
+          <li class="card group flex flex-col overflow-hidden">
+            <Picture
+              src={getImage(service.image)}
+              alt={service.imageAlt}
+              formats={['avif', 'webp']}
+              fallbackFormat="jpg"
+              widths={[400, 600, 800]}
+              sizes="(min-width: 768px) 33vw, calc(100vw - 2.5rem)"
+              loading="lazy"
+              decoding="async"
+              layout="full-width"
+              class="aspect-[4/3] w-full object-cover"
+            />
+
+            <div class="flex flex-1 flex-col p-6 lg:p-7">
+              <h3 class="text-[1.375rem] leading-snug text-ink">{service.title}</h3>
+              <span class="gold-rule mt-4" aria-hidden="true" />
+              <p class="mt-4 flex-1 text-[0.9375rem] leading-relaxed text-muted">
+                {service.body}
+              </p>
+
+              <a
+                href={pathFor(service.pageKey as PageKey, locale)}
+                class="mt-6 inline-flex items-center gap-2 text-[0.9375rem] font-semibold text-ink transition-colors hover:text-gold-ink"
+              >
+                {service.linkLabel}
+                <Icon
+                  name="arrow-right"
+                  size={17}
+                  class="text-gold transition-transform duration-200 group-hover:translate-x-1"
+                />
+              </a>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

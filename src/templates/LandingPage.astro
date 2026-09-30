@@ -1,0 +1,170 @@
+---
+import { Picture } from 'astro:assets';
+
+import { getImage } from '../assets';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/sections/CtaBand.astro';
+import Faq from '../components/sections/Faq.astro';
+import PopularRoutes from '../components/sections/PopularRoutes.astro';
+import TrustStrip from '../components/sections/TrustStrip.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import { whatsappHref } from '../config/site';
+import type { Locale } from '../i18n/config';
+import { pathFor, type PageKey } from '../i18n/routes';
+import { getPage } from '../i18n/ui';
+import { absoluteUrl, useTranslations } from '../i18n/utils';
+import { breadcrumbSchema, faqSchema, graph } from '../lib/schema';
+
+interface Props {
+  locale: Locale;
+  pageKey: PageKey;
+}
+
+const { locale, pageKey } = Astro.props;
+const t = useTranslations(locale);
+const page = getPage(locale, pageKey);
+
+const trail = [
+  { name: t.common.home, path: pathFor('home', locale) },
+  { name: page.breadcrumb, path: pathFor(pageKey, locale) },
+];
+
+const jsonLd = graph(
+  breadcrumbSchema(
+    trail.map((crumb) => ({
+      name: crumb.name,
+      url: absoluteUrl(crumb.path, Astro.site),
+    })),
+  ),
+  faqSchema(page.faq),
+);
+
+const waHref = whatsappHref(t.form.genericWhatsappMessage);
+---
+
+<BaseLayout
+  pageKey={pageKey}
+  locale={locale}
+  title={page.title}
+  description={page.description}
+  jsonLd={jsonLd}
+>
+  <!-- Hero -->
+  <section class="pt-5 md:pt-7">
+    <div class="container-page">
+      <Breadcrumbs locale={locale} trail={trail} />
+
+      <div
+        class="relative mt-4 isolate overflow-hidden rounded-[var(--radius-media)] bg-ink"
+      >
+        <Picture
+          src={getImage(page.heroImage)}
+          alt={page.heroImageAlt}
+          formats={['avif', 'webp']}
+          fallbackFormat="jpg"
+          widths={[640, 960, 1280, 1800]}
+          sizes="(min-width: 1280px) 1216px, (min-width: 768px) calc(100vw - 4rem), calc(100vw - 2.5rem)"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+          layout="full-width"
+          class="absolute inset-0 h-full w-full object-cover"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/62 to-black/58"
+          aria-hidden="true"
+        >
+        </div>
+
+        <div
+          class="relative flex min-h-[22rem] flex-col items-center justify-center px-5 py-16 text-center sm:min-h-[26rem] sm:px-8 md:py-20 lg:min-h-[28rem]"
+        >
+          <h1
+            class="max-w-4xl text-[2rem] leading-[1.1] text-white sm:text-[2.5rem] lg:text-[3rem]"
+          >
+            {page.h1}
+          </h1>
+          <span class="gold-rule mt-6" aria-hidden="true"></span>
+          <p
+            class="mt-6 max-w-2xl text-[1.0625rem] leading-relaxed text-white/85 sm:text-lg"
+          >
+            {page.lead}
+          </p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
+            <a href={waHref} target="_blank" rel="noopener" class="btn btn-on-dark">
+              <Icon name="whatsapp" size={18} />
+              {t.common.bookOnWhatsapp}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="mt-14 lg:mt-16">
+    <TrustStrip locale={locale} />
+  </div>
+
+  <!-- Body -->
+  {
+    page.body.map((section, index) => (
+      <section class:list={['section-y', index % 2 === 1 && 'bg-sand']}>
+        <div class="container-page">
+          <div class="mx-auto max-w-3xl">
+            <h2 class="text-[1.75rem] leading-snug text-ink sm:text-[2rem]">
+              {section.heading}
+            </h2>
+            <span class="gold-rule mt-5" aria-hidden="true" />
+
+            {section.paragraphs.map((paragraph) => (
+              <p class="mt-5 text-[1.0625rem] leading-relaxed text-muted">
+                {paragraph}
+              </p>
+            ))}
+
+            {section.bullets.length > 0 && (
+              <ul class="mt-7 grid gap-3 sm:grid-cols-2">
+                {section.bullets.map((bullet) => (
+                  <li class="flex items-start gap-2.5 text-[0.9375rem] text-ink">
+                    <Icon name="check" size={18} class="mt-0.5 shrink-0 text-gold" />
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  {
+    page.routeIds.length > 0 && (
+      <PopularRoutes
+        locale={locale}
+        routeIds={page.routeIds}
+        tone={page.body.length % 2 === 1 ? 'paper' : 'sand'}
+        id="routes"
+      />
+    )
+  }
+
+  {
+    page.faq.length > 0 && (
+      <Faq
+        locale={locale}
+        items={page.faq}
+        tone={
+          (page.body.length + (page.routeIds.length > 0 ? 1 : 0)) % 2 === 1
+            ? 'paper'
+            : 'sand'
+        }
+        id="faq"
+      />
+    )
+  }
+
+  <CtaBand locale={locale} />
+</BaseLayout>

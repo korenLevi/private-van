@@ -1,0 +1,123 @@
+---
+import { ROUTES, isPlaceholder, whatsappHref, type Route } from '../../config/site';
+import type { Locale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/utils';
+import Icon from '../Icon.astro';
+import SectionHeading from '../SectionHeading.astro';
+
+interface Props {
+  locale: Locale;
+  /** Limit to these route ids. Defaults to every route in the config. */
+  routeIds?: readonly string[];
+  heading?: string;
+  eyebrow?: string;
+  intro?: string;
+  /** Section background. */
+  tone?: 'paper' | 'sand';
+  id?: string;
+}
+
+const {
+  locale,
+  routeIds,
+  heading,
+  eyebrow,
+  intro,
+  tone = 'paper',
+  id = 'routes',
+} = Astro.props;
+
+const t = useTranslations(locale);
+
+const routes: Route[] = routeIds?.length
+  ? routeIds
+      .map((routeId) => ROUTES.find((r) => r.id === routeId))
+      .filter((r): r is Route => Boolean(r))
+  : [...ROUTES];
+
+/** Place names are translated where a translation exists. */
+const label = (place: string) => t.routes.routeNames[place] ?? place;
+
+const askMessage = (route: Route) =>
+  `Hi, what is the price for a private van from ${route.from} to ${route.to}?`;
+---
+
+<section id={id} class:list={['section-y', tone === 'sand' && 'bg-sand']}>
+  <div class="container-page">
+    <SectionHeading
+      eyebrow={eyebrow ?? t.routes.eyebrow}
+      heading={heading ?? t.routes.heading}
+      intro={intro ?? t.routes.intro}
+    />
+
+    <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-5">
+      {
+        routes.map((route) => (
+          <li class="card flex flex-col p-6">
+            <div class="flex items-start gap-3">
+              <Icon name="route" size={20} class="mt-1 shrink-0 text-gold" />
+              <h3 class="text-[1.125rem] leading-snug font-semibold text-ink">
+                <span class="font-body">{label(route.from)}</span>
+                <span class="mx-1.5 text-gold" aria-hidden="true">
+                  &rarr;
+                </span>
+                <span class="sr-only">to </span>
+                <span class="font-body">{label(route.to)}</span>
+              </h3>
+            </div>
+
+            {!isPlaceholder(route.duration) && (
+              <p class="mt-3 flex items-center gap-2 text-sm text-muted">
+                <Icon name="clock" size={15} class="text-gold" />
+                {route.duration}
+              </p>
+            )}
+
+            <div class="mt-auto flex items-end justify-between gap-4 pt-6">
+              <p class="leading-tight">
+                <span class="block text-[0.6875rem] font-semibold tracking-[0.14em] text-gold-ink uppercase">
+                  {t.routes.priceLabel}
+                </span>
+                <span class="mt-1 block font-display text-[1.5rem] text-ink">
+                  {route.price}
+                </span>
+                <span class="text-xs text-muted">{t.routes.perVan}</span>
+              </p>
+
+              <a
+                href={whatsappHref(askMessage(route))}
+                target="_blank"
+                rel="noopener"
+                class="btn btn-outline px-5 py-3 text-sm"
+                aria-label={`${t.routes.ctaLabel}: ${label(route.from)} to ${label(route.to)}`}
+              >
+                <Icon name="whatsapp" size={16} class="text-gold" />
+                {t.routes.ctaLabel}
+              </a>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div
+      class="mt-8 flex flex-col items-center gap-4 rounded-[var(--radius-card)] border border-line bg-paper px-6 py-7 text-center sm:flex-row sm:justify-between sm:text-left lg:mt-10"
+    >
+      <div>
+        <p class="font-display text-lg text-ink">{t.routes.notListed}</p>
+        <p class="mt-1.5 max-w-xl text-[0.9375rem] text-muted">
+          {t.routes.notListedBody}
+        </p>
+      </div>
+      <a
+        href={whatsappHref(t.form.genericWhatsappMessage)}
+        target="_blank"
+        rel="noopener"
+        class="btn btn-primary shrink-0"
+      >
+        <Icon name="whatsapp" size={18} />
+        {t.routes.notListedCta}
+      </a>
+    </div>
+  </div>
+</section>

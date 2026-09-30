@@ -1,0 +1,35 @@
+---
+import type { Locale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/utils';
+import Icon, { type IconName } from '../Icon.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section class="border-y border-line" aria-label="Why travel with us">
+  <div class="container-page">
+    <ul
+      class="grid grid-cols-1 gap-y-4 py-7 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-6 sm:py-9 lg:grid-cols-4 lg:gap-x-10"
+    >
+      {
+        t.trust.map((item) => (
+          <li class="flex items-center gap-3.5">
+            <Icon
+              name={item.icon as IconName}
+              size={26}
+              class="shrink-0 text-gold"
+            />
+            <span class="text-[0.9375rem] leading-snug font-medium text-ink">
+              {item.label}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

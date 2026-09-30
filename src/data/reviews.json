@@ -1,0 +1,60 @@
+{
+  "_comment": "Placeholder reviews. Replace every entry with a real review before launch, then set \"arePlaceholders\" to false. While arePlaceholders is true the site shows a notice in development and leaves AggregateRating out of the structured data, so no invented rating is ever published.",
+  "arePlaceholders": true,
+  "reviews": [
+    {
+      "id": "r1",
+      "name": "[PLACEHOLDER — reviewer name]",
+      "location": "[PLACEHOLDER — city, country]",
+      "rating": 5,
+      "date": "2026-01-01",
+      "service": "Airport transfer",
+      "text": "[PLACEHOLDER — paste a real review here. Two or three sentences reads best.]"
+    },
+    {
+      "id": "r2",
+      "name": "[PLACEHOLDER — reviewer name]",
+      "location": "[PLACEHOLDER — city, country]",
+      "rating": 5,
+      "date": "2026-01-01",
+      "service": "Full day with driver",
+      "text": "[PLACEHOLDER — paste a real review here. Two or three sentences reads best.]"
+    },
+    {
+      "id": "r3",
+      "name": "[PLACEHOLDER — reviewer name]",
+      "location": "[PLACEHOLDER — city, country]",
+      "rating": 5,
+      "date": "2026-01-01",
+      "service": "Jerusalem day tour",
+      "text": "[PLACEHOLDER — paste a real review here. Two or three sentences reads best.]"
+    },
+    {
+      "id": "r4",
+      "name": "[PLACEHOLDER — reviewer name]",
+      "location": "[PLACEHOLDER — city, country]",
+      "rating": 5,
+      "date": "2026-01-01",
+      "service": "Dead Sea and Masada",
+      "text": "[PLACEHOLDER — paste a real review here. Two or three sentences reads best.]"
+    },
+    {
+      "id": "r5",
+      "name": "[PLACEHOLDER — reviewer name]",
+      "location": "[PLACEHOLDER — city, country]",
+      "rating": 5,
+      "date": "2026-01-01",
+      "service": "City to city transfer",
+      "text": "[PLACEHOLDER — paste a real review here. Two or three sentences reads best.]"
+    },
+    {
+      "id": "r6",
+      "name": "[PLACEHOLDER — reviewer name]",
+      "location": "[PLACEHOLDER — city, country]",
+      "rating": 5,
+      "date": "2026-01-01",
+      "service": "Galilee tour",
+      "text": "[PLACEHOLDER — paste a real review here. Two or three sentences reads best.]"
+    }
+  ]
+}
