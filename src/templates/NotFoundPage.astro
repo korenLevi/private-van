@@ -2,7 +2,7 @@
 import Icon from '../components/Icon.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-import { whatsappHref } from '../config/site';
+import { SITE, whatsappHref } from '../config/site';
 import type { Locale } from '../i18n/config';
 import { FOOTER_NAV, pathFor } from '../i18n/routes';
 import { useTranslations } from '../i18n/utils';
@@ -14,7 +14,7 @@ interface Props {
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 
-const links = FOOTER_NAV.map((key) => ({
+const links = FOOTER_NAV.flatMap((column) => column.pages).map((key) => ({
   label: t.pages[key].breadcrumb,
   href: pathFor(key, locale),
 }));
@@ -23,7 +23,7 @@ const links = FOOTER_NAV.map((key) => ({
 <BaseLayout
   pageKey="home"
   locale={locale}
-  title={`${t.notFound.title} | ${t.pages.home.title}`}
+  title={`${t.notFound.title} | ${SITE.name}`}
   description={t.notFound.body}
   path={locale === 'en' ? '/404/' : `/${locale}/404/`}
   alternates={[]}

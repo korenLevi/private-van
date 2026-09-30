@@ -26,11 +26,32 @@ type PageRoute = {
 
 export const PAGES: Record<PageKey, PageRoute> = {
   home: { kind: 'home', slug: '' },
-  airportTransfer: { kind: 'landing', slug: 'ben-gurion-airport-transfer' },
-  privateDriver: { kind: 'landing', slug: 'private-driver-israel' },
-  jerusalemTour: { kind: 'landing', slug: 'jerusalem-day-tour-private' },
-  deadSeaTour: { kind: 'landing', slug: 'dead-sea-masada-private-tour' },
-  galileeTour: { kind: 'landing', slug: 'galilee-private-tour' },
+
+  // Airport transfers: one hub, five routes beneath it.
+  airportTransfers: { kind: 'landing', slug: 'airport-transfers' },
+  bgJerusalem: { kind: 'landing', slug: 'ben-gurion-to-jerusalem' },
+  bgTelAviv: { kind: 'landing', slug: 'ben-gurion-to-tel-aviv' },
+  bgHaifa: { kind: 'landing', slug: 'ben-gurion-to-haifa' },
+  bgDeadSea: { kind: 'landing', slug: 'ben-gurion-to-dead-sea' },
+  bgEilat: { kind: 'landing', slug: 'ben-gurion-to-eilat' },
+
+  vanWithDriver: { kind: 'landing', slug: 'van-with-driver-full-day' },
+
+  // Tours: one hub, three day trips beneath it.
+  privateTours: { kind: 'landing', slug: 'private-tours' },
+  deadSeaMasadaTour: { kind: 'landing', slug: 'dead-sea-masada-tour' },
+  jerusalemDayTour: { kind: 'landing', slug: 'jerusalem-day-tour' },
+  galileeDayTour: { kind: 'landing', slug: 'galilee-day-tour' },
+
+  // One page per audience in section 2 of the brief.
+  weddingTransportation: { kind: 'landing', slug: 'wedding-transportation' },
+  artistBandTransportation: { kind: 'landing', slug: 'artist-band-transportation' },
+  businessTransportation: { kind: 'landing', slug: 'business-transportation' },
+  privateTransfers: { kind: 'landing', slug: 'private-transfers' },
+
+  fleet: { kind: 'landing', slug: 'fleet' },
+  about: { kind: 'landing', slug: 'about' },
+  faq: { kind: 'landing', slug: 'faq' },
   contact: { kind: 'contact', slug: 'contact' },
 };
 
@@ -73,18 +94,49 @@ export function allPagePaths() {
 
 /** Nav order in the header. */
 export const HEADER_NAV: PageKey[] = [
-  'airportTransfer',
-  'privateDriver',
-  'jerusalemTour',
+  'airportTransfers',
+  'vanWithDriver',
+  'privateTours',
+  'fleet',
+  'about',
   'contact',
 ];
 
-/** Inner pages linked from the footer. */
-export const FOOTER_NAV: PageKey[] = [
-  'airportTransfer',
-  'privateDriver',
-  'jerusalemTour',
-  'deadSeaTour',
-  'galileeTour',
-  'contact',
+/** Footer columns, so the whole map is reachable in one click from any page. */
+export const FOOTER_NAV: Array<{ heading: 'services' | 'tours' | 'company'; pages: PageKey[] }> = [
+  {
+    heading: 'services',
+    pages: [
+      'airportTransfers',
+      'vanWithDriver',
+      'privateTransfers',
+      'businessTransportation',
+      'weddingTransportation',
+      'artistBandTransportation',
+    ],
+  },
+  {
+    heading: 'tours',
+    pages: ['privateTours', 'jerusalemDayTour', 'deadSeaMasadaTour', 'galileeDayTour'],
+  },
+  {
+    heading: 'company',
+    pages: ['fleet', 'about', 'faq', 'contact'],
+  },
+];
+
+/** The five airport routes, in the order they appear on the hub page. */
+export const AIRPORT_ROUTES: PageKey[] = [
+  'bgJerusalem',
+  'bgTelAviv',
+  'bgHaifa',
+  'bgDeadSea',
+  'bgEilat',
+];
+
+/** The three day tours. */
+export const TOUR_PAGES: PageKey[] = [
+  'jerusalemDayTour',
+  'deadSeaMasadaTour',
+  'galileeDayTour',
 ];

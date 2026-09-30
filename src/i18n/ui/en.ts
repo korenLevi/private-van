@@ -1,5 +1,5 @@
 import { BUSINESS, FLEET, CONTACT, TRACK_RECORD } from '../../config/site';
-import type { PageContent, PageKey } from '../types';
+import pages from './en-pages';
 
 /**
  * English copy for the whole site.
@@ -127,7 +127,7 @@ const en = {
         image: 'pageAirport',
         imageAlt:
           'Travellers loading suitcases into a white Mercedes Sprinter van outside an airport terminal.',
-        pageKey: 'airportTransfer',
+        pageKey: 'airportTransfers',
         linkLabel: 'Airport transfers',
       },
       {
@@ -137,7 +137,7 @@ const en = {
         image: 'serviceFullDay',
         imageAlt:
           'Driver standing beside the open side door of a Mercedes Sprinter van on a quiet street.',
-        pageKey: 'privateDriver',
+        pageKey: 'vanWithDriver',
         linkLabel: 'Private driver',
       },
       {
@@ -147,7 +147,7 @@ const en = {
         image: 'serviceCityToCity',
         imageAlt:
           'White Mercedes Sprinter van driving along a highway through open countryside in Israel.',
-        pageKey: 'privateDriver',
+        pageKey: 'vanWithDriver',
         linkLabel: 'City to city',
       },
     ],
@@ -335,6 +335,23 @@ const en = {
   },
 
   /* ---------------------------------------------------------------- */
+  /* Route facts and related pages                                     */
+  /* ---------------------------------------------------------------- */
+  trip: {
+    heading: 'Trip details',
+    duration: 'Drive time',
+    distance: 'Distance',
+    vehicle: 'Vehicle',
+    seats: 'Seats',
+    included: 'What the price includes',
+  },
+
+  related: {
+    heading: 'Related pages',
+    backToHub: 'Back to',
+  },
+
+  /* ---------------------------------------------------------------- */
   /* Home — CTA band                                                   */
   /* ---------------------------------------------------------------- */
   cta: {
@@ -351,6 +368,9 @@ const en = {
     tagline: `Private van and driver across Israel, ${TRACK_RECORD.yearsInBusiness} years on the road. Airport transfers, full days with a driver and rides anywhere in the country.`,
     contactHeading: 'Contact',
     pagesHeading: 'Pages',
+    servicesHeading: 'Services',
+    toursHeading: 'Tours',
+    companyHeading: 'Company',
     hoursHeading: 'Hours',
     phoneLabel: 'Phone',
     emailLabel: 'Email',
@@ -360,311 +380,8 @@ const en = {
     rights: 'All rights reserved.',
   },
 
-  /* ---------------------------------------------------------------- */
-  /* Pages — SEO metadata, slugs and body content                      */
-  /* ---------------------------------------------------------------- */
-  pages: {
-    home: {
-      title: 'Private Van and Driver in Israel | IsraelPrivateVan',
-      description:
-        'Private van with an English-speaking driver in Israel. Ben Gurion airport transfers, full-day private tours and rides anywhere in the country.',
-      breadcrumb: 'Home',
-      h1: 'Your private van and driver in Israel',
-      heroImage: 'heroPoster',
-      heroImageAlt:
-        'The Dead Sea at dusk, with the mountains of Jordan on the far shore.',
-      lead: '',
-      body: [],
-      routeIds: [],
-      faq: [],
-    },
-
-    airportTransfer: {
-      title: 'Ben Gurion Airport Transfer | Private Van and Driver',
-      description:
-        'Private Ben Gurion airport transfer by Mercedes Sprinter van. Pickup at arrivals, one price for the whole van, English-speaking driver to your hotel.',
-      breadcrumb: 'Ben Gurion Airport Transfer',
-      h1: 'Ben Gurion Airport transfer by private van',
-      heroImage: 'pageAirport',
-      heroImageAlt:
-        'The arrivals walkway at Ben Gurion Airport, lit through its glass roof.',
-      lead: 'Land, find your driver, and go straight to your hotel. No taxi queue, no working out the train, and no splitting the group across two cars.',
-      body: [
-        {
-          heading: 'What the transfer includes',
-          paragraphs: [
-            'We meet arriving passengers in the Ben Gurion arrivals hall and take you and your luggage directly to the address you give us. The van is private: nobody else is picked up along the way.',
-            'The price covers the vehicle and the driver for the journey, so it does not change if there are two of you or twelve.',
-          ],
-          bullets: [
-            'Pickup at the arrivals hall',
-            'Help with luggage to and from the van',
-            'Door-to-door, no other stops unless you ask for them',
-            'One price for the whole van, agreed before you book',
-          ],
-        },
-        {
-          heading: 'Departures as well as arrivals',
-          paragraphs: [
-            'We also drive to the airport. Tell us your flight time and where we are collecting you, and we will agree a pickup time with you in advance.',
-            '[PLACEHOLDER: add how far ahead of a flight you recommend leaving, if you want to give that guidance.]',
-          ],
-          bullets: [],
-        },
-      ],
-      routeIds: [
-        'tlv-jerusalem',
-        'tlv-telaviv',
-        'tlv-deadsea',
-        'tlv-haifa',
-        'tlv-tiberias',
-        'tlv-eilat',
-      ],
-      faq: [
-        {
-          q: 'Where does the driver wait at Ben Gurion?',
-          a: 'We pick up at the arrivals hall. [PLACEHOLDER: add the exact meeting point and how travellers will recognise the driver.]',
-        },
-        {
-          q: 'What if my flight lands early or late?',
-          a: '[PLACEHOLDER: describe how you handle early and late arrivals and any waiting charge.]',
-        },
-        {
-          q: 'Can you fit our luggage?',
-          a: `Each van takes ${FLEET.luggage} large suitcases alongside ${FLEET.seats} passengers. If you are carrying more than that, such as bikes, instruments or sports gear, tell us when you ask for a price.`,
-        },
-      ],
-      serviceType: 'Airport transfer',
-    },
-
-    privateDriver: {
-      title: 'Private Driver in Israel | Van and Driver by the Day',
-      description:
-        'Hire a private driver in Israel with a Mercedes Sprinter van. Keep the van for a full day, or book a one-way ride between any two places.',
-      breadcrumb: 'Private Driver Israel',
-      h1: 'Private driver in Israel',
-      heroImage: 'pagePrivateDriver',
-      heroImageAlt:
-        'A car on an open road curving through dry hills in northern Israel.',
-      lead: 'Hire the van and the driver together, for a day or for a single journey. You decide where to go and how long to stay.',
-      body: [
-        {
-          heading: 'A full day with a driver',
-          paragraphs: [
-            'The van and driver are yours for the day. You set the route, stop where you want, and leave your bags in the van between stops.',
-            'This works well for families and small groups covering several places in one day, or for anyone who would rather not drive on unfamiliar roads.',
-          ],
-          bullets: [
-            'You choose the route and the pace',
-            'Luggage and shopping stay in the van',
-            'The driver waits at each stop',
-            'One price for the day, for the whole van',
-          ],
-        },
-        {
-          heading: 'One-way rides between cities',
-          paragraphs: [
-            'If you only need to get from one place to another, we do that too: hotel to hotel, city to port, or anywhere else in Israel.',
-            'Send us the pickup point and destination and we will reply with a price for the van.',
-          ],
-          bullets: [],
-        },
-      ],
-      routeIds: ['jerusalem-deadsea', 'telaviv-jerusalem', 'tlv-haifa', 'tlv-eilat'],
-      faq: [
-        {
-          q: 'How long is a full day?',
-          a: '[PLACEHOLDER: say how many hours a full day covers and what happens if the day runs longer.]',
-        },
-        {
-          q: 'Does the driver guide the tour?',
-          a: '[PLACEHOLDER: say whether your drivers act as guides, and whether you can arrange a licensed guide separately.]',
-        },
-        {
-          q: 'Can we change the plan on the day?',
-          a: 'Usually yes. Tell the driver what you would like to do and they will say whether it fits in the time you have booked.',
-        },
-      ],
-      serviceType: 'Private van with driver',
-    },
-
-    jerusalemTour: {
-      title: 'Private Jerusalem Day Tour | Van and Driver from Tel Aviv',
-      description:
-        'A private Jerusalem day tour by van with your own driver. Pickup from Tel Aviv, Ben Gurion or your hotel, at your own pace with no group to follow.',
-      breadcrumb: 'Jerusalem Day Tour',
-      h1: 'Private Jerusalem day tour',
-      heroImage: 'pageJerusalem',
-      heroImageAlt:
-        'The Western Wall plaza in Jerusalem, with the gold Dome of the Rock behind it.',
-      lead: 'Spend the day in Jerusalem with a van and driver of your own. We collect you from your hotel and bring you back when you are ready to leave.',
-      body: [
-        {
-          heading: 'How the day works',
-          paragraphs: [
-            'We pick you up in the morning from Tel Aviv, Ben Gurion Airport or wherever you are staying, and drive to Jerusalem. The driver stays with you for the day, moving the van between stops so you are not walking back to where you started.',
-            'You decide what to see and how long to spend at each place. If you have a guide booked, we will collect them too.',
-          ],
-          bullets: [
-            'Hotel pickup and drop-off',
-            'You set the itinerary',
-            'The driver moves the van between stops',
-            'One price for the whole van',
-          ],
-        },
-        {
-          heading: 'Where people usually go',
-          paragraphs: [
-            'Most visitors want the Old City and the viewpoint on the Mount of Olives, and many add Yad Vashem or the Israel Museum. Tell us what matters to you and we will work out a sensible order.',
-            '[PLACEHOLDER: add a suggested itinerary here once you have one you are happy to publish, including entry fees you do or do not cover.]',
-          ],
-          bullets: [],
-        },
-      ],
-      routeIds: ['telaviv-jerusalem', 'tlv-jerusalem', 'jerusalem-deadsea'],
-      faq: [
-        {
-          q: 'Do you include entry tickets?',
-          a: '[PLACEHOLDER: say which entry fees, if any, are included in the price.]',
-        },
-        {
-          q: 'Can we do Jerusalem and the Dead Sea in one day?',
-          a: 'Some groups do. It makes for a long day, so tell us how early you are willing to start and we will say honestly whether it works.',
-        },
-        {
-          q: 'What should we wear?',
-          a: 'Several religious sites in the Old City ask visitors to cover shoulders and knees. Comfortable shoes help, because the Old City is cobbled and hilly.',
-        },
-      ],
-      serviceType: 'Private day tour',
-    },
-
-    deadSeaTour: {
-      title: 'Dead Sea and Masada Private Tour | Private Van and Driver',
-      description:
-        'A private Dead Sea and Masada tour by van. Pickup from Jerusalem, Tel Aviv or your hotel, your own driver, and one price for the whole van.',
-      breadcrumb: 'Dead Sea & Masada Tour',
-      h1: 'Dead Sea and Masada private tour',
-      heroImage: 'pageDeadSea',
-      heroImageAlt:
-        'The cliffs of Masada rising above the desert plain, with the Dead Sea beyond.',
-      lead: 'Masada in the morning, the Dead Sea in the afternoon, and a van waiting for you at both. No coach timetable to keep to.',
-      body: [
-        {
-          heading: 'A typical day',
-          paragraphs: [
-            'Groups usually start early to reach Masada before the heat, then spend the afternoon at the Dead Sea. The driver stays with the van, so you can leave towels and bags behind while you swim.',
-            'Ein Gedi is close by if you want a walk between the two, and we can add it if the timing works.',
-          ],
-          bullets: [
-            'Early start to beat the heat at Masada',
-            'Van and driver wait at each stop',
-            'Somewhere to leave your things while you swim',
-            'Pickup and drop-off at your hotel',
-          ],
-        },
-        {
-          heading: 'Things worth knowing',
-          paragraphs: [
-            'The Dead Sea area is hot for most of the year and there is very little shade at Masada. Bring water, a hat and sunscreen, and sandals you can walk into the water with, because the salt crystals on the shore are sharp.',
-            '[PLACEHOLDER: add whether the price includes the Masada cable car, beach entry, or anything else.]',
-          ],
-          bullets: [],
-        },
-      ],
-      routeIds: ['jerusalem-deadsea', 'tlv-deadsea'],
-      faq: [
-        {
-          q: 'Is the cable car at Masada included?',
-          a: '[PLACEHOLDER: say whether the cable car and site entry are included in your price.]',
-        },
-        {
-          q: 'Which Dead Sea beach do you go to?',
-          a: '[PLACEHOLDER: name the beach or beaches you normally use and whether entry is paid.]',
-        },
-        {
-          q: 'How long is the drive?',
-          a: '[PLACEHOLDER: add approximate drive times from Jerusalem and from Tel Aviv.]',
-        },
-      ],
-      serviceType: 'Private day tour',
-    },
-
-    galileeTour: {
-      title: 'Galilee Private Tour | Van and Driver for the Day',
-      description:
-        'A private Galilee tour by van with your own driver. The Sea of Galilee, Nazareth and the north of Israel, at your own pace with hotel pickup.',
-      breadcrumb: 'Galilee Tour',
-      h1: 'Galilee private tour',
-      heroImage: 'pageGalilee',
-      heroImageAlt:
-        'Green hills above the Sea of Galilee with the lake visible in the distance.',
-      lead: 'The north of Israel in a day, with a van and driver of your own. Good for groups who want to cover ground without renting a car.',
-      body: [
-        {
-          heading: 'What a Galilee day can cover',
-          paragraphs: [
-            'The Galilee is spread out, which is exactly why a van helps. Most groups build a day around the Sea of Galilee and add Nazareth, Capernaum, the Jordan River or a viewpoint in the Golan Heights.',
-            'Tell us what you want to see and roughly when you need to be back, and we will tell you what fits comfortably in the day.',
-          ],
-          bullets: [
-            'Hotel pickup, including from Tel Aviv and Jerusalem',
-            'You choose the stops',
-            'The driver waits at each one',
-            'One price for the whole van',
-          ],
-        },
-        {
-          heading: 'Staying in the north',
-          paragraphs: [
-            'If you are staying in Tiberias or the Galilee rather than driving up for the day, we can start from your hotel and cover more ground.',
-            '[PLACEHOLDER: add whether you offer multi-day trips in the north and how those are priced.]',
-          ],
-          bullets: [],
-        },
-      ],
-      routeIds: ['tlv-tiberias', 'tlv-haifa'],
-      faq: [
-        {
-          q: 'Is a Galilee day trip from Tel Aviv too long?',
-          a: '[PLACEHOLDER: give your honest view, with the approximate drive time each way.]',
-        },
-        {
-          q: 'Can we visit the Golan Heights?',
-          a: 'It can usually be added to a Galilee day. Tell us which sites you have in mind and we will say whether they fit.',
-        },
-        {
-          q: 'Do you go to Nazareth?',
-          a: 'Yes, Nazareth is a common stop on a Galilee day and we can build the route around it.',
-        },
-      ],
-      serviceType: 'Private day tour',
-    },
-
-    contact: {
-      title: 'Contact IsraelPrivateVan | Private Van and Driver in Israel',
-      description:
-        'Get in touch about a private van and driver in Israel. Message us on WhatsApp, call, or send the form and we will reply with a price.',
-      breadcrumb: 'Contact',
-      h1: 'Contact us',
-      heroImage: 'pageContact',
-      heroImageAlt:
-        'The Tel Aviv shoreline and skyline seen from Jaffa.',
-      lead: 'WhatsApp is the fastest way to reach us. You can also call, email, or fill in the form and we will come back to you.',
-      body: [
-        {
-          heading: 'Before you write',
-          paragraphs: [
-            'It helps if you can tell us the date, how many people are travelling, where we are collecting you and where you want to go. With that we can usually send a price straight away.',
-            'If you are arriving on a flight, the flight number is useful too.',
-          ],
-          bullets: [],
-        },
-      ],
-      routeIds: [],
-      faq: [],
-    },
-  } satisfies Record<PageKey, PageContent>,
+  /** Page content lives in ./en-pages.ts, which is long enough on its own. */
+  pages,
 
   /* ---------------------------------------------------------------- */
   /* Schema.org descriptions                                           */
