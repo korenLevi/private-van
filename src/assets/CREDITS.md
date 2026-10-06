@@ -18,6 +18,8 @@ its slot, which counts as a change and is noted here as the licence asks.
 | `src/assets/page-ben-gurion-airport-transfer.jpg` | Daylit arrivals walkway at Ben Gurion Airport | Sarah Stierch | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ben_Gurion_International_Airport_Walkway_-_Sarah_Stierch.jpg) |
 | `src/assets/page-contact.jpg` | Tel Aviv shoreline seen from Jaffa | רוני קניגסברג (Roni Kenigsberg), PikiWiki Israel | [CC BY 2.5](https://creativecommons.org/licenses/by/2.5/) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:143476_jaffa_PikiWiki_Israel.jpg) |
 | `public/og-default.jpg` | Panorama of the Old City of Jerusalem | 365grad | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Panorama_Jerusalem_Tempelberg.jpg) |
+| `src/assets/service-airport-transfer.jpg` | Arriving passengers on the walkway to baggage claim, Ben Gurion Airport | Rakoon | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:DSC-0945-ben-gurion-airport-august-2017.jpg) |
+| `src/assets/service-full-day.jpg` | The Tower of David and the Ottoman city walls of Jerusalem at dusk | Jorge Láscar | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:The_Tower_of_David,_The_Citadel_and_the_impressive_16th_century_Ottoman_city_walls,_Jerusalem_Old_City_(10351163283).jpg) |
 
 | `src/assets/card-airport-transfer.jpg` | Travellers wheeling suitcases through an airport departures hall | digital cat  | CC BY 2.0 | [source](https://www.flickr.com/photos/14646075@N03/4581765179) |
 | `src/assets/card-business-travel.jpg` | A business traveller walking through an airport terminal with bags | Nicola since 1972 | CC BY 2.0 | [source](https://www.flickr.com/photos/15216811@N06/6751768291) |
@@ -37,8 +39,38 @@ These slots are **not** filled with stock photography, on purpose:
   "the same vans on every trip". Illustrating that with a stranger's van would
   be a claim about the business that is not true. These must be photographs of
   the actual fleet.
-- `service-*.jpg` (3 images) — shown full-bleed with no overlay, so they need
-  editorial-quality photographs. Nothing at that standard was available under a
-  licence safe for commercial use.
 - `page-galilee.jpg` — Wikimedia Commons' Galilee photography is almost all
   historical black and white; nothing suitable was found.
+
+## Why two of the three service cards show places, not vans
+
+`service-*.jpg` sit on cards that describe what the business sells, so the
+obvious picture is a van. There is no freely licensed one to use. Every CC BY
+or CC0 passenger van on Commons and Openverse is somebody else's vehicle in
+somebody else's livery — a UK community minibus, a German shuttle — and
+putting one on a card headed "our van, your driver" is a claim about the
+fleet that is not true. The only ones that look right are CC BY-SA, which
+this project does not take.
+
+So the airport and full-day cards show where the service goes instead: the
+arrivals walkway at Ben Gurion, Jerusalem at dusk. True, licensed, and
+recognisably Israel. The third card now carries a supplied Sprinter
+photograph — see below.
+
+## Supplied photographs, licence unconfirmed
+
+These are not from Commons or Openverse. They came with the project and are
+in use now, but none of them has a licence on file, and several carry marks
+of the listing they were taken from:
+
+| Used as | Subject | Note |
+| --- | --- | --- |
+| `src/assets/service-city-to-city.jpg` | Black Mercedes-Benz Sprinter, front quarter | Cropped from `2024-Mercedes-Benz-Sprinter.jpg`; shot on a vehicle lot, other cars visible behind |
+| `src/assets/black-sprinter-forward-01.jpg` | Black Sprinter, front quarter (hero) | Reads as a dealer or upfitter listing photo |
+| `src/assets/main-pic.jpg` | Black Sprinter, side on | Visibly watermarked "Chicago Motor Cars" |
+| `src/assets/stick-driver.jpg` | Black Sprinter outside a building | Reads as a dealer listing photo |
+| `src/assets/wedding-van.jpg` | Van dressed for a wedding | Provenance unknown |
+
+Two things to settle before this site starts buying traffic: whether there is
+permission to use each of these, and whether they show vehicles the business
+actually operates. Photographs of the real fleet solve both at once.

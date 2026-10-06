@@ -124,9 +124,9 @@ const en = {
         id: 'airport-transfer',
         title: 'Ben Gurion Airport Transfers',
         body: 'We pick you up at arrivals and drive you straight to your hotel or apartment. One price for the whole van, so the group and the luggage stay together.',
-        image: 'pageAirport',
+        image: 'serviceAirport',
         imageAlt:
-          'Travellers loading suitcases into a white Mercedes Sprinter van outside an airport terminal.',
+          'Arriving passengers walking towards baggage claim at Ben Gurion Airport.',
         pageKey: 'airportTransfers',
         linkLabel: 'Airport transfers',
       },
@@ -136,7 +136,7 @@ const en = {
         body: 'Keep the van and driver for the day and set your own route. Good for families and small groups who want to see several places without changing vehicles.',
         image: 'serviceFullDay',
         imageAlt:
-          'Driver standing beside the open side door of a Mercedes Sprinter van on a quiet street.',
+          'The Tower of David and the Old City walls of Jerusalem lit at dusk, above the road below.',
         pageKey: 'vanWithDriver',
         linkLabel: 'Private driver',
       },
@@ -146,7 +146,7 @@ const en = {
         body: 'One-way rides between cities, hotels, ports and border crossings. Tell us where you are and where you need to be, and we will give you a price.',
         image: 'serviceCityToCity',
         imageAlt:
-          'White Mercedes Sprinter van driving along a highway through open countryside in Israel.',
+          'A black Mercedes-Benz Sprinter passenger van, seen from the front quarter.',
         pageKey: 'vanWithDriver',
         linkLabel: 'City to city',
       },
@@ -174,7 +174,7 @@ const en = {
       {
         pageKey: 'vanWithDriver',
         label: 'Van with a driver for the day',
-        image: 'pagePrivateDriver',
+        image: 'stickDriver',
         imageAlt: 'A car on an open road curving through dry hills in northern Israel.',
       },
       {
@@ -198,7 +198,7 @@ const en = {
       {
         pageKey: 'weddingTransportation',
         label: 'Weddings and events',
-        image: 'cardWedding',
+        image: 'weddingVan',
         imageAlt: 'A white tulle bow tied to a wedding car.',
       },
       {

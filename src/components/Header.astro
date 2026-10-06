@@ -16,13 +16,11 @@ const { locale, pageKey } = Astro.props;
 const t = useTranslations(locale);
 const home = pathFor('home', locale);
 
-/** Homepage section anchors work from any page. */
+/** Homepage section anchors work from any page.   { label: t.nav.routes, hash: 'routes' },   { label: t.nav.reviews, hash: 'reviews' },   { label: t.nav.fleet, hash: 'fleet' },
+  { label: t.nav.faq, hash: 'faq' } ,   { label: t.nav.services, hash: 'services' }, */
 const sections = [
-  { label: t.nav.services, hash: 'services' },
-  { label: t.nav.routes, hash: 'routes' },
-  { label: t.nav.fleet, hash: 'fleet' },
-  { label: t.nav.reviews, hash: 'reviews' },
-  { label: t.nav.faq, hash: 'faq' },
+
+
 ];
 
 const isHome = Astro.url.pathname.replace(/\/$/, '') === home.replace(/\/$/, '');

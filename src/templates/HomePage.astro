@@ -3,21 +3,23 @@ import CtaBand from '../components/sections/CtaBand.astro';
 import Faq from '../components/sections/Faq.astro';
 import Fleet from '../components/sections/Fleet.astro';
 import Hero from '../components/sections/Hero.astro';
-import Offerings from '../components/sections/Offerings.astro';
 import HowItWorks from '../components/sections/HowItWorks.astro';
+import HowItWorks from '../components/sections/Faq.astro';
 import PopularRoutes from '../components/sections/PopularRoutes.astro';
 import RequestQuote from '../components/sections/RequestQuote.astro';
+import Fleet from '../components/sections/Fleet.astro';
 import Reviews from '../components/sections/Reviews.astro';
 import Services from '../components/sections/Services.astro';
 import TrustStrip from '../components/sections/TrustStrip.astro';
+import Offerings from '../components/sections/Offerings.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 import { SITE } from '../config/site';
 import type { Locale } from '../i18n/config';
-import { pathFor } from '../i18n/routes';
 import { getPage } from '../i18n/ui';
-import { absoluteUrl, localeDefinition, useTranslations } from '../i18n/utils';
+import { absoluteUrl, useTranslations } from '../i18n/utils';
 import {
+  faqSchema,
   graph,
   localBusinessSchema,
   taxiServiceSchema,
@@ -38,22 +40,17 @@ const ogImageUrl = absoluteUrl(SITE.ogImage, Astro.site);
  * LocalBusiness and TaxiService describe the business; WebSite anchors the
  * domain; FAQPage covers the questions further down this page. One @graph
  * rather than four script tags.
- *
- *
- */
-const canonical = absoluteUrl(pathFor('home', locale), Astro.site);
-
-/**
- * LocalBusiness and TaxiService describe the business once, under a stable
- * @id shared by all three languages. WebSite is per language version.
- *
- * No FAQPage here: the questions live on /faq/, and structured data must
- * describe content that is actually on the page it sits on.
+ * <Reviews locale={locale} />
+ *   <PopularRoutes locale={locale} tone="paper" />
+ *     <HowItWorks locale={locale} />
+ *       <Fleet locale={locale} />
+ *        <Faq locale={locale} />
  */
 const jsonLd = graph(
   localBusinessSchema(t.schema.businessDescription, ogImageUrl),
   taxiServiceSchema(t.schema.businessDescription, t.schema.serviceType),
-  websiteSchema(localeDefinition(locale).hreflang, canonical),
+  websiteSchema(),
+  faqSchema(t.faq.items),
 );
 ---
 
@@ -66,11 +63,10 @@ const jsonLd = graph(
 >
   <Hero locale={locale} />
   <TrustStrip locale={locale} />
-  <Offerings locale={locale} tone="sand" />
+  <Services locale={locale} />
+  <Offerings locale={locale} />
  
   
-  <HowItWorks locale={locale} />
-  <Reviews locale={locale} />
   <RequestQuote locale={locale} tone="paper" source="homepage-footer-form" />
   <CtaBand locale={locale} />
 </BaseLayout>

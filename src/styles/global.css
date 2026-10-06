@@ -42,7 +42,7 @@
  * only linked on /he/ pages (see BaseLayout).
  */
 html[lang='he'] {
-  --font-display: var(--font-frank-ruhl), 'Narkisim', 'Times New Roman', serif;
+  --font-display: var(--font-rubik), 'Arial Hebrew', system-ui, sans-serif;
   --font-body: var(--font-assistant), 'Arial Hebrew', system-ui, sans-serif;
 }
 
@@ -91,12 +91,23 @@ html[lang='he'] {
     text-wrap: balance;
   }
 
-  /* Hebrew has no capitals and almost no ascender/descender play, so the
-     leading and negative tracking tuned for Fraunces squeeze it. Loosen
-     both. In @layer base, so a heading's own `leading-*` utility still wins. */
+  /* Hebrew glyphs sit almost entirely on the x-height, so the tight display
+     leading carries over fine — but the -0.015em tracking tuned to knit
+     Fraunces together starts closing the gaps that tell מ from ם and ב from
+     כ. Zero it out. Headings keep whatever `leading-*` they set themselves. */
   html[lang='he'] :is(h1, h2, h3, h4) {
-    line-height: 1.25;
+    /* Both Hebrew faces are sans, so the serif/sans contrast that separates
+       a Latin heading from its body copy is gone. Weight carries it instead. */
+    font-weight: 600;
+    /* The -0.015em tracking that knits Fraunces together starts closing the
+       gaps that tell מ from ם and ב from כ. Zero it out. */
     letter-spacing: 0;
+  }
+
+  /* Uniform x-height also makes a Hebrew paragraph read greyer and denser
+     than the same Latin one; a little more leading buys the lines back. */
+  html[lang='he'] body {
+    line-height: 1.75;
   }
 
   p {

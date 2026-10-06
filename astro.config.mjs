@@ -57,23 +57,26 @@ export default defineConfig({
       optimizedFallbacks: true,
     },
 
-    // Hebrew. Fraunces and Manrope carry no Hebrew glyphs, so /he/ used to
-    // fall through to whatever David / Frank Ruehl the OS ships — a dated,
-    // high-contrast serif that reads nothing like the Latin pages. These two
-    // are the Hebrew counterparts: Frank Ruhl Libre keeps the editorial
-    // serif voice of Fraunces in the headings, Assistant is the clean
-    // contemporary sans that stands in for Manrope in running text. Both
-    // carry latin as well, so brand names and digits inside Hebrew
-    // sentences stay in the same family instead of switching face mid-line.
+    // Hebrew. Fraunces and Manrope carry no Hebrew glyphs, so /he/ would
+    // otherwise fall through to whatever David / Frank Ruehl the OS ships —
+    // a dated, high-contrast serif that reads nothing like the Latin pages.
+    //
+    // Hebrew does not pair a serif display with a sans body the way the
+    // Latin side does: a Hebrew serif reads bookish and dated rather than
+    // editorial, whatever its vintage. So both roles go to contemporary
+    // sans faces and the hierarchy is carried on weight and size instead —
+    // Rubik's geometric forms for headings, Assistant for running text.
+    // Both carry latin too, so brand names and digits inside a Hebrew
+    // sentence stay in the same family instead of switching face mid-line.
     {
       provider: fontProviders.google(),
-      name: 'Frank Ruhl Libre',
-      cssVariable: '--font-frank-ruhl',
-      weights: [500],
+      name: 'Rubik',
+      cssVariable: '--font-rubik',
+      weights: [500, 600],
       styles: ['normal'],
       subsets: ['hebrew', 'latin'],
       display: 'swap',
-      fallbacks: ['Narkisim', 'Times New Roman', 'serif'],
+      fallbacks: ['Arial Hebrew', 'system-ui', 'sans-serif'],
       optimizedFallbacks: true,
     },
     {

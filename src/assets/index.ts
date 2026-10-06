@@ -33,10 +33,12 @@ import pageJerusalem from './page-jerusalem-day-tour.jpg';
 import pageDeadSea from './page-dead-sea-masada.jpg';
 import pageGalilee from './page-galilee.jpg';
 import pageContact from './page-contact.jpg';
-
+import weddingVan from './wedding-van.jpg'
+import stickDriver from './stick-driver.jpg'
 export const IMAGES = {
   heroPoster,
-
+  weddingVan,
+  stickDriver,
   // Service carousel cards, cropped 4:5
   cardAirportTransfer,
   cardBusinessTravel,

@@ -158,7 +158,7 @@ const he: Translation = {
         title: 'הסעות לנתב"ג',
         body: 'אנחנו אוספים אתכם באולם הנכנסים ונוסעים ישירות למלון או לבית. מחיר אחד לרכב כולו, כך שהקבוצה והמזוודות נשארות יחד.',
         image: 'serviceAirport',
-        imageAlt: 'נוסעים מעמיסים מזוודות לוואן לבן מחוץ לטרמינל.',
+        imageAlt: 'נוסעים שנחתו הולכים לכיוון אולם המזוודות בנתב"ג.',
         pageKey: 'airportTransfers',
         linkLabel: 'הסעות לנתב"ג',
       },
@@ -167,7 +167,7 @@ const he: Translation = {
         title: 'ואן עם נהג ליום שלם',
         body: 'הוואן והנהג שלכם ליום שלם, ואתם קובעים את המסלול. מתאים למשפחות ולקבוצות שרוצות לכסות כמה מקומות בלי להחליף רכב.',
         image: 'serviceFullDay',
-        imageAlt: 'נהג עומד ליד דלת הצד הפתוחה של ואן נוסעים.',
+        imageAlt: 'מגדל דוד וחומות העיר העתיקה בירושלים מוארים בשעת דמדומים, מעל הכביש.',
         pageKey: 'vanWithDriver',
         linkLabel: 'ואן עם נהג',
       },
@@ -176,7 +176,7 @@ const he: Translation = {
         title: 'הסעות פרטיות בכל הארץ',
         body: 'נסיעות בכיוון אחד בין ערים, מלונות, נמלים ומעברי גבול. תגידו לנו מאיפה ולאן ונחזור עם מחיר.',
         image: 'serviceCityToCity',
-        imageAlt: 'ואן נוסעים לבן בכביש מהיר באזור פתוח בישראל.',
+        imageAlt: 'ואן נוסעים מרצדס ספרינטר שחור, במבט משלושת רבעי חזית.',
         pageKey: 'privateTransfers',
         linkLabel: 'הסעות פרטיות',
       },
@@ -255,6 +255,7 @@ const he: Translation = {
     headingAccent: 'ללקוחות שלנו',
     previous: 'שירותים קודמים',
     next: 'שירותים נוספים',
+    
     goTo: 'מעבר לשירות',
     items: [
       {
@@ -266,7 +267,7 @@ const he: Translation = {
       {
         pageKey: 'vanWithDriver',
         label: 'ואן עם נהג צמוד ליום שלם',
-        image: 'pagePrivateDriver',
+        image: 'stickDriver',
         imageAlt: 'מכונית בכביש פתוח המתפתל בין גבעות יבשות בצפון הארץ.',
       },
       {
@@ -290,7 +291,7 @@ const he: Translation = {
       {
         pageKey: 'weddingTransportation',
         label: 'הסעות לחתונות ולאירועים',
-        image: 'cardWedding',
+        image: 'weddingVan',
         imageAlt: 'פפיון טול לבן קשור לרכב חתונה.',
       },
       {
