@@ -1,5 +1,6 @@
 ---
 import { ROUTES, isPlaceholder, whatsappHref, type Route } from '../../config/site';
+import { fill } from '../../lib/text';
 import type { Locale } from '../../i18n/config';
 import { useTranslations } from '../../i18n/utils';
 import Icon from '../Icon.astro';
@@ -39,7 +40,7 @@ const routes: Route[] = routeIds?.length
 const label = (place: string) => t.routes.routeNames[place] ?? place;
 
 const askMessage = (route: Route) =>
-  `Hi, what is the price for a private van from ${route.from} to ${route.to}?`;
+  fill(t.routes.askMessage, { from: label(route.from), to: label(route.to) });
 ---
 
 <section id={id} class:list={['section-y', tone === 'sand' && 'bg-sand']}>

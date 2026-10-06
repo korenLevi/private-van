@@ -62,6 +62,8 @@ const jsonLd = graph(
 const waHref = whatsappHref(t.form.genericWhatsappMessage);
 ---
 
+
+
 <BaseLayout
   pageKey={pageKey}
   locale={locale}
@@ -214,7 +216,7 @@ const waHref = whatsappHref(t.form.genericWhatsappMessage);
   }
 
   {
-    page.routeIds.length > 0 && (
+    page.routeIds?.length > 0 && (
       <PopularRoutes
         locale={locale}
         routeIds={page.routeIds}
@@ -224,20 +226,7 @@ const waHref = whatsappHref(t.form.genericWhatsappMessage);
     )
   }
 
-  {
-    page.faq.length > 0 && (
-      <Faq
-        locale={locale}
-        items={page.faq}
-        tone={
-          (page.body.length + (page.routeIds.length > 0 ? 1 : 0)) % 2 === 1
-            ? 'paper'
-            : 'sand'
-        }
-        id="faq"
-      />
-    )
-  }
+
 
   {page.showFleet && <Fleet locale={locale} />}
 

@@ -73,6 +73,9 @@ const he: Translation = {
     errorRequired: 'נא למלא שדה זה.',
     errorEmail: 'נא להזין כתובת אימייל תקינה.',
     emailCopyNote: 'עותק של הפנייה נשלח אלינו גם במייל, כדי ששום בקשה לא תלך לאיבוד.',
+    whatsappTemplate:
+      'שלום, אשמח לקבל הצעת מחיר להסעה בוואן פרטי.\n\nשירות: {service}\nמוצא: {from}\nיעד: {to}\nתאריך: {date}\nמספר נוסעים: {passengers}\nשם: {name}\n{notes}',
+    whatsappNotesPrefix: 'הערות: ',
     genericWhatsappMessage: 'שלום, אשמח לקבל הצעת מחיר להסעה בוואן פרטי.',
   },
 
@@ -95,6 +98,8 @@ const he: Translation = {
     errorRequired: 'נא למלא שדה זה.',
     errorEmail: 'נא להזין כתובת אימייל תקינה.',
     errorContact: 'נא להשאיר טלפון או אימייל.',
+    whatsappTemplate:
+      'שלום, אשמח לקבל הצעת מחיר להסעה בוואן פרטי.\n\nשם: {name}\nטלפון: {phone}\nאימייל: {email}\n\n{message}',
   },
 
   cta: {
@@ -195,6 +200,7 @@ const he: Translation = {
     notListed: 'נוסעים למקום אחר?',
     notListedBody: 'אנחנו נוסעים לכל מקום בארץ. שלחו נקודת איסוף ויעד ונחזור עם מחיר.',
     notListedCta: 'לבקש מחיר',
+    askMessage: 'שלום, כמה עולה הסעה בוואן פרטי מ{from} ל{to}?',
     routeNames: {
       'Ben Gurion Airport': 'נתב"ג',
       Jerusalem: 'ירושלים',

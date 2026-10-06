@@ -100,24 +100,25 @@ const pages: Record<PageKey, PageContent> = {
         ],
         bullets: [],
       },
-      {
-        heading: 'Transfers to the airport as well',
-        paragraphs: [
-          'We drive to Ben Gurion as often as we drive from it. Give us your flight time and your pickup address and we will agree a collection time with you in advance.',
-          '[PLACEHOLDER: add how far ahead of a flight you recommend leaving, if you want to publish that guidance.]',
-        ],
-        bullets: [],
-      },
-      {
-        heading: 'Night flights and early mornings',
-        paragraphs: [
-          'Ben Gurion is busiest very late and very early, which is exactly when public transport thins out. We run at those hours.',
-          '[PLACEHOLDER: confirm your night and Shabbat availability, and whether either changes the price.]',
-        ],
-        bullets: [],
-      },
+      // {
+      //   heading: 'Transfers to the airport as well',
+      //   paragraphs: [
+      //     'We drive to Ben Gurion as often as we drive from it. Give us your flight time and your pickup address and we will agree a collection time with you in advance.',
+      //     '[PLACEHOLDER: add how far ahead of a flight you recommend leaving, if you want to publish that guidance.]',
+      //   ],
+      //   bullets: [],
+      // },
+      // {
+      //   heading: 'Night flights and early mornings',
+      //   paragraphs: [
+      //     'Ben Gurion is busiest very late and very early, which is exactly when public transport thins out. We run at those hours.',
+      //     '[PLACEHOLDER: confirm your night and Shabbat availability, and whether either changes the price.]',
+      //   ],
+      //   bullets: [],
+      // },
     ],
-    routeIds: ['tlv-jerusalem', 'tlv-telaviv', 'tlv-haifa', 'tlv-deadsea', 'tlv-eilat'],
+    routeIds: [],
+    // routeIds: ['tlv-jerusalem', 'tlv-telaviv', 'tlv-haifa', 'tlv-deadsea', 'tlv-eilat'],
     faq: [
       {
         q: 'Where does the driver wait at Ben Gurion?',
@@ -434,21 +435,21 @@ const pages: Record<PageKey, PageContent> = {
         ],
         bullets: [],
       },
-      {
-        heading: 'Who books a van and driver for the day',
-        paragraphs: [
-          'Families covering several places in one day. Business visitors with meetings in three cities. Groups who want a guide to join them and need somewhere to put everyone.',
-          `Our drivers speak Hebrew, English and Russian, so a Russian-speaking group is not left working things out in a second language.`,
-        ],
-        bullets: [],
-      },
-      {
-        heading: 'How long a day runs',
-        paragraphs: [
-          '[PLACEHOLDER: say how many hours a full day covers, what happens if the day runs longer, and how overtime is charged.]',
-        ],
-        bullets: [],
-      },
+      // {
+      //   heading: 'Who books a van and driver for the day',
+      //   paragraphs: [
+      //     'Families covering several places in one day. Business visitors with meetings in three cities. Groups who want a guide to join them and need somewhere to put everyone.',
+      //     `Our drivers speak Hebrew, English and Russian, so a Russian-speaking group is not left working things out in a second language.`,
+      //   ],
+      //   bullets: [],
+      // },
+      // {
+      //   heading: 'How long a day runs',
+      //   paragraphs: [
+      //     '[PLACEHOLDER: say how many hours a full day covers, what happens if the day runs longer, and how overtime is charged.]',
+      //   ],
+      //   bullets: [],
+      // },
     ],
     routeIds: [],
     faq: [

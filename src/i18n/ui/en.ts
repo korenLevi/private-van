@@ -226,6 +226,8 @@ const en = {
     notListedBody:
       'We drive anywhere in Israel. Send us your pickup point and destination and we will reply with a price.',
     notListedCta: 'Ask for a price',
+    /** WhatsApp message behind each route's button. {from} and {to} are filled in. */
+    askMessage: 'Hi, what is the price for a private van from {from} to {to}?',
     routeNames: {
       'Ben Gurion Airport': 'Ben Gurion Airport',
       Jerusalem: 'Jerusalem',
