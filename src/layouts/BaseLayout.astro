@@ -87,7 +87,8 @@ const { hreflang, dir } = localeDefinition(locale);
     }
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
+    {/* iOS does not render an SVG in this slot, so it gets the PNG mark. */}
+    <link rel="apple-touch-icon" sizes="180x180" href="/logo-192.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     {jsonLd && <script type="application/ld+json" is:inline set:html={jsonLd} />}

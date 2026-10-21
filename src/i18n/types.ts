@@ -41,12 +41,15 @@ export type BodySection = {
   bullets: readonly string[];
 };
 
-/** Facts a route page states up front: how long, how far, which vehicle. */
+/**
+ * Facts a route page states up front. No drive time or distance: both depend
+ * on the hour and the exact address, and are given per quote instead.
+ */
 export type TripFacts = {
-  duration: string;
-  distance: string;
   vehicle: string;
   seats: string;
+  pickup: string;
+  availability: string;
 };
 
 /**

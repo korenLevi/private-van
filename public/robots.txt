@@ -4,4 +4,17 @@ Allow: /
 # Astro's on-the-fly image endpoint is not a page
 Disallow: /_image
 
+# AI search and assistant crawlers, named explicitly so the site can be
+# cited in ChatGPT, Perplexity, Claude, Gemini and Apple answers.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: PerplexityBot
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /_image
+
 Sitemap: https://israelprivatevan.com/sitemap-index.xml

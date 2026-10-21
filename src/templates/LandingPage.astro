@@ -130,10 +130,10 @@ const waHref = whatsappHref(t.form.genericWhatsappMessage);
         <div class="container-page">
           <dl class="card grid grid-cols-2 gap-x-6 gap-y-5 p-6 sm:grid-cols-4 lg:p-7">
             {[
-              { label: t.trip.duration, value: page.trip.duration },
-              { label: t.trip.distance, value: page.trip.distance },
               { label: t.trip.vehicle, value: page.trip.vehicle },
               { label: t.trip.seats, value: page.trip.seats },
+              { label: t.trip.pickup, value: page.trip.pickup },
+              { label: t.trip.availability, value: page.trip.availability },
             ].map((fact) => (
               <div class="min-w-0">
                 <dt class="text-[0.6875rem] font-semibold tracking-[0.14em] text-gold-ink uppercase">
@@ -229,6 +229,17 @@ const waHref = whatsappHref(t.form.genericWhatsappMessage);
 
 
   {page.showFleet && <Fleet locale={locale} />}
+
+  {
+    page.faq.length > 0 && (
+      <Faq
+        locale={locale}
+        items={page.faq}
+        tone={page.body.length % 2 === 0 ? 'paper' : 'sand'}
+        id="faq"
+      />
+    )
+  }
 
   {/* Three related pages, and the way back up to the hub. */}
   {

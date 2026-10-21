@@ -79,7 +79,11 @@ function telephone(): string | undefined {
 /* LocalBusiness + TaxiService (homepage)                              */
 /* ------------------------------------------------------------------ */
 
-export function localBusinessSchema(description: string, imageUrl: string) {
+export function localBusinessSchema(
+  description: string,
+  imageUrl: string,
+  logoUrl?: string,
+) {
   return prune({
     '@type': 'LocalBusiness',
     '@id': businessId,
@@ -88,7 +92,7 @@ export function localBusinessSchema(description: string, imageUrl: string) {
     description,
     url: SITE.url,
     image: imageUrl,
-    logo: imageUrl,
+    logo: logoUrl ?? imageUrl,
     telephone: telephone(),
     email: CONTACT.email,
     address: postalAddress(),

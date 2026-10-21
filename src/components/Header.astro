@@ -18,10 +18,7 @@ const home = pathFor('home', locale);
 
 /** Homepage section anchors work from any page.   { label: t.nav.routes, hash: 'routes' },   { label: t.nav.reviews, hash: 'reviews' },   { label: t.nav.fleet, hash: 'fleet' },
   { label: t.nav.faq, hash: 'faq' } ,   { label: t.nav.services, hash: 'services' }, */
-const sections = [
-
-
-];
+const sections: Array<{ label: string; hash: string }> = [];
 
 const isHome = Astro.url.pathname.replace(/\/$/, '') === home.replace(/\/$/, '');
 // `home` always ends in a slash, so appending the fragment directly is

@@ -30,7 +30,11 @@ export function useTranslations(locale: Locale): Dictionary {
  */
 export function absoluteUrl(path: string, site: URL | undefined): string {
   const origin = site ? site.origin : '';
-  const withSlash = path.endsWith('/') ? path : `${path}/`;
+  // A file keeps its name. Appending a slash to /og-default.jpg turns it into
+  // a directory that does not exist, which silently broke og:image,
+  // twitter:image and LocalBusiness.logo on every page.
+  const isFile = /\.[a-z0-9]{2,5}$/i.test(path);
+  const withSlash = isFile || path.endsWith('/') ? path : `${path}/`;
   return `${origin}${withSlash}`;
 }
 

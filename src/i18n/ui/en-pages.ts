@@ -34,16 +34,25 @@ const ALT = {
   serviceCityToCity: 'A white passenger van on a highway through open countryside in Israel.',
 } as const;
 
-/** Every route page carries the same fact block, with its own numbers. */
-const tripFacts = (duration: string, distance: string) => ({
-  duration,
-  distance,
+/**
+ * Every airport route page carries the same fact block. Drive time and
+ * distance are left out on purpose: both depend on the hour and the exact
+ * address, so they are given with each quote instead.
+ */
+const AIRPORT_TRIP = {
   vehicle: VEHICLE,
   seats: SEATS,
-});
+  pickup: 'Arrivals exit',
+  availability: '24/7',
+};
+
+/** Shared answer for the drive-time question, so it is never guessed at. */
+const DRIVE_TIME_ANSWER =
+  'It depends on the time of day and the traffic, so we do not quote one fixed figure. We track your flight and leave when you land, and for the return we work back from being at Ben Gurion three hours before your departure.';
 
 const AIRPORT_INCLUDED = [
-  'Pickup inside the Ben Gurion arrivals hall',
+  'Pickup right where you walk out of Ben Gurion arrivals',
+  'Your flight tracked, so the driver is there when you land',
   'Help with luggage to and from the van',
   'Door to door, with no other passengers',
   'One price for the whole van, agreed before you book',
@@ -95,42 +104,45 @@ const pages: Record<PageKey, PageContent> = {
       {
         heading: 'What a private airport transfer includes',
         paragraphs: [
-          'Your driver waits in the arrivals hall and helps with the luggage. Nobody else is picked up along the way, so the van goes from the terminal to your address and nowhere else.',
+          'The van waits right where you walk out of arrivals, and we track your flight so the driver is there when you actually land, early or late. Nobody else is picked up along the way, so the van goes from the terminal to your address and nowhere else.',
           'The price covers the vehicle and the driver for the journey. It does not change if two of you travel or twelve, which usually makes a van cheaper than several airport taxis once a group is more than four people.',
         ],
         bullets: [],
       },
-      // {
-      //   heading: 'Transfers to the airport as well',
-      //   paragraphs: [
-      //     'We drive to Ben Gurion as often as we drive from it. Give us your flight time and your pickup address and we will agree a collection time with you in advance.',
-      //     '[PLACEHOLDER: add how far ahead of a flight you recommend leaving, if you want to publish that guidance.]',
-      //   ],
-      //   bullets: [],
-      // },
-      // {
-      //   heading: 'Night flights and early mornings',
-      //   paragraphs: [
-      //     'Ben Gurion is busiest very late and very early, which is exactly when public transport thins out. We run at those hours.',
-      //     '[PLACEHOLDER: confirm your night and Shabbat availability, and whether either changes the price.]',
-      //   ],
-      //   bullets: [],
-      // },
+      {
+        heading: 'Transfers to the airport as well',
+        paragraphs: [
+          'We drive to Ben Gurion as often as we drive from it. We recommend being at the airport three hours before an international flight, and we set the pickup time from your address back from that, allowing for the traffic at that hour.',
+        ],
+        bullets: [],
+      },
+      {
+        heading: 'Night flights, Shabbat and holidays',
+        paragraphs: [
+          'Ben Gurion is busiest very late and very early, which is exactly when public transport thins out. On Shabbat and holidays trains and most buses do not run at all.',
+          'We work around the clock, every day of the year, so a 3 am landing or a Saturday departure is a normal booking for us.',
+        ],
+        bullets: [],
+      },
     ],
     routeIds: [],
     // routeIds: ['tlv-jerusalem', 'tlv-telaviv', 'tlv-haifa', 'tlv-deadsea', 'tlv-eilat'],
     faq: [
       {
         q: 'Where does the driver wait at Ben Gurion?',
-        a: 'In the arrivals hall. [PLACEHOLDER: add the exact meeting point and how travellers will recognise the driver.]',
+        a: 'Right where you walk out of arrivals. The van is at the terminal exit, so there is no shuttle or car park to find with your bags.',
       },
       {
         q: 'What happens if my flight is delayed?',
-        a: '[PLACEHOLDER: describe how you track flights, how long the driver waits, and whether a delay costs anything extra.]',
+        a: 'We track the flight and follow any delay, so the driver arrives for the time you actually land rather than the time on the ticket.',
       },
       {
         q: 'How much luggage fits?',
-        a: `Each van takes ${FLEET.luggage} large suitcases alongside ${SEATS} passengers. Tell us in advance about bikes, instruments or sports gear so we can plan the space.`,
+        a: 'It depends on the van and on how many seats are taken. Tell us how many suitcases you have, and about bikes, instruments or sports gear, and we will make sure the space is there.',
+      },
+      {
+        q: 'How early should we leave for a flight out?',
+        a: 'We recommend being at Ben Gurion three hours before an international departure. We set the pickup time back from that, allowing for traffic at that hour.',
       },
       {
         q: 'Can you carry a group larger than one van?',
@@ -138,7 +150,7 @@ const pages: Record<PageKey, PageContent> = {
       },
       {
         q: 'Do you have child seats?',
-        a: '[PLACEHOLDER: say which child and booster seats you can supply, and whether they cost extra.]',
+        a: 'Yes, at an extra charge. Tell us the ages of the children when you book and we will bring the right seats.',
       },
     ],
     related: ['bgJerusalem', 'bgTelAviv', 'vanWithDriver'],
@@ -155,13 +167,10 @@ const pages: Record<PageKey, PageContent> = {
     breadcrumb: 'Ben Gurion to Jerusalem',
     h1: 'Ben Gurion to Jerusalem transfer',
     intro:
-      'A private van from the Ben Gurion arrivals hall to any address in Jerusalem. One price for the vehicle, whoever is travelling, with help for the luggage at both ends.',
+      'A private van from the Ben Gurion arrivals exit to any address in Jerusalem. One price for the vehicle, whoever is travelling, with help for the luggage at both ends.',
     heroImage: 'pageJerusalem',
     heroImageAlt: ALT.pageJerusalem,
-    trip: tripFacts(
-      '[PLACEHOLDER: confirm typical drive time]',
-      '[PLACEHOLDER: confirm distance]',
-    ),
+    trip: AIRPORT_TRIP,
     included: AIRPORT_INCLUDED,
     body: [
       {
@@ -176,7 +185,7 @@ const pages: Record<PageKey, PageContent> = {
         heading: 'Why a van rather than a taxi',
         paragraphs: [
           'A family with suitcases rarely fits in one airport taxi. Splitting across two cars means two fares, two drivers and no guarantee you arrive together.',
-          `One van seats ${SEATS} with the luggage, so the group stays in one vehicle at one price.`,
+          'One van seats up to 15 passengers, so the group stays in one vehicle at one price.',
         ],
         bullets: [],
       },
@@ -185,7 +194,7 @@ const pages: Record<PageKey, PageContent> = {
     faq: [
       {
         q: 'How long does the drive take?',
-        a: '[PLACEHOLDER: confirm typical drive time, and how much longer it takes at rush hour.]',
+        a: DRIVE_TIME_ANSWER,
       },
       {
         q: 'Can you collect us from a Jerusalem hotel for the return?',
@@ -211,10 +220,7 @@ const pages: Record<PageKey, PageContent> = {
       'The shortest run we make, and the one where a private van saves the most bother. We meet you at arrivals and drive to any address in Tel Aviv or Jaffa.',
     heroImage: 'pageContact',
     heroImageAlt: ALT.pageContact,
-    trip: tripFacts(
-      '[PLACEHOLDER: confirm typical drive time]',
-      '[PLACEHOLDER: confirm distance]',
-    ),
+    trip: AIRPORT_TRIP,
     included: AIRPORT_INCLUDED,
     body: [
       {
@@ -229,7 +235,7 @@ const pages: Record<PageKey, PageContent> = {
         heading: 'Late arrivals',
         paragraphs: [
           'A good share of flights into Ben Gurion land after midnight, when the train has stopped and the taxi queue is long.',
-          '[PLACEHOLDER: confirm your night availability and whether a night pickup changes the price.]',
+          'We work around the clock, Shabbat and holidays included, and track your flight, so the van is at the arrivals exit whenever you land.',
         ],
         bullets: [],
       },
@@ -238,7 +244,7 @@ const pages: Record<PageKey, PageContent> = {
     faq: [
       {
         q: 'How long does the drive take?',
-        a: '[PLACEHOLDER: confirm typical drive time, and how much longer it takes at rush hour.]',
+        a: DRIVE_TIME_ANSWER,
       },
       {
         q: 'Is a van worth it for two people?',
@@ -264,10 +270,7 @@ const pages: Record<PageKey, PageContent> = {
       'A private van from Ben Gurion up the coast to Haifa, the Krayot or anywhere on Mount Carmel. One price for the vehicle, door to door.',
     heroImage: 'pagePrivateDriver',
     heroImageAlt: ALT.pagePrivateDriver,
-    trip: tripFacts(
-      '[PLACEHOLDER: confirm typical drive time]',
-      '[PLACEHOLDER: confirm distance]',
-    ),
+    trip: AIRPORT_TRIP,
     included: AIRPORT_INCLUDED,
     body: [
       {
@@ -282,7 +285,7 @@ const pages: Record<PageKey, PageContent> = {
         heading: 'Cruise passengers',
         paragraphs: [
           'Haifa port is a common drop for us. If you are joining or leaving a ship, tell us the terminal and the time you need to be there.',
-          '[PLACEHOLDER: confirm whether you meet cruise passengers at the port and where.]',
+          'We collect cruise passengers at the port as well as dropping them, and we serve the other ports in the country too, Ashdod and Eilat included.',
         ],
         bullets: [],
       },
@@ -291,7 +294,7 @@ const pages: Record<PageKey, PageContent> = {
     faq: [
       {
         q: 'How long does the drive take?',
-        a: '[PLACEHOLDER: confirm typical drive time from Ben Gurion to Haifa.]',
+        a: DRIVE_TIME_ANSWER,
       },
       {
         q: 'Can you drop at Haifa port?',
@@ -317,10 +320,7 @@ const pages: Record<PageKey, PageContent> = {
       'A private van from the airport down to the Dead Sea hotels. It is a long descent through the desert, and a far easier trip in one vehicle than by bus with a change.',
     heroImage: 'pageDeadSea',
     heroImageAlt: ALT.pageDeadSea,
-    trip: tripFacts(
-      '[PLACEHOLDER: confirm typical drive time]',
-      '[PLACEHOLDER: confirm distance]',
-    ),
+    trip: AIRPORT_TRIP,
     included: AIRPORT_INCLUDED,
     body: [
       {
@@ -343,7 +343,7 @@ const pages: Record<PageKey, PageContent> = {
     faq: [
       {
         q: 'How long does the drive take?',
-        a: '[PLACEHOLDER: confirm typical drive time from Ben Gurion to the Dead Sea hotels.]',
+        a: DRIVE_TIME_ANSWER,
       },
       {
         q: 'Can we stop at Masada on the way?',
@@ -369,10 +369,7 @@ const pages: Record<PageKey, PageContent> = {
       'The longest run on our list, straight down through the Negev to the Red Sea. One van, one driver, one price, with stops where you want them.',
     heroImage: 'pagePrivateDriver',
     heroImageAlt: ALT.pagePrivateDriver,
-    trip: tripFacts(
-      '[PLACEHOLDER: confirm typical drive time]',
-      '[PLACEHOLDER: confirm distance]',
-    ),
+    trip: AIRPORT_TRIP,
     included: AIRPORT_INCLUDED,
     body: [
       {
@@ -396,15 +393,15 @@ const pages: Record<PageKey, PageContent> = {
     faq: [
       {
         q: 'How long does the drive take?',
-        a: '[PLACEHOLDER: confirm typical drive time from Ben Gurion to Eilat.]',
+        a: DRIVE_TIME_ANSWER,
       },
       {
         q: 'Can we stop along the way?',
         a: 'Yes. Mitzpe Ramon is the usual one. Ask when you book so the time is in the quote.',
       },
       {
-        q: 'Do you cross to Taba or Aqaba?',
-        a: '[PLACEHOLDER: confirm whether you drive to the Egyptian and Jordanian border crossings.]',
+        q: 'Do you drive to the Taba or Aqaba crossings?',
+        a: 'Yes. We drive to every border crossing, including Taba into Egypt and the Yitzhak Rabin crossing near Eilat into Jordan, and can collect you there on the way back.',
       },
     ],
     hub: 'airportTransfers',
@@ -435,27 +432,28 @@ const pages: Record<PageKey, PageContent> = {
         ],
         bullets: [],
       },
-      // {
-      //   heading: 'Who books a van and driver for the day',
-      //   paragraphs: [
-      //     'Families covering several places in one day. Business visitors with meetings in three cities. Groups who want a guide to join them and need somewhere to put everyone.',
-      //     `Our drivers speak Hebrew, English and Russian, so a Russian-speaking group is not left working things out in a second language.`,
-      //   ],
-      //   bullets: [],
-      // },
-      // {
-      //   heading: 'How long a day runs',
-      //   paragraphs: [
-      //     '[PLACEHOLDER: say how many hours a full day covers, what happens if the day runs longer, and how overtime is charged.]',
-      //   ],
-      //   bullets: [],
-      // },
+      {
+        heading: 'Who books a van and driver for the day',
+        paragraphs: [
+          'Families covering several places in one day. Business visitors with meetings in three cities. Groups who want a guide to join them and need somewhere to put everyone.',
+          `Our drivers speak Hebrew, English and Russian, so a Russian-speaking group is not left working things out in a second language.`,
+        ],
+        bullets: [],
+      },
+      {
+        heading: 'How long a day runs',
+        paragraphs: [
+          'There is no fixed length. Some people need the van for a morning, others from breakfast until late at night. Tell us roughly when you want to start and finish and the places on your list, and we will price the day around that.',
+          'We work every day of the week, Shabbat and holidays included, which matters in Israel: on Saturdays the trains and most buses stop.',
+        ],
+        bullets: [],
+      },
     ],
     routeIds: [],
     faq: [
       {
         q: 'How many hours is a full day?',
-        a: '[PLACEHOLDER: say how many hours a full day covers and what happens if it runs longer.]',
+        a: 'As many as you need. The day is built around your start time, your finish time and the places you want to see, and the price follows from that.',
       },
       {
         q: 'Does the driver act as a guide?',
@@ -518,7 +516,7 @@ const pages: Record<PageKey, PageContent> = {
       },
       {
         q: 'Do you run tours on Shabbat?',
-        a: '[PLACEHOLDER: confirm your Saturday and holiday availability.]',
+        a: 'Yes. We drive on Shabbat and on holidays, which is often the easiest day to tour because the roads are quiet and public transport is not an option.',
       },
     ],
     related: ['jerusalemDayTour', 'deadSeaMasadaTour', 'galileeDayTour'],
@@ -727,6 +725,10 @@ const pages: Record<PageKey, PageContent> = {
         a: '[PLACEHOLDER: say how far ahead wedding bookings should be made, especially in high season.]',
       },
       {
+        q: 'How much does wedding transportation cost?',
+        a: 'It depends mainly on two things: how many pickup points there are and where the venue is. Send us both, with the number of guests and the times, and we will come back with one price for the whole evening.',
+      },
+      {
         q: 'Can the van wait until the end of the evening?',
         a: 'Yes. That is usually the point. Tell us when the evening is likely to finish and we will price for the wait.',
       },
@@ -792,7 +794,7 @@ const pages: Record<PageKey, PageContent> = {
       },
       {
         q: 'Can drivers work overnight?',
-        a: '[PLACEHOLDER: confirm your overnight availability and how night work is charged.]',
+        a: 'Yes. We work around the clock, every day of the week, so a 4 am airport run after a show or a Saturday load-out is normal for us.',
       },
       {
         q: 'Do you work with production companies on a retainer?',
@@ -836,23 +838,16 @@ const pages: Record<PageKey, PageContent> = {
         ],
         bullets: [],
       },
-      {
-        heading: 'Invoicing',
-        paragraphs: [
-          '[PLACEHOLDER: describe how you invoice companies, what payment terms you offer, and whether you can hold an account.]',
-        ],
-        bullets: [],
-      },
     ],
     routeIds: [],
     faq: [
       {
-        q: 'Can you invoice the company rather than the traveller?',
-        a: '[PLACEHOLDER: confirm your invoicing and payment terms for companies.]',
+        q: 'Do you offer meet and greet at Ben Gurion?',
+        a: 'Yes. We track the flight and the van waits right where the group walks out of arrivals, whatever time it lands.',
       },
       {
-        q: 'Do you offer meet and greet at Ben Gurion?',
-        a: 'Yes. The driver waits in the arrivals hall. [PLACEHOLDER: add the exact meeting point and whether a name board is used.]',
+        q: 'Can you work nights and weekends?',
+        a: 'Yes. We run 24/7, including Shabbat and holidays, so late arrivals and Saturday meetings are covered.',
       },
       {
         q: 'Can we book the same driver for a whole visit?',
@@ -891,7 +886,7 @@ const pages: Record<PageKey, PageContent> = {
       {
         heading: 'Group transport',
         paragraphs: [
-          `A single van seats ${SEATS} with luggage. For more than that we run several vehicles together so the whole group moves at once.`,
+          'A single van seats 12 to 15 passengers, depending on the vehicle. For more than that we run several vehicles together so the whole group moves at once.',
           'This is what we do for school trips, family events and company outings.',
         ],
         bullets: [],
@@ -900,8 +895,8 @@ const pages: Record<PageKey, PageContent> = {
     routeIds: ['jerusalem-deadsea', 'telaviv-jerusalem', 'tlv-haifa', 'tlv-tiberias'],
     faq: [
       {
-        q: 'Do you drive to border crossings?',
-        a: '[PLACEHOLDER: confirm which border crossings you serve.]',
+        q: 'Do you drive to border crossings and ports?',
+        a: 'Yes, to all of them: the Allenby, Jordan River and Yitzhak Rabin crossings into Jordan, Taba into Egypt, and the ports at Haifa, Ashdod and Eilat.',
       },
       {
         q: 'Is the price per person or per van?',
@@ -922,7 +917,7 @@ const pages: Record<PageKey, PageContent> = {
   fleet: {
     title: 'Our Fleet | Mercedes Sprinter and Savanna Vans',
     description:
-      'The vans we drive: Mercedes Sprinter and Savanna, air conditioned and cleaned between trips, with room for the group and the luggage together.',
+      'The vans we drive: 2024 to 2026 Mercedes Sprinter and Savanna, 12 to 15 seats, air conditioned and cleaned between trips.',
     breadcrumb: 'Fleet',
     h1: 'Mercedes Sprinter and Savanna vans',
     intro:
@@ -934,7 +929,7 @@ const pages: Record<PageKey, PageContent> = {
       {
         heading: 'What we drive',
         paragraphs: [
-          `We run Mercedes Sprinter and Savanna vans. Each seats ${SEATS} passengers with ${FLEET.luggage} large suitcases, so a group and its luggage travel in one vehicle.`,
+          `We run Mercedes Sprinter and Savanna vans, all ${FLEET.modelYear} models. Each seats between 12 and 15 passengers depending on the vehicle, so a group and its luggage travel in one van.`,
           'For a group too big for one van we send more than one and everyone arrives together.',
         ],
         bullets: [
@@ -956,11 +951,11 @@ const pages: Record<PageKey, PageContent> = {
     faq: [
       {
         q: 'How many passengers fit in one van?',
-        a: `${SEATS} passengers with luggage. [PLACEHOLDER: confirm the seat count for the Sprinter and the Savanna separately if they differ.]`,
+        a: 'Between 12 and 15, depending on the van. Tell us how many people and suitcases you have and we will send the right vehicle, or more than one.',
       },
       {
         q: 'Are there child seats?',
-        a: '[PLACEHOLDER: say which child and booster seats you can supply, and whether they cost extra.]',
+        a: 'Yes, at an extra charge. Tell us the ages of the children when you book.',
       },
       {
         q: 'Is there room for a wheelchair?',
@@ -1007,7 +1002,7 @@ const pages: Record<PageKey, PageContent> = {
   faq: {
     title: 'FAQ | Private Van and Driver in Israel',
     description:
-      'Common questions about booking a private van and driver in Israel: luggage, child seats, flight delays, night pickups, payment and availability.',
+      'Common questions about a private van and driver in Israel: seats, child seats, flight delays, night and Shabbat pickups, and how pricing works.',
     breadcrumb: 'FAQ',
     h1: 'Frequently asked questions',
     intro:
@@ -1024,31 +1019,39 @@ const pages: Record<PageKey, PageContent> = {
       },
       {
         q: 'How many people fit in one van?',
-        a: `Each van seats ${SEATS} passengers with room for ${FLEET.luggage} large suitcases. For a bigger group we send more than one van so everyone travels together.`,
+        a: 'Between 12 and 15 passengers, depending on the van. For a bigger group we send more than one van so everyone travels together.',
+      },
+      {
+        q: 'Why is there no price list on the site?',
+        a: 'Because the price depends on the route, the time of day, the number of stops and the size of the group. Send us the details on WhatsApp and we will reply with one price for the whole van.',
       },
       {
         q: 'Where do we meet you at Ben Gurion?',
-        a: 'In the arrivals hall. [PLACEHOLDER: add the exact meeting point and how travellers will recognise the driver.]',
+        a: 'Right where you walk out of arrivals. The van waits at the terminal exit.',
       },
       {
         q: 'What happens if my flight is delayed?',
-        a: '[PLACEHOLDER: describe how you track flights, how long the driver waits, and whether a delay costs anything extra.]',
+        a: 'We track the flight and follow any delay, so the driver arrives for the time you actually land.',
+      },
+      {
+        q: 'How early should we leave for a flight out of Ben Gurion?',
+        a: 'We recommend being at the airport three hours before an international departure, and set the pickup time back from that.',
       },
       {
         q: 'Do you drive at night?',
-        a: '[PLACEHOLDER: confirm your night availability and whether a night pickup changes the price.]',
+        a: 'Yes. We work around the clock, every day.',
       },
       {
         q: 'Do you drive on Shabbat and holidays?',
-        a: '[PLACEHOLDER: confirm your Saturday and holiday availability.]',
-      },
-      {
-        q: 'How do I pay?',
-        a: '[PLACEHOLDER: list the payment methods you accept and say whether payment is due before or after the trip.]',
+        a: 'Yes. Shabbat and holidays included, when trains and most buses in Israel do not run.',
       },
       {
         q: 'Do you have child seats?',
-        a: '[PLACEHOLDER: say which child and booster seats you can supply, and whether they cost extra.]',
+        a: 'Yes, at an extra charge. Tell us the ages of the children when you book.',
+      },
+      {
+        q: 'Do you go to ports and border crossings?',
+        a: 'Yes, to every port and border crossing in the country, including Haifa port, Allenby Bridge and Taba.',
       },
       {
         q: 'What languages do the drivers speak?',

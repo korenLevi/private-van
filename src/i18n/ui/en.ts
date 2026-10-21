@@ -217,9 +217,11 @@ const en = {
     eyebrow: 'Routes & prices',
     heading: 'Popular routes',
     intro:
-      'Prices are for the whole van, one way, including the driver. Tell us your exact pickup point and we will confirm the price before you book.',
-    priceLabel: 'From',
-    perVan: 'per van',
+      'Prices depend on the route, the hour and the size of the group, so we quote each trip rather than publish a list. Every quote is for the whole van, including the driver. Send us your pickup point and destination and we will reply with a price.',
+    priceLabel: 'Price',
+    /** Prices are quoted per job, never published. */
+    priceOnRequest: 'On request',
+    perVan: 'For the whole van, by WhatsApp',
     durationLabel: 'Drive time',
     ctaLabel: 'Ask about this route',
     notListed: 'Going somewhere else?',
@@ -250,8 +252,8 @@ const en = {
     specs: [
       { label: 'Vehicles', value: 'Sprinter and Savanna' },
       { label: 'Passenger seats', value: FLEET.seats },
-      { label: 'Large suitcases', value: FLEET.luggage },
-      { label: 'Model year', value: FLEET.modelYear },
+      { label: 'Model years', value: FLEET.modelYear },
+      { label: 'Available', value: '24/7' },
     ],
     amenitiesHeading: 'In every van',
     amenities: [
@@ -336,7 +338,7 @@ const en = {
     items: [
       {
         q: 'How many people fit in one van?',
-        a: `Each van seats ${FLEET.seats} passengers with room for ${FLEET.luggage} large suitcases. For a bigger group we send more than one van so everyone travels together.`,
+        a: `Between 12 and 15 passengers, depending on the van. For a bigger group we send more than one van so everyone travels together.`,
       },
       {
         q: 'Is the price per person or per van?',
@@ -344,19 +346,19 @@ const en = {
       },
       {
         q: 'Where do we meet you at Ben Gurion Airport?',
-        a: 'We pick up at the arrivals hall. [PLACEHOLDER: add the exact meeting point and how travellers will recognise the driver.]',
+        a: 'Right where you walk out of arrivals. The van is waiting at the terminal exit, so there is no shuttle bus or car park to find.',
       },
       {
         q: 'What happens if my flight is delayed?',
-        a: '[PLACEHOLDER: describe how you track flights, how long the driver waits, and whether a delay costs anything extra.]',
+        a: 'We track your flight and follow any delay, so the driver arrives for the time you actually land rather than the time on the ticket.',
       },
       {
-        q: 'How do I pay?',
-        a: '[PLACEHOLDER: list the payment methods you accept and say whether payment is due before or after the trip.]',
+        q: 'Do you drive at night and on Shabbat?',
+        a: 'Yes. We work around the clock, every day of the year, including Shabbat and holidays, when trains and most buses in Israel do not run.',
       },
       {
         q: 'Do you have child seats?',
-        a: '[PLACEHOLDER: say which child and booster seats you can supply, and whether they cost extra.]',
+        a: 'Yes, at an extra charge. Tell us the ages of the children when you book and we will bring the right seats.',
       },
       {
         q: 'What languages does the driver speak?',
@@ -404,10 +406,10 @@ const en = {
   /* ---------------------------------------------------------------- */
   trip: {
     heading: 'Trip details',
-    duration: 'Drive time',
-    distance: 'Distance',
     vehicle: 'Vehicle',
     seats: 'Seats',
+    pickup: 'Pickup',
+    availability: 'Available',
     included: 'What the price includes',
   },
 
@@ -437,6 +439,7 @@ const en = {
     toursHeading: 'Tours',
     companyHeading: 'Company',
     hoursHeading: 'Hours',
+    hoursText: 'Open 24/7, including nights, Shabbat and holidays',
     phoneLabel: 'Phone',
     emailLabel: 'Email',
     whatsappLabel: 'WhatsApp',

@@ -1,5 +1,5 @@
 ---
-import { BUSINESS, CONTACT, SITE, telHref, whatsappHref, isPlaceholder } from '../config/site';
+import { CONTACT, SITE, telHref, whatsappHref, isPlaceholder } from '../config/site';
 import type { Locale } from '../i18n/config';
 import { FOOTER_NAV, pathFor } from '../i18n/routes';
 import { useTranslations } from '../i18n/utils';
@@ -29,7 +29,7 @@ const columns = FOOTER_NAV.map((column) => ({
 }));
 
 const waHref = whatsappHref(t.form.genericWhatsappMessage);
-const showHours = !isPlaceholder(BUSINESS.hoursText);
+const showHours = !isPlaceholder(t.footer.hoursText);
 ---
 
 <footer class="bg-ink text-white">
@@ -130,7 +130,7 @@ const showHours = !isPlaceholder(BUSINESS.hoursText);
                 <Icon name="clock" size={17} class="mt-0.5 shrink-0 text-gold" />
                 <span>
                   <span class="sr-only">{t.footer.hoursHeading}: </span>
-                  {BUSINESS.hoursText}
+                  {t.footer.hoursText}
                 </span>
               </li>
             )

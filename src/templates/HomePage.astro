@@ -4,10 +4,8 @@ import Faq from '../components/sections/Faq.astro';
 import Fleet from '../components/sections/Fleet.astro';
 import Hero from '../components/sections/Hero.astro';
 import HowItWorks from '../components/sections/HowItWorks.astro';
-import HowItWorks from '../components/sections/Faq.astro';
 import PopularRoutes from '../components/sections/PopularRoutes.astro';
 import RequestQuote from '../components/sections/RequestQuote.astro';
-import Fleet from '../components/sections/Fleet.astro';
 import Reviews from '../components/sections/Reviews.astro';
 import Services from '../components/sections/Services.astro';
 import TrustStrip from '../components/sections/TrustStrip.astro';
@@ -17,9 +15,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE } from '../config/site';
 import type { Locale } from '../i18n/config';
 import { getPage } from '../i18n/ui';
-import { absoluteUrl, useTranslations } from '../i18n/utils';
+import { pathFor } from '../i18n/routes';
+import { absoluteUrl, localeDefinition, useTranslations } from '../i18n/utils';
 import {
-  faqSchema,
   graph,
   localBusinessSchema,
   taxiServiceSchema,
@@ -35,22 +33,24 @@ const t = useTranslations(locale);
 const page = getPage(locale, 'home');
 
 const ogImageUrl = absoluteUrl(SITE.ogImage, Astro.site);
+const logoUrl = absoluteUrl(SITE.logo, Astro.site);
 
 /**
- * LocalBusiness and TaxiService describe the business; WebSite anchors the
- * domain; FAQPage covers the questions further down this page. One @graph
- * rather than four script tags.
+ * LocalBusiness and TaxiService describe the business; WebSite anchors this
+ * language version. No FAQPage: the FAQ section is not rendered here, and
+ * structured data has to describe what is actually on the page.
  * <Reviews locale={locale} />
  *   <PopularRoutes locale={locale} tone="paper" />
  *     <HowItWorks locale={locale} />
  *       <Fleet locale={locale} />
  *        <Faq locale={locale} />
  */
+const canonical = absoluteUrl(pathFor('home', locale), Astro.site);
+
 const jsonLd = graph(
-  localBusinessSchema(t.schema.businessDescription, ogImageUrl),
+  localBusinessSchema(t.schema.businessDescription, ogImageUrl, logoUrl),
   taxiServiceSchema(t.schema.businessDescription, t.schema.serviceType),
-  websiteSchema(),
-  faqSchema(t.faq.items),
+  websiteSchema(localeDefinition(locale).hreflang, canonical),
 );
 ---
 

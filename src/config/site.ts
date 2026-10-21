@@ -24,7 +24,7 @@ export const CONTACT = {
   /** WhatsApp number. Usually the same as the phone. Digits only, no "+". */
   whatsapp: '972525251806',
   /** Where quote-form copies are emailed. */
-  email: 'info@israelprivatevan.com',
+  email: 'israelprivatevan@gmail.com',
 } as const;
 
 export const telHref = `tel:+${CONTACT.phoneE164}`;
@@ -49,6 +49,12 @@ export const SITE = {
   /** Used in the og:site_name tag and the LocalBusiness schema. */
   shortDescription:
     'Private van and driver service in Israel for English-speaking travellers.',
+  /**
+   * Square logo in /public, 512x512. Google wants a logo it can crop to a
+   * square for the knowledge panel and Business Profile, which the 1200x630
+   * social card is the wrong shape for.
+   */
+  logo: '/logo-512.png',
   /** Default social share image, in /public. 1200x630. */
   ogImage: '/og-default.jpg',
   /** Describes that image for screen readers and link previews. */
@@ -75,17 +81,21 @@ export const BUSINESS = {
     latitude: null as number | null, // e.g. 32.0853
     longitude: null as number | null, // e.g. 34.7818
   },
-  /** Free-text opening hours shown in the footer. */
-  hoursText: PLACEHOLDER,
   /**
-   * Machine-readable hours for schema.org, e.g.
-   * [{ days: ['Mo','Tu','We','Th','Su'], opens: '06:00', closes: '22:00' }]
-   * Leave empty to omit openingHoursSpecification entirely.
+   * Machine-readable hours for schema.org. The service runs around the
+   * clock, nights, Shabbat and holidays included. The visible wording lives
+   * in the dictionaries (`footer.hoursText`), so it is translated.
    */
-  openingHours: [] as Array<{ days: string[]; opens: string; closes: string }>,
+  openingHours: [
+    { days: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'], opens: '00:00', closes: '23:59' },
+  ] as Array<{ days: string[]; opens: string; closes: string }>,
   /** Currency for any price you fill in below. */
   currency: 'USD',
-  priceRange: PLACEHOLDER, // e.g. "$$"
+  /**
+   * Left empty on purpose: prices depend on the route and the job and are
+   * quoted on request, so none is published. `prune()` drops the field.
+   */
+  priceRange: '',
   /** Languages the drivers speak. */
   languages: ['Hebrew', 'English', 'Russian'],
   /** Profile URLs for the schema `sameAs` field. Blank entries are dropped. */
@@ -103,17 +113,19 @@ export const FLEET = {
    * invented.
    */
   vehicles: [
-    { name: 'Mercedes-Benz Sprinter', seats: PLACEHOLDER },
-    { name: 'Savanna', seats: PLACEHOLDER },
+    { name: 'Mercedes-Benz Sprinter', seats: '12–15' },
+    { name: 'Savanna', seats: '12–15' },
   ],
   /** Used wherever one vehicle name reads better than a list. */
   vehicleName: 'Mercedes Sprinter',
-  /** Passenger seats per vehicle, excluding the driver. */
-  seats: PLACEHOLDER, // e.g. "14"
-  /** Large suitcases per vehicle. */
-  luggage: PLACEHOLDER, // e.g. "14"
-  /** Model year or age description. */
-  modelYear: PLACEHOLDER, // e.g. "2024"
+  /** Passenger seats per vehicle, excluding the driver. Varies by van. */
+  seats: '12–15',
+  /**
+   * No luggage count is published: it depends on the van and on how many
+   * seats are taken, so the copy asks visitors to say what they are bringing.
+   */
+  /** Model years across the fleet. */
+  modelYear: '2024–2026',
   /**
    * Amenities. Only list things the vans actually have — these appear as
    * bullet points in the fleet section.
@@ -144,15 +156,15 @@ export const TRACK_RECORD = {
 /* Popular routes                                                      */
 /* ------------------------------------------------------------------ */
 
+/**
+ * No price or drive time is published per route: both depend on the job and
+ * the hour, so every route card asks the visitor to message for a quote.
+ */
 export type Route = {
   /** Stable id, also used as the key for translated names. */
   id: string;
   from: string;
   to: string;
-  /** Per van, not per person. Keep as PRICE_PLACEHOLDER until confirmed. */
-  price: string;
-  /** Approximate drive time, e.g. "About 1 hour". Placeholder until confirmed. */
-  duration: string;
 };
 
 export const ROUTES: readonly Route[] = [
@@ -160,69 +172,43 @@ export const ROUTES: readonly Route[] = [
     id: 'tlv-jerusalem',
     from: 'Ben Gurion Airport',
     to: 'Jerusalem',
-    price: PRICE_PLACEHOLDER,
-    duration: PLACEHOLDER,
   },
   {
     id: 'tlv-telaviv',
     from: 'Ben Gurion Airport',
     to: 'Tel Aviv',
-    price: PRICE_PLACEHOLDER,
-    duration: PLACEHOLDER,
   },
   {
     id: 'tlv-deadsea',
     from: 'Ben Gurion Airport',
     to: 'Dead Sea',
-    price: PRICE_PLACEHOLDER,
-    duration: PLACEHOLDER,
   },
   {
     id: 'tlv-haifa',
     from: 'Ben Gurion Airport',
     to: 'Haifa',
-    price: PRICE_PLACEHOLDER,
-    duration: PLACEHOLDER,
   },
   {
     id: 'tlv-tiberias',
     from: 'Ben Gurion Airport',
     to: 'Tiberias',
-    price: PRICE_PLACEHOLDER,
-    duration: PLACEHOLDER,
   },
   {
     id: 'tlv-eilat',
     from: 'Ben Gurion Airport',
     to: 'Eilat',
-    price: PRICE_PLACEHOLDER,
-    duration: PLACEHOLDER,
   },
   {
     id: 'jerusalem-deadsea',
     from: 'Jerusalem',
     to: 'Dead Sea',
-    price: PRICE_PLACEHOLDER,
-    duration: PLACEHOLDER,
   },
   {
     id: 'telaviv-jerusalem',
     from: 'Tel Aviv',
     to: 'Jerusalem',
-    price: PRICE_PLACEHOLDER,
-    duration: PLACEHOLDER,
   },
 ] as const satisfies readonly Route[];
-
-/* ------------------------------------------------------------------ */
-/* Full-day tours — priced per van, per day                            */
-/* ------------------------------------------------------------------ */
-
-export const DAY_TOURS = [
-  { id: 'jerusalem', price: PRICE_PLACEHOLDER, duration: PLACEHOLDER },
-  { id: 'dead-sea-masada', price: PRICE_PLACEHOLDER, duration: PLACEHOLDER },
-  { id: 'galilee', price: PRICE_PLACEHOLDER, duration: PLACEHOLDER },
-] as const;
 
 /* ------------------------------------------------------------------ */
 /* Media                                                               */

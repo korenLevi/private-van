@@ -7,7 +7,6 @@ import TrustStrip from '../components/sections/TrustStrip.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 import {
-  BUSINESS,
   CONTACT,
   isPlaceholder,
   telHref,
@@ -42,7 +41,7 @@ const jsonLd = graph(
 );
 
 const waHref = whatsappHref(t.form.genericWhatsappMessage);
-const showHours = !isPlaceholder(BUSINESS.hoursText);
+const showHours = !isPlaceholder(t.footer.hoursText);
 
 const methods = [
   {
@@ -145,7 +144,7 @@ const methods = [
                 <h2 class="text-[0.6875rem] font-semibold tracking-[0.14em] text-gold-ink uppercase">
                   {t.footer.hoursHeading}
                 </h2>
-                <p class="mt-2 text-[0.9375rem] text-muted">{BUSINESS.hoursText}</p>
+                <p class="mt-2 text-[0.9375rem] text-muted">{t.footer.hoursText}</p>
               </div>
             )
           }
