@@ -113,13 +113,18 @@ export const FLEET = {
    * invented.
    */
   vehicles: [
-    { name: 'Mercedes-Benz Sprinter', seats: '12–15' },
-    { name: 'Savanna', seats: '12–15' },
+    { name: 'Mercedes-Benz Sprinter', seats: '⁦12–15⁩' },
+    { name: 'Savanna', seats: '⁦12–15⁩' },
   ],
   /** Used wherever one vehicle name reads better than a list. */
   vehicleName: 'Mercedes Sprinter',
   /** Passenger seats per vehicle, excluding the driver. Varies by van. */
-  seats: '12–15',
+  /*
+   * Wrapped in Unicode isolates (U+2066 / U+2069). A range like 12-15 sits
+   * inside Hebrew sentences all over the site, and without the isolates the
+   * bidi algorithm renders it as 15-12. Invisible in English and Russian.
+   */
+  seats: '⁦12–15⁩',
   /**
    * No luggage count is published: it depends on the van and on how many
    * seats are taken, so the copy asks visitors to say what they are bringing.

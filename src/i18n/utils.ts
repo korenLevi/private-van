@@ -48,7 +48,11 @@ export function hreflangLinks(
     href: absoluteUrl(path, site),
   }));
 
-  const fallback = alternates.find((a) => a.locale === DEFAULT_LOCALE);
+  // x-default points at the English version where one exists. A guide
+  // published only in Hebrew has no English version, so it points at
+  // itself rather than being left out.
+  const fallback =
+    alternates.find((a) => a.locale === DEFAULT_LOCALE) ?? alternates[0];
   if (fallback) {
     links.push({ hreflang: 'x-default', href: absoluteUrl(fallback.path, site) });
   }

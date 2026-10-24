@@ -24,6 +24,14 @@ async function htmlFiles(dir) {
 
 const attr = (html, re) => (html.match(re) ?? [])[1] ?? '';
 const count = (html, re) => (html.match(re) ?? []).length;
+const all = (html, re) => [...html.matchAll(re)].map((m) => m[1]);
+
+/** Does this absolute site URL correspond to a file that was built? */
+const built = (href, origin, pages) => {
+  if (!href.startsWith(origin)) return true; // off-site, not ours to check
+  const path = href.slice(origin.length) || '/';
+  return pages.has(path);
+};
 
 const errors = [];
 const warnings = [];
@@ -38,6 +46,14 @@ try {
   process.exit(0);
 }
 
+/** Every path this build actually produced, to validate links against. */
+const pagePaths = new Set(
+  files.map(
+    (f) => '/' + relative(DIST, f).replace(/index\.html$/, '').replace(/\\/g, '/'),
+  ),
+);
+const origin = 'https://israelprivatevan.com';
+
 for (const file of files) {
   const html = await readFile(file, 'utf8');
   const url =
@@ -50,6 +66,7 @@ for (const file of files) {
   const robots = attr(html, /<meta name="robots" content="([^"]*)"/);
   const h1s = count(html, /<h1[\s>]/g);
   const hreflangs = count(html, /rel="alternate" hreflang="/g);
+  const hreflangHrefs = all(html, /rel="alternate" hreflang="[^"]*" href="([^"]+)"/g);
   const hasXDefault = html.includes('hreflang="x-default"');
   const imgsNoAlt = count(html, /<img(?![^>]*\balt=)[^>]*>/g);
   const langAttr = attr(html, /<html lang="([^"]*)"/);
@@ -66,8 +83,21 @@ for (const file of files) {
   // A 404 is intentionally noindex and outside the hreflang cluster.
   if (!is404) {
     if (!canonical) add(errors, 'missing canonical');
-    if (hreflangs < 3) add(errors, `${hreflangs} hreflang links, expected 3 languages`);
+    // Pages are not all published in every language: a guide written for one
+    // audience exists in one. So rather than counting, check that the cluster
+    // is self-consistent and that every URL in it was actually built. A
+    // hreflang pointing at a page that does not exist is the failure that
+    // actually costs rankings.
     if (!hasXDefault) add(errors, 'missing hreflang="x-default"');
+    if (hreflangs < 2) add(errors, `${hreflangs} hreflang links, expected at least 2`);
+    for (const href of hreflangHrefs) {
+      if (!built(href, origin, pagePaths)) {
+        add(errors, `hreflang points at a page that was not built: ${href}`);
+      }
+    }
+    if (canonical && !built(canonical, origin, pagePaths)) {
+      add(errors, `canonical points at a page that was not built: ${canonical}`);
+    }
     if (canonical && !canonical.endsWith('/')) {
       add(errors, `canonical has no trailing slash: ${canonical}`);
     }
@@ -86,6 +116,16 @@ for (const file of files) {
   }
 
   if (langAttr === 'he' && dirAttr !== 'rtl') add(errors, 'Hebrew page is not dir="rtl"');
+
+  // Guides live or die on being answerable and current.
+  if (/\/guides\/[^/]+\/$/.test(url)) {
+    if (!/<script type="application\/ld\+json">[^<]*"Article"/.test(html)) {
+      add(errors, 'guide without Article structured data');
+    }
+    if (!/<time datetime="\d{4}-\d{2}-\d{2}"/.test(html)) {
+      add(errors, 'guide without a visible update date');
+    }
+  }
 }
 
 for (const [value, urls] of titles) {

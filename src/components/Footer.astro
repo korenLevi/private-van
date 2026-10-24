@@ -1,7 +1,7 @@
 ---
 import { CONTACT, SITE, telHref, whatsappHref, isPlaceholder } from '../config/site';
 import type { Locale } from '../i18n/config';
-import { FOOTER_NAV, pathFor } from '../i18n/routes';
+import { existsIn, FOOTER_NAV, pathFor } from '../i18n/routes';
 import { getPage } from '../i18n/ui';
 import { useTranslations } from '../i18n/utils';
 import Icon from './Icon.astro';
@@ -21,12 +21,16 @@ const headings: Record<string, string> = {
   company: t.footer.companyHeading,
 };
 
+// Guides exist in English and Hebrew only, so the Russian footer must not
+// link to a page that was never generated.
 const columns = FOOTER_NAV.map((column) => ({
   heading: headings[column.heading] ?? column.heading,
-  links: column.pages.map((key) => ({
-    label: getPage(locale, key).breadcrumb,
-    href: pathFor(key, locale),
-  })),
+  links: column.pages
+    .filter((key) => existsIn(key, locale))
+    .map((key) => ({
+      label: getPage(locale, key).breadcrumb,
+      href: pathFor(key, locale),
+    })),
 }));
 
 const waHref = whatsappHref(t.form.genericWhatsappMessage);

@@ -21,6 +21,8 @@ interface Props {
   /** JSON-LD for this page, already stringified. */
   jsonLd?: string;
   ogImage?: string;
+  /** `article` for guides, so shares carry the right card type. */
+  ogType?: 'website' | 'article';
   noindex?: boolean;
   /** Override the canonical path. Defaults to this page's registered path. */
   path?: string;
@@ -35,6 +37,7 @@ const {
   description,
   jsonLd,
   ogImage,
+  ogType = 'website',
   noindex = false,
   path = pathFor(pageKey, locale),
   alternates = alternatesFor(pageKey),
@@ -60,6 +63,7 @@ const { hreflang, dir } = localeDefinition(locale);
       locale={locale}
       alternates={alternates}
       ogImage={ogImage}
+      ogType={ogType}
       noindex={noindex || IS_PREVIEW_DEPLOY}
     />
 

@@ -19,6 +19,8 @@
 import type { Locale } from '../i18n/config';
 import { allPagePaths, type PageKey, type PageKind } from '../i18n/routes';
 import ContactPage from '../templates/ContactPage.astro';
+import GuideIndexPage from '../templates/GuideIndexPage.astro';
+import GuidePage from '../templates/GuidePage.astro';
 import HomePage from '../templates/HomePage.astro';
 import LandingPage from '../templates/LandingPage.astro';
 
@@ -40,6 +42,10 @@ const { pageKey, locale, kind } = Astro.props;
     <HomePage locale={locale} />
   ) : kind === 'contact' ? (
     <ContactPage locale={locale} />
+  ) : kind === 'guideIndex' ? (
+    <GuideIndexPage locale={locale} />
+  ) : kind === 'guide' ? (
+    <GuidePage locale={locale} pageKey={pageKey} />
   ) : (
     <LandingPage locale={locale} pageKey={pageKey} />
   )

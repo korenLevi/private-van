@@ -50,7 +50,7 @@ const jsonLd = graph(
     headline: page.h1,
     description: page.summary ?? page.description,
     url: canonical,
-    imageUrl: absoluteUrl(`/${page.heroImage}`, Astro.site),
+    imageUrl: absoluteUrl(getImage(page.heroImage).src, Astro.site),
     updated: page.updated ?? '',
     language: localeDefinition(locale).hreflang,
   }),

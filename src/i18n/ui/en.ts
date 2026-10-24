@@ -465,8 +465,8 @@ const en = {
     rights: 'All rights reserved.',
   },
 
-  /** Page content lives in ./en-pages.ts, which is long enough on its own. */
-  pages,
+  /** Service pages and guides share one map, keyed the same way. */
+  pages: { ...pages, ...guides },
 
   /* ---------------------------------------------------------------- */
   /* Schema.org descriptions                                           */

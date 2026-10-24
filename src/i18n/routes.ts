@@ -196,7 +196,7 @@ export const FOOTER_NAV: Array<{ heading: 'services' | 'tours' | 'company'; page
   },
   {
     heading: 'company',
-    pages: ['fleet', 'about', 'faq', 'contact'],
+    pages: ['guidesIndex', 'fleet', 'about', 'faq', 'contact'],
   },
 ];
 
