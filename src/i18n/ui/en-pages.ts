@@ -65,7 +65,7 @@ const DAY_INCLUDED = [
   'One price for the whole van, not per person',
 ];
 
-const pages: Record<PageKey, PageContent> = {
+const pages: Partial<Record<PageKey, PageContent>> = {
   /* ---------------------------------------------------------------- */
   /* Home                                                              */
   /* ---------------------------------------------------------------- */

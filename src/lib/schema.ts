@@ -175,6 +175,57 @@ export function serviceSchema(options: {
 }
 
 /* ------------------------------------------------------------------ */
+/* Article (guides)                                                    */
+/* ------------------------------------------------------------------ */
+
+/**
+ * One Article node per guide.
+ *
+ * The author is the business, not a named person. Signing guides with the
+ * owner's name would carry more weight with Google, but publishing someone's
+ * name is their decision to make, and it has not been given yet.
+ */
+export function articleSchema(options: {
+  headline: string;
+  description: string;
+  url: string;
+  imageUrl: string;
+  updated: string;
+  language: string;
+}) {
+  return prune({
+    '@type': 'Article',
+    '@id': `${options.url}#article`,
+    headline: options.headline,
+    description: options.description,
+    url: options.url,
+    image: options.imageUrl,
+    datePublished: options.updated,
+    dateModified: options.updated,
+    inLanguage: options.language,
+    author: { '@id': businessId },
+    publisher: { '@id': businessId },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': options.url },
+  });
+}
+
+/** The guides index, as a list search engines can read in order. */
+export function itemListSchema(
+  items: ReadonlyArray<{ name: string; url: string }>,
+) {
+  if (items.length === 0) return undefined;
+  return {
+    '@type': 'ItemList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      url: item.url,
+    })),
+  };
+}
+
+/* ------------------------------------------------------------------ */
 /* FAQPage                                                             */
 /* ------------------------------------------------------------------ */
 

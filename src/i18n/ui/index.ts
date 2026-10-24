@@ -79,7 +79,18 @@ export function getDictionary(locale: Locale): Dictionary {
  * iterates it. The shape is checked where it is written.
  */
 export function getPage(locale: Locale, key: PageKey): PageContent {
-  return getDictionary(locale).pages[key] as PageContent;
+  const page = getDictionary(locale).pages[key];
+  if (!page) {
+    // Routes are generated only for the locales a page is published in, so
+    // reaching here means a link points somewhere that was never built.
+    throw new Error(`No content for page "${key}" in locale "${locale}".`);
+  }
+  return page as PageContent;
+}
+
+/** The pages a locale actually publishes, for nav built from a key list. */
+export function hasPage(locale: Locale, key: PageKey): boolean {
+  return Boolean(getDictionary(locale).pages[key]);
 }
 
 /** How much of a locale is actually translated, for the step 7 report. */

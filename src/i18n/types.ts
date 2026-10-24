@@ -28,7 +28,16 @@ export type PageKey =
   | 'fleet'
   | 'about'
   | 'faq'
-  | 'contact';
+  | 'contact'
+  // Guides. Each one is written for one audience in one language, so a
+  // Hebrew guide for Israelis has no English twin and vice versa.
+  | 'guidesIndex'
+  | 'guideBgJerusalemOptions'
+  | 'guideShabbatTravel'
+  | 'guideDriverOrRental'
+  | 'guideWeddingPlanning'
+  | 'guideVehicleSize'
+  | 'guideCompanyEvent';
 
 export type FaqItem = {
   q: string;
@@ -39,6 +48,18 @@ export type BodySection = {
   heading: string;
   paragraphs: readonly string[];
   bullets: readonly string[];
+};
+
+/**
+ * A comparison table. AI answer engines lift these almost verbatim, and a
+ * reader deciding between options reads the table and nothing else.
+ */
+export type ComparisonTable = {
+  caption: string;
+  columns: readonly string[];
+  rows: readonly (readonly string[])[];
+  /** Shown under the table, for caveats such as "fares change". */
+  note?: string;
 };
 
 /**
@@ -86,4 +107,19 @@ export type PageContent = {
    * the home page and purely informational pages.
    */
   serviceType?: string;
+
+  /* --- Guides only --------------------------------------------------- */
+
+  /**
+   * The answer, in two or three sentences, before anything else on the
+   * page. Search engines and AI assistants quote this; a reader who stops
+   * here should still have what they came for.
+   */
+  summary?: string;
+  /** ISO date of the last substantive edit, shown and put in the schema. */
+  updated?: string;
+  /** Optional comparison table, rendered above the body. */
+  table?: ComparisonTable;
+  /** Service pages this guide points readers at. */
+  leadsTo?: readonly PageKey[];
 };

@@ -1,4 +1,5 @@
 import { FLEET } from '../../config/site';
+import guides from './he-guides';
 import pages from './he-pages';
 import type { Translation } from './index';
 
@@ -345,7 +346,20 @@ const he: Translation = {
     ],
   },
 
-  pages,
+  guides: {
+    eyebrow: 'מדריך',
+    indexEyebrow: 'מדריכים',
+    summaryLabel: 'בקצרה',
+    updatedLabel: 'עודכן',
+    readGuide: 'לקריאת המדריך',
+    allGuides: 'כל המדריכים',
+    moreGuides: 'מדריכים נוספים',
+    helpHeading: 'עדיין מתלבטים?',
+    helpBody: 'שלחו לנו תאריך וכמה אנשים, ונגיד מה מתאים. גם אם התשובה היא שאתם לא צריכים אותנו.',
+  },
+
+  /* Service pages and guides share one map, keyed the same way. */
+  pages: { ...pages, ...guides },
 };
 
 export default he;

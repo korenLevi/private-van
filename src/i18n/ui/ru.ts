@@ -344,6 +344,18 @@ const ru: Translation = {
     ],
   },
 
+  guides: {
+    eyebrow: 'Гид',
+    indexEyebrow: 'Гиды',
+    summaryLabel: 'Коротко',
+    updatedLabel: 'Обновлено',
+    readGuide: 'Читать',
+    allGuides: 'Все материалы',
+    moreGuides: 'Ещё материалы',
+    helpHeading: 'Остались сомнения?',
+    helpBody: 'Напишите даты и число человек, и мы скажем, что подойдёт.',
+  },
+
   pages,
 };
 

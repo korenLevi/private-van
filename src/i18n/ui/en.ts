@@ -1,4 +1,5 @@
 import { BUSINESS, FLEET, CONTACT, TRACK_RECORD } from '../../config/site';
+import guides from './en-guides';
 import pages from './en-pages';
 
 /**
@@ -399,6 +400,22 @@ const en = {
     /* Used for the WhatsApp fallback when the email copy does not go through. */
     whatsappTemplate:
       'Hi, I would like a price for a private van.\n\nName: {name}\nPhone: {phone}\nEmail: {email}\n\n{message}',
+  },
+
+
+  /* ---------------------------------------------------------------- */
+  /* Guides                                                            */
+  /* ---------------------------------------------------------------- */
+  guides: {
+    eyebrow: 'Guide',
+    indexEyebrow: 'Guides',
+    summaryLabel: 'In short',
+    updatedLabel: 'Updated',
+    readGuide: 'Read the guide',
+    allGuides: 'All guides',
+    moreGuides: 'More guides',
+    helpHeading: 'Still deciding?',
+    helpBody: 'Send us the dates and the group size and we will tell you what fits, even if the answer is that you do not need us.',
   },
 
   /* ---------------------------------------------------------------- */

@@ -2,6 +2,7 @@
 import { CONTACT, SITE, telHref, whatsappHref, isPlaceholder } from '../config/site';
 import type { Locale } from '../i18n/config';
 import { FOOTER_NAV, pathFor } from '../i18n/routes';
+import { getPage } from '../i18n/ui';
 import { useTranslations } from '../i18n/utils';
 import Icon from './Icon.astro';
 
@@ -23,7 +24,7 @@ const headings: Record<string, string> = {
 const columns = FOOTER_NAV.map((column) => ({
   heading: headings[column.heading] ?? column.heading,
   links: column.pages.map((key) => ({
-    label: t.pages[key].breadcrumb,
+    label: getPage(locale, key).breadcrumb,
     href: pathFor(key, locale),
   })),
 }));
