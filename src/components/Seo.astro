@@ -41,7 +41,8 @@ const ogLocale = localeDefinition(locale).ogLocale;
 
 <title>{title}</title>
 <meta name="description" content={description} />
-<link rel="canonical" href={canonical} />
+{/* A noindex page (the 404, preview deploys) names no canonical URL. */}
+{!noindex && <link rel="canonical" href={canonical} />}
 
 {
   noindex ? (
@@ -56,7 +57,8 @@ const ogLocale = localeDefinition(locale).ogLocale;
 
 {/* hreflang — emitted even with one language so adding the next needs no change */}
 {
-  alternateLinks.map((link) => (
+  !noindex &&
+    alternateLinks.map((link) => (
     <link rel="alternate" hreflang={link.hreflang} href={link.href} />
   ))
 }
@@ -66,7 +68,7 @@ const ogLocale = localeDefinition(locale).ogLocale;
 <meta property="og:site_name" content={SITE.name} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:url" content={canonical} />
+{!noindex && <meta property="og:url" content={canonical} />}
 <meta property="og:image" content={imageUrl} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />

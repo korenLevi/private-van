@@ -10,6 +10,20 @@ import { fileURLToPath } from 'node:url';
 
 import { SITE } from './src/config/site.ts';
 import { LOCALES, DEFAULT_LOCALE } from './src/i18n/config.ts';
+import { GUIDE_KEYS, localesFor, pathFor } from './src/i18n/routes.ts';
+import { getPage } from './src/i18n/ui/index.ts';
+
+// A lastmod Google can trust: only guides carry one, the date they were
+// last edited. Stamping every URL with the build time on every deploy
+// teaches Google to ignore the field altogether.
+const GUIDE_UPDATED = new Map(
+  GUIDE_KEYS.flatMap((key) =>
+    localesFor(key).map((locale) => [
+      new URL(pathFor(key, locale), SITE.url).href,
+      getPage(locale, key).updated,
+    ]),
+  ),
+);
 
 // https://astro.build/config
 export default defineConfig({
@@ -136,7 +150,10 @@ export default defineConfig({
       },
       filter: (page) => !page.includes('/404'),
       changefreq: 'monthly',
-      lastmod: new Date(),
+      serialize(item) {
+        const updated = GUIDE_UPDATED.get(item.url);
+        return updated ? { ...item, lastmod: updated } : item;
+      },
     }),
   ],
 
