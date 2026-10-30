@@ -22,8 +22,8 @@ const guides: Partial<Record<PageKey, PageContent>> = {
     h1: 'Guides to getting around Israel',
     intro:
       'What we get asked most, written out properly. These are the answers we give on the phone every week, from 30 years of driving the routes.',
-    heroImage: 'pagePrivateDriver',
-    heroImageAlt: 'A car on an open road curving through dry hills in northern Israel.',
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     included: [],
     body: [],
     routeIds: [],
@@ -43,9 +43,8 @@ const guides: Partial<Record<PageKey, PageContent>> = {
     updated: '2026-10-24',
     intro:
       'This is the question we are asked more than any other. The honest answer is that it depends on how many of you there are, how much luggage you have, and what time you land.',
-    heroImage: 'pageJerusalem',
-    heroImageAlt:
-      'The Western Wall plaza in Jerusalem, with the gold Dome of the Rock behind it.',
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     table: {
       caption: 'Ben Gurion to Jerusalem, compared',
       columns: ['', 'Train', 'Sherut', 'Taxi', 'Private van'],
@@ -144,8 +143,8 @@ const guides: Partial<Record<PageKey, PageContent>> = {
     updated: '2026-10-24',
     intro:
       'Visitors are often surprised by how completely the country changes gear on a Friday afternoon. It is not a problem if you know it is coming.',
-    heroImage: 'pagePrivateDriver',
-    heroImageAlt: 'A car on an open road curving through dry hills in northern Israel.',
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     table: {
       caption: 'Shabbat, roughly Friday afternoon to Saturday nightfall',
       columns: ['', 'Friday daytime', 'Shabbat', 'Saturday night'],
@@ -240,8 +239,8 @@ const guides: Partial<Record<PageKey, PageContent>> = {
     updated: '2026-10-24',
     intro:
       'Both work. They suit different trips, and the deciding factor is usually parking and group size rather than money.',
-    heroImage: 'pagePrivateDriver',
-    heroImageAlt: 'A car on an open road curving through dry hills in northern Israel.',
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     table: {
       caption: 'Driving yourself against hiring a driver',
       columns: ['', 'Rental car', 'Van with driver'],

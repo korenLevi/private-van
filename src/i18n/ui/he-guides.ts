@@ -20,8 +20,8 @@ const guides: Partial<Record<PageKey, PageContent>> = {
     breadcrumb: 'מדריכים',
     h1: 'מדריכים להסעות ולאירועים',
     intro: `מה ששואלים אותנו הכי הרבה בטלפון, כתוב כמו שצריך. מתוך ${TRACK_RECORD.yearsInBusiness} שנה של הסעות בארץ.`,
-    heroImage: 'pagePrivateDriver',
-    heroImageAlt: 'מכונית בכביש פתוח המתפתל בין גבעות יבשות בצפון הארץ.',
+    heroImage: 'heroPoster',
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     included: [],
     body: [],
     routeIds: [],
@@ -40,8 +40,8 @@ const guides: Partial<Record<PageKey, PageContent>> = {
     updated: '2026-10-24',
     intro:
       'רוב הזוגות חושבים על ההסעות שבועיים לפני. זה מספיק כדי לסגור, אבל לא מספיק כדי לבחור. הנה מה שכדאי לסדר מראש.',
-    heroImage: 'cardWedding',
-    heroImageAlt: 'פפיון טול לבן קשור לרכב חתונה.',
+    heroImage: 'heroPoster',
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     table: {
       caption: 'כמה רכבים צריך, לפי מספר האורחים שצריכים הסעה',
       columns: ['אורחים להסעה', 'רכבים', 'הערה'],
@@ -139,8 +139,8 @@ const guides: Partial<Record<PageKey, PageContent>> = {
     updated: '2026-10-24',
     intro:
       'השאלה הזו חוזרת כל שבוע, ורוב האנשים מגלים שהם צריכים רכב גדול יותר ממה שחשבו, בגלל המזוודות ולא בגלל האנשים.',
-    heroImage: 'serviceCityToCity',
-    heroImageAlt: 'ואן נוסעים לבן בכביש מהיר באזור פתוח בישראל.',
+    heroImage: 'heroPoster',
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     table: {
       caption: 'מה מתאים לכמה נוסעים',
       columns: ['נוסעים', 'מה מתאים', 'מתי זה לא מספיק'],
@@ -211,8 +211,8 @@ const guides: Partial<Record<PageKey, PageContent>> = {
     updated: '2026-10-24',
     intro:
       'את רוב ההסעות לחברות מזמינה מנהלת משרד או מנהלת HR שזה לא העיסוק העיקרי שלה. זה הדף בשבילה.',
-    heroImage: 'cardBusinessTravel',
-    heroImageAlt: 'קו החוף והקו הרקיע של תל אביב, במבט מיפו.',
+    heroImage: 'heroPoster',
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     included: [],
     body: [
       {

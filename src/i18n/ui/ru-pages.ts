@@ -64,7 +64,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     h1: 'Микроавтобус с водителем по Израилю',
     intro:
       'Трансфер из аэропорта Бен Гурион, микроавтобус с водителем на весь день и частные поездки по всей стране.',
-    heroImageAlt: ALT.heroPoster,
+    heroImageAlt: 'Чёрный пассажирский микроавтобус Mercedes Sprinter на дороге под голубым небом.',
   },
 
   airportTransfers: {
@@ -75,7 +75,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     h1: 'Трансфер из аэропорта Бен Гурион',
     intro:
       'Мы встречаем вас прямо у выхода из зала прилёта Бен Гурион и везём по вашему адресу. Мы отслеживаем рейс и работаем круглосуточно, включая субботы и праздники. Микроавтобус частный, цена за всю машину, водители говорят на иврите, английском и русском.',
-    heroImageAlt: ALT.pageAirport,
+    heroImageAlt: 'Чёрный пассажирский микроавтобус Mercedes Sprinter на дороге под голубым небом.',
     included: AIRPORT_INCLUDED,
     body: [
       {
@@ -135,7 +135,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     h1: 'Трансфер Бен Гурион, Иерусалим',
     intro:
       'Частный микроавтобус из зала прилёта Бен Гурион по любому адресу в Иерусалиме. Одна цена за машину, кто бы ни ехал, с помощью по багажу с обеих сторон.',
-    heroImageAlt: ALT.pageJerusalem,
+    heroImageAlt: 'Чёрный пассажирский микроавтобус Mercedes Sprinter на дороге под голубым небом.',
     trip: AIRPORT_TRIP,
     included: AIRPORT_INCLUDED,
     body: [
@@ -177,7 +177,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     h1: 'Трансфер Бен Гурион, Тель-Авив',
     intro:
       'Самая короткая наша поездка и та, где частный микроавтобус экономит больше всего хлопот. Встречаем в прилёте и везём по любому адресу в Тель-Авиве и Яффо.',
-    heroImageAlt: ALT.pageContact,
+    heroImageAlt: 'Чёрный пассажирский микроавтобус Mercedes Sprinter на дороге под голубым небом.',
     trip: AIRPORT_TRIP,
     included: AIRPORT_INCLUDED,
     body: [
@@ -216,7 +216,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     h1: 'Трансфер Бен Гурион, Хайфа',
     intro:
       'Частный микроавтобус из Бен Гурион на север, в Хайфу, Крайот и любую точку на Кармеле. Одна цена за машину, от двери до двери.',
-    heroImageAlt: ALT.pagePrivateDriver,
+    heroImageAlt: 'Чёрный пассажирский микроавтобус Mercedes Sprinter на дороге под голубым небом.',
     trip: AIRPORT_TRIP,
     included: AIRPORT_INCLUDED,
     body: [
@@ -252,7 +252,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     h1: 'Трансфер Бен Гурион, Мёртвое море',
     intro:
       'Частный микроавтобус от аэропорта до отелей Мёртвого моря. Это долгий спуск через пустыню, и в одной машине он куда проще, чем на автобусе с пересадкой.',
-    heroImageAlt: ALT.pageDeadSea,
+    heroImageAlt: 'Чёрный пассажирский микроавтобус Mercedes Sprinter на дороге под голубым небом.',
     trip: AIRPORT_TRIP,
     included: AIRPORT_INCLUDED,
     body: [
@@ -287,7 +287,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     h1: 'Трансфер Бен Гурион, Эйлат',
     intro:
       'Самая длинная поездка в нашем списке, на юг через Негев к Красному морю. Один микроавтобус, один водитель, одна цена и остановки там, где вы захотите.',
-    heroImageAlt: ALT.pagePrivateDriver,
+    heroImageAlt: 'Чёрный пассажирский микроавтобус Mercedes Sprinter на дороге под голубым небом.',
     trip: AIRPORT_TRIP,
     included: AIRPORT_INCLUDED,
     body: [
@@ -323,7 +323,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     h1: 'Микроавтобус с водителем на весь день',
     intro:
       'Машина и водитель ваши на целый день, и вы едете куда хотите. Подходит семьям, небольшим группам и всем, кто предпочитает не садиться за руль на незнакомых дорогах.',
-    heroImageAlt: ALT.pagePrivateDriver,
+    heroImageAlt: 'Чёрный пассажирский микроавтобус Mercedes Sprinter на дороге под голубым небом.',
     included: DAY_INCLUDED,
     body: [
       {
@@ -367,7 +367,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     h1: 'Индивидуальные экскурсии по Израилю',
     intro:
       'Частная однодневная экскурсия с микроавтобусом и водителем. Не надо догонять группу, нет фиксированного выезда, маршрут выбираете вы.',
-    heroImageAlt: ALT.pageJerusalem,
+    heroImageAlt: 'Чёрный пассажирский микроавтобус Mercedes Sprinter на дороге под голубым небом.',
     included: DAY_INCLUDED,
     body: [
       {
@@ -405,7 +405,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     h1: 'Частная экскурсия в Иерусалим',
     intro:
       'Целый день в Иерусалиме с микроавтобусом и водителем. Мы забираем вас от отеля и привозим обратно, когда вы захотите уехать.',
-    heroImageAlt: ALT.pageJerusalem,
+    heroImageAlt: 'Чёрный пассажирский микроавтобус Mercedes Sprinter на дороге под голубым небом.',
     included: DAY_INCLUDED,
     body: [
       {
@@ -446,7 +446,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     h1: 'Частная экскурсия на Мёртвое море и Масаду',
     intro:
       'Масада утром, Мёртвое море днём, и машина ждёт в обоих местах. Без расписания туристического автобуса.',
-    heroImageAlt: ALT.pageDeadSea,
+    heroImageAlt: 'Чёрный пассажирский микроавтобус Mercedes Sprinter на дороге под голубым небом.',
     included: DAY_INCLUDED,
     body: [
       {
@@ -481,7 +481,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     h1: 'Частная экскурсия по Галилее',
     intro:
       'Север Израиля за один день, с микроавтобусом и водителем. Галилея разбросана по большой территории, и именно поэтому машина здесь так помогает.',
-    heroImageAlt: ALT.pageGalilee,
+    heroImageAlt: 'Чёрный пассажирский микроавтобус Mercedes Sprinter на дороге под голубым небом.',
     included: DAY_INCLUDED,
     body: [
       {
@@ -524,7 +524,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     h1: 'Трансфер на свадьбу в Израиле',
     intro:
       'Привезти гостей на торжество и развезти по домам, чтобы никому не пришлось садиться за руль. Мы возим свадьбы по всей стране.',
-    heroImageAlt: ALT.serviceFullDay,
+    heroImageAlt: 'Чёрный пассажирский микроавтобус Mercedes Sprinter на дороге под голубым небом.',
     included: [
       'Сбор из одной или нескольких точек',
       'Столько рейсов, сколько нужно по списку гостей',
@@ -566,7 +566,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     h1: 'Транспорт для артистов и групп',
     intro:
       'Перевозка артистов, команды и аппаратуры между аэропортом, отелем и площадкой. Мы работаем по расписанию, которое даёт продакшн.',
-    heroImageAlt: ALT.serviceCityToCity,
+    heroImageAlt: 'Чёрный пассажирский микроавтобус Mercedes Sprinter на дороге под голубым небом.',
     included: [
       'Встреча в аэропорту для команды и аппаратуры',
       'Рейсы между отелем, площадкой и репетицией',
@@ -611,7 +611,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     h1: 'VIP трансфер и корпоративный транспорт',
     intro:
       'Трансферы из аэропорта, перевозка делегаций и транспорт на конференции для компаний. Одна машина, один водитель, один счёт.',
-    heroImageAlt: ALT.pageContact,
+    heroImageAlt: 'Чёрный пассажирский микроавтобус Mercedes Sprinter на дороге под голубым небом.',
     included: [
       'Встреча у выхода из прилёта Бен Гурион, с отслеживанием рейса',
       'Водитель на день или на весь визит',
@@ -651,7 +651,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     h1: 'Частный трансфер по всему Израилю',
     intro:
       'Поездки в одну сторону между любыми двумя точками страны. От отеля к отелю, из города в порт или к погранпереходу.',
-    heroImageAlt: ALT.pagePrivateDriver,
+    heroImageAlt: 'Чёрный пассажирский микроавтобус Mercedes Sprinter на дороге под голубым небом.',
     included: [
       'От двери до двери, без других пассажиров',
       'Помощь с багажом с обеих сторон',
@@ -691,7 +691,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     h1: 'Микроавтобусы Mercedes Sprinter и Savanna',
     intro:
       'Машины, на которых мы действительно ездим. С кондиционером, убранные между поездками и достаточно просторные, чтобы никто не держал чемодан на коленях.',
-    heroImageAlt: ALT.fleetExterior,
+    heroImageAlt: 'Чёрный пассажирский микроавтобус Mercedes Sprinter на дороге под голубым небом.',
     body: [
       {
         heading: 'На чём мы ездим',
@@ -721,7 +721,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     breadcrumb: 'О нас',
     h1: `${TRACK_RECORD.yearsInBusiness} лет на дорогах Израиля`,
     intro: `Israel Private Van это транспортная служба компании Amir Levi Transportation Services Ltd. из Холона, работающая по всей стране. Мы занимаемся этим уже ${TRACK_RECORD.yearsInBusiness} лет.`,
-    heroImageAlt: ALT.heroPoster,
+    heroImageAlt: 'Чёрный пассажирский микроавтобус Mercedes Sprinter на дороге под голубым небом.',
     body: [
       {
         heading: 'Кто мы',
@@ -749,7 +749,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     breadcrumb: 'Вопросы',
     h1: 'Частые вопросы',
     intro: 'Вопросы, которые нам задают чаще всего. Если вашего здесь нет, напишите нам в WhatsApp, и мы ответим.',
-    heroImageAlt: ALT.pageContact,
+    heroImageAlt: 'Чёрный пассажирский микроавтобус Mercedes Sprinter на дороге под голубым небом.',
     faq: [
       { q: 'Цена за человека или за машину?', a: 'За машину. Вы платите за автомобиль и водителя, а не за место, поэтому цена одинакова, едут двое или полный салон.' },
       { q: 'Почему на сайте нет прайса?', a: 'Потому что цена зависит от маршрута, времени, числа остановок и размера группы. Пришлите детали в WhatsApp, и мы ответим одной ценой за весь микроавтобус.' },
@@ -773,7 +773,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     breadcrumb: 'Контакты',
     h1: 'Свяжитесь с нами',
     intro: 'Быстрее всего до нас дойти через WhatsApp. Можно также позвонить, написать на почту или заполнить форму, и мы вернёмся к вам.',
-    heroImageAlt: ALT.pageContact,
+    heroImageAlt: 'Чёрный пассажирский микроавтобус Mercedes Sprinter на дороге под голубым небом.',
     body: [
       {
         heading: 'Прежде чем написать',

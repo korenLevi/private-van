@@ -64,7 +64,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     breadcrumb: 'דף הבית',
     h1: 'ואן פרטי עם נהג לכל חלקי הארץ',
     intro: 'הסעות לנתב"ג, ואן עם נהג צמוד ליום שלם והסעות פרטיות לכל מקום בארץ.',
-    heroImageAlt: ALT.heroPoster,
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
   },
 
   airportTransfers: {
@@ -75,7 +75,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     h1: 'הסעות לנתב"ג בוואן פרטי',
     intro:
       'חוזרים מחו"ל או אוספים אורחים מהשדה? הוואן מחכה בדיוק ביציאה מהנכנסים ונוסע ישירות לכתובת שלכם. אנחנו עוקבים אחרי הטיסה, עובדים 24/7 כולל שבתות וחגים, והמחיר הוא לרכב כולו.',
-    heroImageAlt: ALT.pageAirport,
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     included: AIRPORT_INCLUDED,
     body: [
       {
@@ -137,7 +137,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     h1: 'הסעה מנתב"ג לירושלים',
     intro:
       'ואן פרטי מהיציאה מאולם הנכנסים בנתב"ג לכל כתובת בירושלים. מחיר אחד לרכב, לא משנה כמה נוסעים, עם עזרה במזוודות בשני הקצוות.',
-    heroImageAlt: ALT.pageJerusalem,
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     trip: AIRPORT_TRIP,
     included: AIRPORT_INCLUDED,
     body: [
@@ -177,7 +177,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     breadcrumb: 'נתב"ג לתל אביב',
     h1: 'הסעה מנתב"ג לתל אביב',
     intro: 'הנסיעה הקצרה ביותר שלנו, וזו שבה ואן פרטי חוסך הכי הרבה טרחה. אנחנו פוגשים אתכם בנכנסים ונוסעים לכל כתובת בתל אביב וביפו.',
-    heroImageAlt: ALT.pageContact,
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     trip: AIRPORT_TRIP,
     included: AIRPORT_INCLUDED,
     body: [
@@ -214,7 +214,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     breadcrumb: 'נתב"ג לחיפה',
     h1: 'הסעה מנתב"ג לחיפה',
     intro: 'ואן פרטי מנתב"ג צפונה לחיפה, לקריות ולכל מקום על הכרמל. מחיר אחד לרכב, מדלת לדלת.',
-    heroImageAlt: ALT.pagePrivateDriver,
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     trip: AIRPORT_TRIP,
     included: AIRPORT_INCLUDED,
     body: [
@@ -248,7 +248,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     breadcrumb: 'נתב"ג לים המלח',
     h1: 'הסעה מנתב"ג לים המלח',
     intro: 'ואן פרטי מהשדה עד מלונות ים המלח. זו ירידה ארוכה דרך המדבר, והרבה יותר נוחה ברכב אחד מאשר באוטובוס עם החלפה.',
-    heroImageAlt: ALT.pageDeadSea,
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     trip: AIRPORT_TRIP,
     included: AIRPORT_INCLUDED,
     body: [
@@ -281,7 +281,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     breadcrumb: 'נתב"ג לאילת',
     h1: 'הסעה מנתב"ג לאילת',
     intro: 'הנסיעה הארוכה ביותר ברשימה, דרומה דרך הנגב עד ים סוף. ואן אחד, נהג אחד, מחיר אחד, ועצירות איפה שתרצו.',
-    heroImageAlt: ALT.pagePrivateDriver,
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     trip: AIRPORT_TRIP,
     included: AIRPORT_INCLUDED,
     body: [
@@ -316,7 +316,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     h1: 'ואן עם נהג צמוד ליום שלם',
     intro:
       'הרכב והנהג שלכם ליום שלם, ואתם נוסעים לאן שבא לכם. מתאים למשפחות, לקבוצות קטנות ולכל מי שמעדיף לא לנהוג בעצמו.',
-    heroImageAlt: ALT.pagePrivateDriver,
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     included: DAY_INCLUDED,
     body: [
       {
@@ -358,7 +358,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     breadcrumb: 'סיורים פרטיים',
     h1: 'סיורים פרטיים בישראל',
     intro: 'טיול יום פרטי עם ואן ונהג משלכם. בלי קבוצה להדביק, בלי שעת יציאה קבועה, והמסלול הוא שלכם.',
-    heroImageAlt: ALT.pageJerusalem,
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     included: DAY_INCLUDED,
     body: [
       {
@@ -394,7 +394,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     breadcrumb: 'טיול יום בירושלים',
     h1: 'טיול יום פרטי בירושלים',
     intro: 'יום שלם בירושלים עם ואן ונהג משלכם. אנחנו אוספים אתכם מהמלון ומחזירים אתכם כשתרצו לסיים.',
-    heroImageAlt: ALT.pageJerusalem,
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     included: DAY_INCLUDED,
     body: [
       {
@@ -433,7 +433,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     breadcrumb: 'ים המלח ומצדה',
     h1: 'טיול יום פרטי לים המלח ומצדה',
     intro: 'מצדה בבוקר, ים המלח אחר הצהריים, וואן שמחכה בשני המקומות. בלי לוח זמנים של אוטובוס מאורגן.',
-    heroImageAlt: ALT.pageDeadSea,
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     included: DAY_INCLUDED,
     body: [
       {
@@ -466,7 +466,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     breadcrumb: 'טיול יום בגליל',
     h1: 'טיול יום פרטי בגליל',
     intro: 'צפון הארץ ביום אחד, עם ואן ונהג משלכם. הגליל פרוס על שטח גדול, ובדיוק בגלל זה ואן עוזר.',
-    heroImageAlt: ALT.pageGalilee,
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     included: DAY_INCLUDED,
     body: [
       {
@@ -499,7 +499,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     breadcrumb: 'הסעות לחתונה',
     h1: 'הסעות לחתונה ולאירועים',
     intro: 'להביא את האורחים לאולם ולהחזיר אותם הביתה, בלי שאף אחד ייסע. אנחנו מפעילים הסעות לחתונות בכל הארץ.',
-    heroImageAlt: ALT.serviceFullDay,
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     included: [
       'איסוף מנקודה אחת או מכמה נקודות',
       'כמה סבבים שצריך לפי רשימת האורחים',
@@ -542,7 +542,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     breadcrumb: 'הסעות אומנים',
     h1: 'הסעות אומנים והסעות להקות',
     intro: 'להזיז אמנים, צוות וציוד בין השדה, המלון והאולם. אנחנו עובדים לפי לוח הזמנים של ההפקה.',
-    heroImageAlt: ALT.serviceCityToCity,
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     included: [
       'איסוף מהשדה לצוות ולציוד',
       'נסיעות בין המלון, האולם והחזרות',
@@ -585,7 +585,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     breadcrumb: 'הסעות לעסקים',
     h1: 'הסעות לאנשי עסקים',
     intro: 'הסעות משדה התעופה, הסעת משלחות והסעות לכנסים עבור חברות. רכב אחד, נהג אחד, חשבונית אחת.',
-    heroImageAlt: ALT.pageContact,
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     included: [
       'קבלת פנים ביציאה מהנכנסים בנתב"ג, עם מעקב טיסה',
       'נהג ליום, או לכל ימי הביקור',
@@ -626,7 +626,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     breadcrumb: 'הסעות פרטיות',
     h1: 'הסעות פרטיות בכל הארץ',
     intro: 'נסיעות בכיוון אחד בין כל שתי נקודות בארץ. ממלון למלון, מהעיר לנמל, או עד מעבר גבול.',
-    heroImageAlt: ALT.pagePrivateDriver,
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     included: [
       'מדלת לדלת, בלי נוסעים אחרים',
       'עזרה במזוודות בשני הקצוות',
@@ -664,7 +664,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     breadcrumb: 'הצי שלנו',
     h1: 'רכבי מרצדס ספרינטר וסוואנה',
     intro: 'הרכבים שאנחנו באמת נוהגים בהם. ממוזגים, מנוקים בין נסיעות, וגדולים מספיק כדי שאף אחד לא יחזיק מזוודה על הברכיים.',
-    heroImageAlt: ALT.fleetExterior,
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     body: [
       {
         heading: 'במה אנחנו נוסעים',
@@ -693,7 +693,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     breadcrumb: 'עלינו',
     h1: `${TRACK_RECORD.yearsInBusiness} שנה של הסעות בישראל`,
     intro: `ישראל פרייבט ואן הוא שירות ההסעות של אמיר לוי שירותי הסעות בע"מ, מחולון, שעובד בכל רחבי הארץ. אנחנו עושים את זה כבר ${TRACK_RECORD.yearsInBusiness} שנה.`,
-    heroImageAlt: ALT.heroPoster,
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     body: [
       {
         heading: 'מי אנחנו',
@@ -720,7 +720,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     breadcrumb: 'שאלות נפוצות',
     h1: 'שאלות נפוצות',
     intro: 'השאלות שאנחנו נשאלים הכי הרבה. אם השאלה שלכם לא כאן, שלחו לנו אותה בוואטסאפ ונענה.',
-    heroImageAlt: ALT.pageContact,
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     faq: [
       { q: 'המחיר לפי אדם או לפי רכב?', a: 'לפי רכב. אתם משלמים על הרכב ועל הנהג, לא על מושב, כך שהמחיר זהה בין אם נוסעים שניים ובין אם הרכב מלא.' },
       { q: 'למה אין מחירון באתר?', a: 'כי המחיר תלוי במסלול, בשעה, במספר העצירות ובגודל הקבוצה. שלחו לנו את הפרטים בוואטסאפ ונחזור עם מחיר אחד לרכב כולו.' },
@@ -743,7 +743,7 @@ const pages: Partial<Record<PageKey, Partial<PageContent>>> = {
     breadcrumb: 'צור קשר',
     h1: 'צרו איתנו קשר',
     intro: 'וואטסאפ היא הדרך המהירה ביותר להגיע אלינו. אפשר גם להתקשר, לשלוח מייל, או למלא את הטופס ונחזור אליכם.',
-    heroImageAlt: ALT.pageContact,
+    heroImageAlt: 'ואן מרצדס ספרינטר שחור חונה על כביש תחת שמיים כחולים.',
     body: [
       {
         heading: 'לפני שכותבים',

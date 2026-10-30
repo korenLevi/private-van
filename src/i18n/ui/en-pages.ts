@@ -78,7 +78,7 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     intro:
       'Ben Gurion airport transfers, a van and driver for the day, and private rides anywhere in the country.',
     heroImage: 'heroPoster',
-    heroImageAlt: ALT.heroPoster,
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     included: [],
     body: [],
     routeIds: [],
@@ -97,8 +97,8 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     h1: 'Ben Gurion airport transfer by private van',
     intro:
       'We meet you in the Ben Gurion arrivals hall and drive you straight to your door. The van is private, the price covers the whole vehicle, and the driver speaks English, Hebrew and Russian.',
-    heroImage: 'pageAirport',
-    heroImageAlt: ALT.pageAirport,
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     included: AIRPORT_INCLUDED,
     body: [
       {
@@ -168,8 +168,8 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     h1: 'Ben Gurion to Jerusalem transfer',
     intro:
       'A private van from the Ben Gurion arrivals exit to any address in Jerusalem. One price for the vehicle, whoever is travelling, with help for the luggage at both ends.',
-    heroImage: 'pageJerusalem',
-    heroImageAlt: ALT.pageJerusalem,
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     trip: AIRPORT_TRIP,
     included: AIRPORT_INCLUDED,
     body: [
@@ -218,8 +218,8 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     h1: 'Ben Gurion to Tel Aviv transfer',
     intro:
       'The shortest run we make, and the one where a private van saves the most bother. We meet you at arrivals and drive to any address in Tel Aviv or Jaffa.',
-    heroImage: 'pageContact',
-    heroImageAlt: ALT.pageContact,
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     trip: AIRPORT_TRIP,
     included: AIRPORT_INCLUDED,
     body: [
@@ -268,8 +268,8 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     h1: 'Ben Gurion to Haifa transfer',
     intro:
       'A private van from Ben Gurion up the coast to Haifa, the Krayot or anywhere on Mount Carmel. One price for the vehicle, door to door.',
-    heroImage: 'pagePrivateDriver',
-    heroImageAlt: ALT.pagePrivateDriver,
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     trip: AIRPORT_TRIP,
     included: AIRPORT_INCLUDED,
     body: [
@@ -318,8 +318,8 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     h1: 'Ben Gurion to Dead Sea transfer',
     intro:
       'A private van from the airport down to the Dead Sea hotels. It is a long descent through the desert, and a far easier trip in one vehicle than by bus with a change.',
-    heroImage: 'pageDeadSea',
-    heroImageAlt: ALT.pageDeadSea,
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     trip: AIRPORT_TRIP,
     included: AIRPORT_INCLUDED,
     body: [
@@ -367,8 +367,8 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     h1: 'Ben Gurion to Eilat transfer',
     intro:
       'The longest run on our list, straight down through the Negev to the Red Sea. One van, one driver, one price, with stops where you want them.',
-    heroImage: 'pagePrivateDriver',
-    heroImageAlt: ALT.pagePrivateDriver,
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     trip: AIRPORT_TRIP,
     included: AIRPORT_INCLUDED,
     body: [
@@ -420,8 +420,8 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     h1: 'Private van with driver in Israel',
     intro:
       'Keep the van and the driver for a whole day and go where you like. Good for families, small groups and anyone who would rather not drive on unfamiliar roads.',
-    heroImage: 'pagePrivateDriver',
-    heroImageAlt: ALT.pagePrivateDriver,
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     included: DAY_INCLUDED,
     body: [
       {
@@ -483,8 +483,8 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     h1: 'Private tours of Israel',
     intro:
       'A private day tour with a van and driver of your own. No group to keep up with, no fixed departure, and the route is yours to set.',
-    heroImage: 'pageJerusalem',
-    heroImageAlt: ALT.pageJerusalem,
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     included: DAY_INCLUDED,
     body: [
       {
@@ -534,8 +534,8 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     h1: 'Private Jerusalem day tour',
     intro:
       'Spend the day in Jerusalem with a van and driver of your own. We collect you from your hotel and bring you back when you are ready to leave.',
-    heroImage: 'pageJerusalem',
-    heroImageAlt: ALT.pageJerusalem,
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     included: DAY_INCLUDED,
     body: [
       {
@@ -583,8 +583,8 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     h1: 'Dead Sea and Masada private tour',
     intro:
       'Masada in the morning, the Dead Sea in the afternoon, and a van waiting at both. No coach timetable to keep to.',
-    heroImage: 'pageDeadSea',
-    heroImageAlt: ALT.pageDeadSea,
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     included: DAY_INCLUDED,
     body: [
       {
@@ -632,8 +632,8 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     h1: 'Galilee private day tour',
     intro:
       'The north of Israel in a day, with a van and driver of your own. The Galilee is spread out, which is exactly why a van helps.',
-    heroImage: 'pageGalilee',
-    heroImageAlt: ALT.pageGalilee,
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     included: DAY_INCLUDED,
     body: [
       {
@@ -692,8 +692,8 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     h1: 'Wedding transportation in Israel',
     intro:
       'Getting guests to the venue and home again, without anyone driving. We run shuttles for weddings anywhere in the country.',
-    heroImage: 'serviceFullDay',
-    heroImageAlt: ALT.serviceFullDay,
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     included: [
       'Pickup from one or more collection points',
       'As many runs as the guest list needs',
@@ -753,8 +753,8 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     h1: 'Artist and band transportation in Israel',
     intro:
       'Moving performers, crew and equipment between the airport, the hotel and the venue. We work to the schedule the production gives us.',
-    heroImage: 'serviceCityToCity',
-    heroImageAlt: ALT.serviceCityToCity,
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     included: [
       'Airport pickup for the group and the gear',
       'Runs between hotel, venue and rehearsal',
@@ -813,8 +813,8 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     h1: 'Business transportation in Israel',
     intro:
       'Airport transfers, delegation transport and conference shuttles for companies. One vehicle, one driver, one invoice.',
-    heroImage: 'pageContact',
-    heroImageAlt: ALT.pageContact,
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     included: [
       'Meet and greet at Ben Gurion arrivals',
       'A driver for the day, or for the whole visit',
@@ -866,8 +866,8 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     h1: 'Private transfers anywhere in Israel',
     intro:
       'One-way rides between any two places in the country. Hotel to hotel, city to port, or out to a border crossing.',
-    heroImage: 'pagePrivateDriver',
-    heroImageAlt: ALT.pagePrivateDriver,
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     included: [
       'Door to door, with no other passengers',
       'Help with the luggage at both ends',
@@ -922,8 +922,8 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     h1: 'Mercedes Sprinter and Savanna vans',
     intro:
       'The vehicles we actually drive. Air conditioned, cleaned between trips, and big enough that nobody holds a suitcase on their lap.',
-    heroImage: 'fleetExterior',
-    heroImageAlt: ALT.fleetExterior,
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     included: [],
     body: [
       {
@@ -974,7 +974,7 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     h1: `Driving in Israel for ${TRACK_RECORD.yearsInBusiness} years`,
     intro: `Israel Private Van is the transport service of Amir Levi Transportation Services, based in Holon and working across the whole country. We have been doing this for ${TRACK_RECORD.yearsInBusiness} years.`,
     heroImage: 'heroPoster',
-    heroImageAlt: ALT.heroPoster,
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     included: [],
     body: [
       {
@@ -1007,8 +1007,8 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     h1: 'Frequently asked questions',
     intro:
       'The questions we are asked most often. If yours is not here, send it to us on WhatsApp and we will answer it.',
-    heroImage: 'pageContact',
-    heroImageAlt: ALT.pageContact,
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     included: [],
     body: [],
     routeIds: [],
@@ -1073,8 +1073,8 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     h1: 'Contact us',
     intro:
       'WhatsApp is the fastest way to reach us. You can also call, email, or fill in the form and we will come back to you.',
-    heroImage: 'pageContact',
-    heroImageAlt: ALT.pageContact,
+    heroImage: 'heroPoster',
+    heroImageAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     included: [],
     body: [
       {

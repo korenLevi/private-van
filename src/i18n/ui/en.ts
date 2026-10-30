@@ -51,8 +51,7 @@ const en = {
       'Ben Gurion Airport transfers, full-day private tours and rides anywhere in Israel, in a new Mercedes Sprinter with an English-speaking driver.',
     videoAlt:
       'A white Mercedes Sprinter van on an Israeli highway at dusk, filmed from the roadside.',
-    posterAlt:
-      'The Dead Sea at dusk, with the mountains of Jordan on the far shore.',
+    posterAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     primaryCta: 'Book on WhatsApp',
     secondaryCta: 'See routes and prices',
   },
