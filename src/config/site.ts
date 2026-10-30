@@ -43,6 +43,8 @@ export const SITE = {
   /** Rendered as "Israel Private" + accented "Van" in the wordmark. */
   nameParts: { lead: 'Israel Private', accent: 'Van' },
   name: 'Israel Private Van',
+  /** The brand as Hebrew speakers write it. */
+  nameHe: 'ישראל פרייבט ואן',
   legalName: 'Amir Levi Transportation Services Ltd.',
   /** The registered name as it appears in Hebrew records. */
   legalNameHe: 'אמיר לוי שירותי הסעות בע"מ',

@@ -70,11 +70,11 @@ const pages: Partial<Record<PageKey, PageContent>> = {
   /* Home                                                              */
   /* ---------------------------------------------------------------- */
   home: {
-    title: 'Private Van with Driver in Israel | Israel Private Van',
+    title: 'Israel Private Van | Airport Transfers and Private Tours',
     description:
-      'Private van and driver across Israel. Ben Gurion airport transfers, full days with a driver, and rides anywhere in the country.',
+      'Israel Private Van: a private van and driver across Israel. Ben Gurion airport transfers, full days with a driver, and rides anywhere in the country.',
     breadcrumb: 'Home',
-    h1: 'Private van with driver in Israel',
+    h1: 'Israel Private Van: a private van and driver anywhere in Israel',
     intro:
       'Ben Gurion airport transfers, a van and driver for the day, and private rides anywhere in the country.',
     heroImage: 'heroPoster',
@@ -413,11 +413,11 @@ const pages: Partial<Record<PageKey, PageContent>> = {
   /* Van with driver                                                   */
   /* ---------------------------------------------------------------- */
   vanWithDriver: {
-    title: 'Private Van with Driver Israel | Full Day Hire',
+    title: 'Full Day Private Van with Driver in Israel',
     description:
       'Hire a private van with driver in Israel for a full day. You set the route, the driver stays with you, and one price covers the whole vehicle.',
     breadcrumb: 'Van with driver',
-    h1: 'Private van with driver in Israel',
+    h1: 'Private van with driver for a full day',
     intro:
       'Keep the van and the driver for a whole day and go where you like. Good for families, small groups and anyone who would rather not drive on unfamiliar roads.',
     heroImage: 'heroPoster',
@@ -1000,7 +1000,7 @@ const pages: Partial<Record<PageKey, PageContent>> = {
   },
 
   faq: {
-    title: 'FAQ | Private Van and Driver in Israel',
+    title: 'FAQ | Israel Private Van',
     description:
       'Common questions about a private van and driver in Israel: seats, child seats, flight delays, night and Shabbat pickups, and how pricing works.',
     breadcrumb: 'FAQ',
@@ -1066,7 +1066,7 @@ const pages: Partial<Record<PageKey, PageContent>> = {
   },
 
   contact: {
-    title: 'Contact | Private Van and Driver in Israel',
+    title: 'Contact Israel Private Van | WhatsApp, Phone, Email',
     description:
       'Get in touch about a private van and driver in Israel. Message us on WhatsApp, call, or send the form and we will reply with a price.',
     breadcrumb: 'Contact',

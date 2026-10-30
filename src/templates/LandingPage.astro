@@ -134,7 +134,7 @@ const waHref = whatsappHref(t.form.genericWhatsappMessage);
               { label: t.trip.seats, value: page.trip.seats },
               { label: t.trip.pickup, value: page.trip.pickup },
               { label: t.trip.availability, value: page.trip.availability },
-            ].map((fact) => (
+            ].filter((fact) => fact.value).map((fact) => (
               <div class="min-w-0">
                 <dt class="text-[0.6875rem] font-semibold tracking-[0.14em] text-gold-ink uppercase">
                   {fact.label}

@@ -85,7 +85,48 @@ export function getPage(locale: Locale, key: PageKey): PageContent {
     // reaching here means a link points somewhere that was never built.
     throw new Error(`No content for page "${key}" in locale "${locale}".`);
   }
-  return page as PageContent;
+  return withoutPlaceholders(page as PageContent);
+}
+
+/**
+ * Placeholders mark facts the owner has not confirmed yet. They stay in the
+ * dictionaries (npm run build lists them) but never reach a visitor: a
+ * sentence loses its bracketed note, and a paragraph, list item, FAQ answer
+ * or section left with nothing in it is dropped.
+ */
+const PLACEHOLDER_TEXT = /\s*\[(?:PLACEHOLDER|PRICE)\b[^\]]*\]/g;
+
+const strip = (text: string) => text.replace(PLACEHOLDER_TEXT, '').trim();
+const stripAll = (list: readonly string[]) => list.map(strip).filter(Boolean);
+
+function withoutPlaceholders(page: PageContent): PageContent {
+  return {
+    ...page,
+    intro: strip(page.intro),
+    summary: page.summary === undefined ? undefined : strip(page.summary),
+    included: stripAll(page.included),
+    body: page.body
+      .map((section) => ({
+        ...section,
+        paragraphs: stripAll(section.paragraphs),
+        bullets: stripAll(section.bullets),
+      }))
+      .filter((section) => section.paragraphs.length > 0 || section.bullets.length > 0),
+    faq: page.faq
+      .map((item) => ({ q: strip(item.q), a: strip(item.a) }))
+      .filter((item) => item.q && item.a),
+    trip: page.trip && {
+      vehicle: strip(page.trip.vehicle),
+      seats: strip(page.trip.seats),
+      pickup: strip(page.trip.pickup),
+      availability: strip(page.trip.availability),
+    },
+    table: page.table && {
+      ...page.table,
+      rows: page.table.rows.map((row) => row.map(strip)),
+      note: page.table.note === undefined ? undefined : strip(page.table.note),
+    },
+  };
 }
 
 /** The pages a locale actually publishes, for nav built from a key list. */

@@ -88,9 +88,12 @@ export function localBusinessSchema(
     '@type': 'LocalBusiness',
     '@id': businessId,
     name: SITE.name,
+    // The Hebrew spelling and the domain form people type, so a search for
+    // either is recognised as the same business.
+    alternateName: [SITE.nameHe, 'IsraelPrivateVan', SITE.legalNameHe],
     legalName: SITE.legalName,
     description,
-    url: SITE.url,
+    url: `${SITE.url}/`,
     image: imageUrl,
     logo: logoUrl ?? imageUrl,
     telephone: telephone(),
