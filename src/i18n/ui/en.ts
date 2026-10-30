@@ -125,7 +125,7 @@ const en = {
         body: 'We pick you up at arrivals and drive you straight to your hotel or apartment. One price for the whole van, so the group and the luggage stay together.',
         image: 'serviceAirport',
         imageAlt:
-          'Arriving passengers walking towards baggage claim at Ben Gurion Airport.',
+          'The two control towers and the terminal buildings of Ben Gurion Airport, seen from the airfield.',
         pageKey: 'airportTransfers',
         linkLabel: 'Airport transfers',
       },
