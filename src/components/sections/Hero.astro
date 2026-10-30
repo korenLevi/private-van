@@ -4,10 +4,9 @@ import { Picture } from 'astro:assets';
 import { IMAGES } from '../../assets';
 import { MEDIA, whatsappHref } from '../../config/site';
 import type { Locale } from '../../i18n/config';
-import { pathFor } from '../../i18n/routes';
 import { useTranslations } from '../../i18n/utils';
 import Icon from '../Icon.astro';
-import QuoteFormIsland from '../QuoteFormIsland.astro';
+import QuoteBar from '../QuoteBar.astro';
 
 interface Props {
   locale: Locale;
@@ -15,7 +14,6 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = useTranslations(locale);
-const home = pathFor('home', locale);
 const waHref = whatsappHref(t.form.genericWhatsappMessage);
 const videoSrc = MEDIA.heroVideo.mp4;
 ---
@@ -102,34 +100,11 @@ const videoSrc = MEDIA.heroVideo.mp4;
             <Icon name="whatsapp" size={18} />
             {t.hero.primaryCta}
           </a>
-          <a href={`${home === '/' ? '' : home}/#routes`} class="btn btn-ghost-on-dark">
-            {t.hero.secondaryCta}
-          </a>
         </div>
       </div>
     </div>
 
-    <!-- White quote bar, overlapping the bottom edge of the media block -->
-    <div class="relative z-10 -mt-20 mb-14 px-0 sm:-mt-24 lg:-mt-16 lg:mb-16">
-      <div
-        class="mx-auto max-w-[70rem] rounded-[1.25rem] border border-line bg-paper p-5 shadow-[0_18px_48px_-24px_rgba(20,20,20,0.35)] sm:p-6 lg:px-8 lg:py-7"
-      >
-        <div class="mb-5 flex flex-col gap-1 text-center lg:mb-6 lg:text-start">
-          <h2 class="font-display text-xl text-ink lg:text-[1.375rem]">
-            {t.form.title}
-          </h2>
-          <p class="text-sm text-muted">{t.form.subtitle}</p>
-        </div>
-
-        <QuoteFormIsland
-          locale={locale}
-          variant="bar"
-          contactFields={false}
-          source="homepage-hero"
-          hydrate="idle"
-        />
-      </div>
-    </div>
+    <QuoteBar locale={locale} source="homepage-hero" />
   </div>
 </section>
 

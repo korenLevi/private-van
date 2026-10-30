@@ -53,7 +53,6 @@ const en = {
       'A white Mercedes Sprinter van on an Israeli highway at dusk, filmed from the roadside.',
     posterAlt: 'A black Mercedes Sprinter passenger van parked on a road under a blue sky.',
     primaryCta: 'Book on WhatsApp',
-    secondaryCta: 'See routes and prices',
   },
 
   /* ---------------------------------------------------------------- */

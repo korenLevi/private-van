@@ -1,0 +1,65 @@
+---
+/**
+ * The white "Get a price for your trip" bar.
+ *
+ * Under a hero photograph it overlaps the bottom edge of the picture, as on
+ * the home page. On pages with no photograph it sits as a plain card and
+ * carries the WhatsApp button itself, so every page offers both.
+ */
+import { whatsappHref } from '../config/site';
+import type { Locale } from '../i18n/config';
+import { useTranslations } from '../i18n/utils';
+import Icon from './Icon.astro';
+import QuoteFormIsland from './QuoteFormIsland.astro';
+
+interface Props {
+  locale: Locale;
+  source: string;
+  /** Pull the bar up over the hero photograph above it. */
+  overlap?: boolean;
+  /** Show a WhatsApp button beside the heading, for pages with no hero. */
+  whatsapp?: boolean;
+}
+
+const { locale, source, overlap = true, whatsapp = false } = Astro.props;
+const t = useTranslations(locale);
+const waHref = whatsappHref(t.form.genericWhatsappMessage);
+---
+
+<div
+  class:list={[
+    'relative z-10',
+    overlap ? '-mt-20 mb-14 sm:-mt-24 lg:-mt-16 lg:mb-16' : 'mt-8 mb-4',
+  ]}
+>
+  <div
+    class="mx-auto max-w-[70rem] rounded-[1.25rem] border border-line bg-paper p-5 shadow-[0_18px_48px_-24px_rgba(20,20,20,0.35)] sm:p-6 lg:px-8 lg:py-7"
+  >
+    <div
+      class="mb-5 flex flex-col items-center gap-3 text-center lg:mb-6 lg:flex-row lg:items-end lg:justify-between lg:text-start"
+    >
+      <div class="flex flex-col gap-1">
+        <h2 class="font-display text-xl text-ink lg:text-[1.375rem]">
+          {t.form.title}
+        </h2>
+        <p class="text-sm text-muted">{t.form.subtitle}</p>
+      </div>
+      {
+        whatsapp && (
+          <a href={waHref} target="_blank" rel="noopener" class="btn btn-outline shrink-0">
+            <Icon name="whatsapp" size={18} />
+            {t.common.bookOnWhatsapp}
+          </a>
+        )
+      }
+    </div>
+
+    <QuoteFormIsland
+      locale={locale}
+      variant="bar"
+      contactFields={false}
+      source={source}
+      hydrate="idle"
+    />
+  </div>
+</div>

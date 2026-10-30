@@ -11,6 +11,7 @@ import { Picture } from 'astro:assets';
 import { getImage } from '../assets';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Icon from '../components/Icon.astro';
+import QuoteBar from '../components/QuoteBar.astro';
 import CtaBand from '../components/sections/CtaBand.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
@@ -80,6 +81,8 @@ const formatDate = (iso?: string) =>
         <span class="gold-rule mt-5" aria-hidden="true"></span>
         <p class="mt-6 text-[1.0625rem] leading-relaxed text-muted">{page.intro}</p>
       </div>
+
+      <QuoteBar locale={locale} source="guidesIndex" overlap={false} whatsapp />
     </div>
   </section>
 

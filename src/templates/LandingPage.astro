@@ -4,6 +4,7 @@ import { Picture } from 'astro:assets';
 import { getImage } from '../assets';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Icon from '../components/Icon.astro';
+import QuoteBar from '../components/QuoteBar.astro';
 import CtaBand from '../components/sections/CtaBand.astro';
 import Fleet from '../components/sections/Fleet.astro';
 import Faq from '../components/sections/Faq.astro';
@@ -99,7 +100,7 @@ const waHref = whatsappHref(t.form.genericWhatsappMessage);
         </div>
 
         <div
-          class="relative flex min-h-[22rem] flex-col items-center justify-center px-5 py-16 text-center sm:min-h-[26rem] sm:px-8 md:py-20 lg:min-h-[28rem]"
+          class="relative flex min-h-[26rem] flex-col items-center justify-center px-5 pt-16 pb-32 text-center sm:min-h-[30rem] sm:px-8 md:pt-20 md:pb-36 lg:min-h-[32rem] lg:pb-28"
         >
           <h1
             class="max-w-4xl text-[2rem] leading-[1.1] text-white sm:text-[2.5rem] lg:text-[3rem]"
@@ -120,6 +121,8 @@ const waHref = whatsappHref(t.form.genericWhatsappMessage);
           </div>
         </div>
       </div>
+
+      <QuoteBar locale={locale} source={pageKey} />
     </div>
   </section>
 

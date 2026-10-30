@@ -14,6 +14,7 @@ import { Picture } from 'astro:assets';
 import { getImage } from '../assets';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Icon from '../components/Icon.astro';
+import QuoteBar from '../components/QuoteBar.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import CtaBand from '../components/sections/CtaBand.astro';
 import Faq from '../components/sections/Faq.astro';
@@ -113,6 +114,11 @@ const dateLabel = page.updated
         </section>
       )
     }
+
+    {/* After the answer, so the reader gets it first and the price second. */}
+    <div class="container-page">
+      <QuoteBar locale={locale} source={pageKey} overlap={false} whatsapp />
+    </div>
 
     <section class="mt-10 lg:mt-12">
       <div class="container-page">

@@ -40,7 +40,6 @@ const ru: Translation = {
     subtitle:
       'Трансфер из аэропорта Бен Гурион, микроавтобус с водителем на весь день и поездки по всей стране на Mercedes Sprinter и Savanna.',
     primaryCta: 'Заказать в WhatsApp',
-    secondaryCta: 'Маршруты и цены',
   },
 
   form: {
