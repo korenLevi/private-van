@@ -337,7 +337,7 @@ const en = {
     items: [
       {
         q: 'How many people fit in one van?',
-        a: `Between 12 and 15 passengers, depending on the van. For a bigger group we send more than one van so everyone travels together.`,
+        a: `Between 12 and 19 passengers, depending on the van. For a bigger group we send more than one van so everyone travels together.`,
       },
       {
         q: 'Is the price per person or per van?',

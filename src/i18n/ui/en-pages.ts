@@ -185,7 +185,7 @@ const pages: Partial<Record<PageKey, PageContent>> = {
         heading: 'Why a van rather than a taxi',
         paragraphs: [
           'A family with suitcases rarely fits in one airport taxi. Splitting across two cars means two fares, two drivers and no guarantee you arrive together.',
-          'One van seats up to 15 passengers, so the group stays in one vehicle at one price.',
+          'One van seats up to 19 passengers, so the group stays in one vehicle at one price.',
         ],
         bullets: [],
       },
@@ -886,7 +886,7 @@ const pages: Partial<Record<PageKey, PageContent>> = {
       {
         heading: 'Group transport',
         paragraphs: [
-          'A single van seats 12 to 15 passengers, depending on the vehicle. For more than that we run several vehicles together so the whole group moves at once.',
+          'A single van seats 12 to 19 passengers, depending on the vehicle. For more than that we run several vehicles together so the whole group moves at once.',
           'This is what we do for school trips, family events and company outings.',
         ],
         bullets: [],
@@ -917,7 +917,7 @@ const pages: Partial<Record<PageKey, PageContent>> = {
   fleet: {
     title: 'Our Fleet | Mercedes Sprinter and Savanna Vans',
     description:
-      'The vans we drive: 2024 to 2026 Mercedes Sprinter and Savanna, 12 to 15 seats, air conditioned and cleaned between trips.',
+      'The vans we drive: 2024 to 2026 Mercedes Sprinter and Savanna, 12 to 19 seats, air conditioned and cleaned between trips.',
     breadcrumb: 'Fleet',
     h1: 'Mercedes Sprinter and Savanna vans',
     intro:
@@ -929,7 +929,7 @@ const pages: Partial<Record<PageKey, PageContent>> = {
       {
         heading: 'What we drive',
         paragraphs: [
-          `We run Mercedes Sprinter and Savanna vans, all ${FLEET.modelYear} models. Each seats between 12 and 15 passengers depending on the vehicle, so a group and its luggage travel in one van.`,
+          `We run Mercedes Sprinter and Savanna vans, all ${FLEET.modelYear} models. Each seats between 12 and 19 passengers depending on the vehicle, so a group and its luggage travel in one van.`,
           'For a group too big for one van we send more than one and everyone arrives together.',
         ],
         bullets: [
@@ -951,7 +951,7 @@ const pages: Partial<Record<PageKey, PageContent>> = {
     faq: [
       {
         q: 'How many passengers fit in one van?',
-        a: 'Between 12 and 15, depending on the van. Tell us how many people and suitcases you have and we will send the right vehicle, or more than one.',
+        a: 'Between 12 and 19, depending on the van. Tell us how many people and suitcases you have and we will send the right vehicle, or more than one.',
       },
       {
         q: 'Are there child seats?',
@@ -1019,7 +1019,7 @@ const pages: Partial<Record<PageKey, PageContent>> = {
       },
       {
         q: 'How many people fit in one van?',
-        a: 'Between 12 and 15 passengers, depending on the van. For a bigger group we send more than one van so everyone travels together.',
+        a: 'Between 12 and 19 passengers, depending on the van. For a bigger group we send more than one van so everyone travels together.',
       },
       {
         q: 'Why is there no price list on the site?',
