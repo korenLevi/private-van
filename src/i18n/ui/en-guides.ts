@@ -124,7 +124,7 @@ const guides: Partial<Record<PageKey, PageContent>> = {
       },
       {
         q: 'What happens if the flight is late?',
-        a: '[PLACEHOLDER: describe how you track flights, how long the driver waits, and whether a delay costs anything extra.]',
+        a: 'We track your flight, so the driver comes for the time you actually land, not the time on your ticket.',
       },
     ],
     leadsTo: ['bgJerusalem', 'airportTransfers'],
@@ -208,7 +208,7 @@ const guides: Partial<Record<PageKey, PageContent>> = {
     faq: [
       {
         q: 'Do you drive on Shabbat and holidays?',
-        a: '[PLACEHOLDER: confirm your Saturday and holiday availability, and whether it changes the price.]',
+        a: 'Yes. We work 24 hours a day, every day of the year, including Shabbat and Jewish holidays.',
       },
       {
         q: 'Can I get from Ben Gurion to Jerusalem on a Saturday?',
