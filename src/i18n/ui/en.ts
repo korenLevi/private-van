@@ -46,7 +46,7 @@ const en = {
   /* ---------------------------------------------------------------- */
   hero: {
     eyebrow: 'Private van and driver',
-    h1: 'Israel Private Van: a private van and driver anywhere in Israel',
+    h1: 'Your private van and driver in Israel',
     subtitle:
       'Ben Gurion Airport transfers, full-day private tours and rides anywhere in Israel, in a new Mercedes Sprinter with an English-speaking driver.',
     videoAlt:
@@ -146,8 +146,8 @@ const en = {
         image: 'serviceCityToCity',
         imageAlt:
           'A black Mercedes-Benz Sprinter passenger van, seen from the front quarter.',
-        pageKey: 'privateTransfers',
-        linkLabel: 'Private transfers',
+        pageKey: 'vanWithDriver',
+        linkLabel: 'City to city',
       },
     ],
   },
