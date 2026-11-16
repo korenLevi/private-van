@@ -110,14 +110,16 @@ export const BUSINESS = {
 
 export const FLEET = {
   /**
-   * The vehicles actually operated. No fleet size is published: the brief
-   * gives none, and a count is exactly the kind of number that must not be
-   * invented.
+   * The vehicles actually operated. The owner confirmed a fleet of more than
+   * 20 vehicles, so that figure is now ours to state; the photos on the site
+   * are a representative sample of them, not the whole fleet.
    */
   vehicles: [
     { name: 'Mercedes-Benz Sprinter', seats: '⁦12–19⁩' },
     { name: 'Savanna', seats: '⁦12–19⁩' },
   ],
+  /** Fleet size, confirmed by the owner. Shown as "20+". */
+  vehicleCount: '20+',
   /** Used wherever one vehicle name reads better than a list. */
   vehicleName: 'Mercedes Sprinter',
   /** Passenger seats per vehicle, excluding the driver. Varies by van. */
@@ -239,6 +241,17 @@ export const MEDIA = {
    * Set to null to hide the video block entirely.
    */
   youtubeId: null as string | null, // e.g. "dQw4w9WgXcQ"
+
+  /**
+   * Videos of the real vans, shown FIRST on the fleet page (above the photos).
+   * Each entry is a YouTube video id — the bit after "v=" in a watch URL, or
+   * the last path segment of a youtu.be/ link. They play through a facade
+   * (thumbnail first, iframe only on click), so adding them costs nothing on
+   * load. Leave the array empty and the video block simply does not appear.
+   *
+   *   fleetVideos: ['dQw4w9WgXcQ', 'abcDEF12345'],
+   */
+  fleetVideos: ['Y6zOFdh0UfA'] as string[],
 } as const;
 
 /* ------------------------------------------------------------------ */

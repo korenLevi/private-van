@@ -16,7 +16,8 @@ interface Props {
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 
-const [lead, ...rest] = t.fleet.gallery;
+const videos = MEDIA.fleetVideos;
+const gallery = t.fleet.gallery;
 ---
 
 <section id="fleet" class="section-y bg-sand">
@@ -27,43 +28,67 @@ const [lead, ...rest] = t.fleet.gallery;
       intro={t.fleet.intro}
     />
 
-    <!--
-      A 3x3 grid: the lead photo takes the top-left 2x2 block and the other
-      five fill the rest. Row height comes from the 4:3 thumbnails and the
-      lead stretches to fill its two rows, which lands it on the same ratio
-      at every width. On mobile it is a 2-column grid with the lead and the
-      last thumbnail spanning both.
-    -->
-    <ul class="mt-12 grid grid-cols-2 gap-4 lg:mt-14 lg:grid-cols-3 lg:gap-5">
-      <li class="col-span-2 aspect-[4/3] lg:row-span-2 lg:aspect-auto">
-        <Picture
-          src={getImage(lead.image)}
-          alt={lead.alt}
-          formats={['avif', 'webp']}
-          fallbackFormat="jpg"
-          widths={[600, 900, 1200]}
-          sizes="(min-width: 1024px) 66vw, calc(100vw - 2.5rem)"
-          loading="lazy"
-          decoding="async"
-          layout="full-width"
-          class="h-full w-full rounded-[var(--radius-card)] object-cover"
-        />
-      </li>
+    {/*
+      Videos first. Each plays through a facade — a thumbnail with a play
+      button — so no YouTube iframe, script or cookie loads until someone
+      clicks. The block renders only once MEDIA.fleetVideos has an id in it.
+    */}
+    {
+      videos.length > 0 && (
+        <div class="mt-12 lg:mt-14">
+          <h3 class="mb-5 text-center font-display text-[1.5rem] text-ink">
+            {t.fleet.videoHeading}
+          </h3>
+          {/*
+            The clips are phone-shot reels, so each plays in a 9:16 portrait
+            frame capped at a phone-ish width — one centred, or two abreast.
+          */}
+          <div
+            class:list={[
+              'mx-auto grid gap-4 lg:gap-5',
+              videos.length === 1 ? 'max-w-[20rem]' : 'max-w-2xl grid-cols-2',
+            ]}
+          >
+            {videos.map((id, i) => (
+              <LiteYouTube
+                videoId={id}
+                aspect="short"
+                title={`${t.fleet.videoHeading} ${videos.length > 1 ? i + 1 : ''}`.trim()}
+                thumbnailAlt={t.fleet.videoAlt}
+                playLabel={t.fleet.videoCta}
+              />
+            ))}
+          </div>
+        </div>
+      )
+    }
 
+    {/*
+      Photo gallery. The real photos are portrait phone shots, so every tile
+      is a 3:4 card with the image cropped to fill — four across on a wide
+      screen, two up on a phone, and it adapts to however many photos the
+      dictionary lists.
+    */}
+    <ul
+      class:list={[
+        'grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5',
+        videos.length > 0 ? 'mt-8 lg:mt-10' : 'mt-12 lg:mt-14',
+      ]}
+    >
       {
-        rest.map((photo) => (
-          <li class="aspect-[4/3] last:col-span-2 lg:last:col-span-1">
+        gallery.map((photo, i) => (
+          <li class="overflow-hidden rounded-[var(--radius-card)]">
             <Picture
               src={getImage(photo.image)}
               alt={photo.alt}
               formats={['avif', 'webp']}
               fallbackFormat="jpg"
-              widths={[300, 450, 600]}
-              sizes="(min-width: 1024px) 33vw, calc(50vw - 1.75rem)"
-              loading="lazy"
+              widths={[360, 540, 720]}
+              sizes="(min-width: 1024px) 25vw, calc(50vw - 1.5rem)"
+              loading={i < 2 ? 'eager' : 'lazy'}
               decoding="async"
               layout="full-width"
-              class="h-full w-full rounded-[var(--radius-card)] object-cover"
+              class="aspect-[3/4] h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
             />
           </li>
         ))
@@ -79,8 +104,6 @@ const [lead, ...rest] = t.fleet.gallery;
               <dt class="text-[0.6875rem] font-semibold tracking-[0.14em] text-gold-ink uppercase">
                 {spec.label}
               </dt>
-              {/* A value still waiting on a real number reads as a note, not a
-                  spec — and at body size it cannot overflow its column. */}
               <dd
                 class:list={[
                   'mt-1.5 leading-tight break-words',
@@ -112,23 +135,5 @@ const [lead, ...rest] = t.fleet.gallery;
         </ul>
       </div>
     </div>
-
-    {
-      MEDIA.youtubeId && (
-        <div class="mt-10 lg:mt-12">
-          <h3 class="mb-5 text-center font-display text-[1.5rem] text-ink">
-            {t.fleet.videoHeading}
-          </h3>
-          <div class="mx-auto max-w-4xl">
-            <LiteYouTube
-              videoId={MEDIA.youtubeId}
-              title={t.fleet.videoHeading}
-              thumbnailAlt={t.fleet.videoAlt}
-              playLabel={t.fleet.videoCta}
-            />
-          </div>
-        </div>
-      )
-    }
   </div>
 </section>

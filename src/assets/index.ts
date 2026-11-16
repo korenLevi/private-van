@@ -21,6 +21,13 @@ import fleetSideDoor from './fleet-side-door.jpg';
 import fleetSeatsDetail from './fleet-seats-detail.jpg';
 import fleetOnRoad from './fleet-on-road.jpg';
 
+// Real photos of the vans (portrait, shot on location).
+import fleetExteriorNight from './fleet-exterior-night.jpg';
+import fleetInteriorCream from './fleet-interior-cream.jpg';
+import fleetInteriorCream2 from './fleet-interior-cream-2.jpg';
+import fleetInteriorBrown1 from './fleet-interior-brown-1.jpg';
+import fleetInteriorBrown2 from './fleet-interior-brown-2.jpg';
+
 import cardAirportTransfer from './card-airport-transfer.jpg';
 import cardBusinessTravel from './card-business-travel.jpg';
 import cardPrivateTours from './card-private-tours.jpg';
@@ -56,6 +63,12 @@ export const IMAGES = {
   fleetSideDoor,
   fleetSeatsDetail,
   fleetOnRoad,
+
+  fleetExteriorNight,
+  fleetInteriorCream,
+  fleetInteriorCream2,
+  fleetInteriorBrown1,
+  fleetInteriorBrown2,
 
   pageAirport,
   pagePrivateDriver,

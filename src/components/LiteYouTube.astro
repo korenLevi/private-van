@@ -19,6 +19,12 @@ interface Props {
   /** Describes the still frame for anyone who cannot see it. */
   thumbnailAlt: string;
   playLabel: string;
+  /**
+   * Frame shape. 'video' is the usual 16:9 landscape; 'short' is the 9:16
+   * portrait of a YouTube Short / reel, so a phone-shot clip fills the box
+   * instead of sitting pillarboxed between black bars.
+   */
+  aspect?: 'video' | 'short';
   class?: string;
 }
 
@@ -27,6 +33,7 @@ const {
   title,
   thumbnailAlt,
   playLabel,
+  aspect = 'video',
   class: className = '',
 } = Astro.props;
 
@@ -35,7 +42,8 @@ const thumb = (name: string) => `https://i.ytimg.com/vi/${videoId}/${name}.jpg`;
 
 <div
   class:list={[
-    'lite-yt relative aspect-video w-full overflow-hidden rounded-[var(--radius-media)] bg-ink',
+    'lite-yt relative w-full overflow-hidden rounded-[var(--radius-media)] bg-ink',
+    aspect === 'short' ? 'aspect-[9/16]' : 'aspect-video',
     className,
   ]}
   data-video-id={videoId}

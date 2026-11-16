@@ -246,8 +246,7 @@ const en = {
   fleet: {
     eyebrow: 'Our fleet',
     heading: 'Mercedes Sprinter and Savanna vans',
-    intro:
-      'Air conditioned, cleaned between rides, and big enough that nobody has to hold a suitcase on their lap.',
+    intro: `More than ${FLEET.vehicleCount} vehicles in our fleet, and these are a few of them. Every one is air conditioned, cleaned between rides, and big enough that nobody has to hold a suitcase on their lap.`,
     specs: [
       { label: 'Vehicles', value: 'Sprinter and Savanna' },
       { label: 'Passenger seats', value: FLEET.seats },
@@ -266,28 +265,24 @@ const en = {
     videoAlt: 'Video thumbnail showing the inside of the Mercedes Sprinter van.',
     gallery: [
       {
-        image: 'fleetExterior',
-        alt: 'White Mercedes Sprinter van photographed from the front three-quarter angle.',
+        image: 'fleetExteriorNight',
+        alt: 'Black Mercedes Sprinter with a custom grille, photographed at night.',
       },
       {
-        image: 'fleetInterior',
-        alt: 'Passenger seats inside the Mercedes Sprinter van, in rows of three.',
+        image: 'fleetInteriorCream',
+        alt: 'Cream leather passenger seats with a starlight ceiling and ambient lighting inside the van.',
       },
       {
-        image: 'fleetLuggage',
-        alt: 'Suitcases stacked in the rear luggage area of the Sprinter van.',
+        image: 'fleetInteriorCream2',
+        alt: 'Cream leather seats with diamond stitching under a lit starlight ceiling inside the van.',
       },
       {
-        image: 'fleetSideDoor',
-        alt: 'Open sliding side door of the Sprinter van with the boarding step down.',
+        image: 'fleetInteriorBrown1',
+        alt: 'Brown leather seats with diamond stitching and blue LED ceiling lighting inside the van.',
       },
       {
-        image: 'fleetSeatsDetail',
-        alt: 'Close view of a headrest and seatbelt inside the Sprinter van.',
-      },
-      {
-        image: 'fleetOnRoad',
-        alt: 'The Sprinter van parked at a viewpoint overlooking hills in Israel.',
+        image: 'fleetInteriorBrown2',
+        alt: 'Brown leather passenger seats and a wood-effect floor seen along the aisle.',
       },
     ],
   },
